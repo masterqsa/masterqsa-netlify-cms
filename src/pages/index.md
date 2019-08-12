@@ -1,56 +1,50 @@
 ---
 templateKey: index-page
-title: Great coffee with a conscience
+title: MASTER QSA
 image: /img/home-jumbotron.jpg
-heading: Great coffee with a conscience
-subheading: Support sustainable farming while enjoying a cup
+heading: The only solution for PCI Compliance Reporting
+subheading: The only solution for PCI Compliance Reporting
 mainpitch:
-  title: Why Kaldi
-  description: >
-    Kaldi is the coffee store for everyone who believes that great coffee
-    shouldn't just taste good, it should do good too. We source all of our beans
-    directly from small scale sustainable farmers and make sure part of the
-    profits are reinvested in their communities.
+  title: Why MasterQSA
+  description: >+
+    MasterQSA is a software as a service (SaaS) solution for security compliance
+    reporting.
+
+
 description: >-
-  Kaldi is the ultimate spot for coffee lovers who want to learn about their
-  java’s origin and support the farmers that grew it. We take coffee production,
-  roasting and brewing seriously and we’re glad to pass that knowledge to
-  anyone.
+  MasterQSA improves the PCI compliance report creation process for both
+  professional security assessors and the employees of the merchant being
+  assessed. On top of this improved experience, MasterQSA lowers the cost of
+  report creation and improves QSA productivity. With MasterQSA, a QSA company
+  can efficiently complete more reports, creating a competitive advantage and
+  enabling them to win more business.
 intro:
   blurbs:
-    - image: /img/coffee.png
-      text: >
-        We sell green and roasted coffee beans that are sourced directly from
-        independent farmers and farm cooperatives. We’re proud to offer a
-        variety of coffee beans grown with great care for the environment and
-        local communities. Check our post or contact us directly for current
-        availability.
-    - image: /img/coffee-gear.png
-      text: >
-        We offer a small, but carefully curated selection of brewing gear and
-        tools for every taste and experience level. No matter if you roast your
-        own beans or just bought your first french press, you’ll find a gadget
-        to fall in love with in our shop.
-    - image: /img/tutorials.png
-      text: >
-        Love a great cup of coffee, but never knew how to make one? Bought a
-        fancy new Chemex but have no clue how to use it? Don't worry, we’re here
-        to help. You can schedule a custom 1-on-1 consultation with our baristas
-        to learn anything you want to know about coffee roasting and brewing.
-        Email us or call the store for details.
-    - image: /img/meeting-space.png
-      text: >
-        We believe that good coffee has the power to bring people together.
-        That’s why we decided to turn a corner of our shop into a cozy meeting
-        space where you can hang out with fellow coffee lovers and learn about
-        coffee making techniques. All of the artwork on display there is for
-        sale. The full price you pay goes to the artist.
+    - image: /img/masterqsa_logo.png
+      text: >-
+        Our mission is to provide QSA companies and professionals with a tool to
+        automate the creation of PCI reports. Our product, MasterQSA, will
+        facilitate a QSA professional’s work by providing guidance throughout
+        report creation, and provide a convenient, web-based channel to
+        collaborate with and gather information from their clients. By
+        automating what were previously manual processes and providing guidance
+        to help QSAs better understand the report fields, we believe our tool
+        can cut both the time required to compile these reports and the cost of
+        the effort in half. Additionally, we believe our web-based interface
+        will streamline and improve the report creation experience for the
+        merchants working with the QSA companies. As such, we believe our tool
+        provides a competitive advantage for QSA companies that choose to use
+        it. 
   heading: What we offer
   description: >
-    Kaldi is the ultimate spot for coffee lovers who want to learn about their
-    java’s origin and support the farmers that grew it. We take coffee
-    production, roasting and brewing seriously and we’re glad to pass that
-    knowledge to anyone. This is an edit via identity...
+    MasterQSA features a report template builder, wizard-based guided UX,
+    project management tools, and means for collaboration and secure information
+    exchange. We utilize a robust quality assurance process to support the
+    strictest requirements around security assessment and reporting. As
+    merchants can choose to report using either of the two most recent versions
+    of PCI report requirements, we enable users to choose which version they
+    wish to use, and we can quickly respond to changes in PCI council
+    requirements.
 main:
   heading: Great coffee with no compromises
   description: >
@@ -59,12 +53,13 @@ main:
     journey. We personally visit each farm to make sure the conditions are
     optimal for the plants, farmers and the local environment.
   image1:
-    alt: A close-up of a paper filter filled with ground coffee
-    image: /img/products-grid3.jpg
+    alt: MasterQSA Logo
+    image: /img/masterqsa_logo.png
   image2:
-    alt: A green cup of a coffee on a wooden table
-    image: /img/products-grid2.jpg
+    alt: MasterQSA Logo
+    image: /img/products-grid1.jpg
   image3:
     alt: Coffee beans
     image: /img/products-grid1.jpg
 ---
+
