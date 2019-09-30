@@ -1,14 +1,13 @@
 ---
 templateKey: index-page
 title: MASTER QSA
-image: /img/home-jumbotron.jpg
+image: /img/home_first-screen-background.jpg
 heading: The only solution for PCI Compliance Reporting
 subheading: The only solution for PCI Compliance Reporting
 mainpitch:
   title: Why MasterQSA
   description: >+
-    MasterQSA is a software as a service (SaaS) solution for security compliance
-    reporting.
+    The only solution for PCI Compliance Reporting.
 
 
 description: >-
