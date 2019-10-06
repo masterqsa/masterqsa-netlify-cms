@@ -6,6 +6,31 @@ import Layout from '../components/Layout'
 import Features from '../components/Features'
 import BlogRoll from '../components/BlogRoll'
 
+function QuickForm() {
+    return (
+        <form className="quickForm">
+            <div role="group" aria-labelledby="quickForm__label--client" className="field">
+                <span id="quickForm__label--client" className="label">How can we contact you?</span>
+                <input type="text" name="name" placeholder="Your name" aria-label="Your name" className="field" />
+                <input type="email" name="email" placeholder="Your email" aria-label="Your email" className="field" />
+            </div>
+            <label htmlFor="quickForm__field--source" className="label">
+                How did you hear about us?
+            </label>
+            <div className="field">
+                <div className="select is-block">
+                    <select name="source" id="quickForm__field--source">
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+            </div>
+            <button type="submit" className="button is-primary">
+                Request Demo
+            </button>
+        </form>
+    )
+}
+
 export const IndexPageTemplate = ({
   image,
   title,
@@ -14,6 +39,7 @@ export const IndexPageTemplate = ({
   mainpitch,
   description,
   intro,
+    why,
 }) => (
   <div>
     <div
@@ -24,51 +50,65 @@ export const IndexPageTemplate = ({
         })`,
         backgroundPosition: `top left`,
         backgroundAttachment: `fixed`,
+          backgroundSize: '100%',
+          backgroundPositionY: '-185px'
       }}
     >
       <div
         style={{
           display: 'flex',
-          height: '150px',
-          lineHeight: '1',
-          justifyContent: 'space-around',
-          alignItems: 'left',
-          flexDirection: 'column',
+            justifyContent: 'space-between',
+            maxWidth: '1046px',
+            width: '100%'
         }}
       >
-        <h1
-          className="has-text-weight-bold is-size-3-mobile is-size-2-tablet is-size-1-widescreen"
-          style={{
-            boxShadow:
-              'rgb(255, 68, 0) 0.5rem 0px 0px, rgb(255, 68, 0) -0.5rem 0px 0px',
-            backgroundColor: 'rgb(255, 68, 0)',
-            color: 'white',
-            lineHeight: '1',
-            padding: '0.25em',
-          }}
-        >
-          {title}
-        </h1>
-        <h3
-          className="has-text-weight-bold is-size-5-mobile is-size-5-tablet is-size-4-widescreen"
-          style={{
-            boxShadow:
-              'rgb(255, 68, 0) 0.5rem 0px 0px, rgb(255, 68, 0) -0.5rem 0px 0px',
-            backgroundColor: 'rgb(255, 68, 0)',
-            color: 'white',
-            lineHeight: '1',
-            padding: '0.25em',
-          }}
-        >
-          {subheading}
-        </h3>
+          <div style={{ maxWidth: '500px' }}>
+              <h1
+                  className="mainTitle"
+              >
+                  {subheading}
+              </h1>
+          </div>
+          <QuickForm />
       </div>
     </div>
     <section className="section section--gradient">
       <div className="container">
-        <div className="section">
-          <div className="columns">
-            <div className="column is-10 is-offset-1">
+        <div className="">
+          <div className="">
+            <div className="">
+                <div className="" style={{ marginBottom: '80px '}}>
+                    <h2>{intro.heading}</h2>
+                    <h3>{intro.subHeading}</h3>
+                    <p className="intro__description">{intro.description}</p>
+                </div>
+                <div className="">
+                    <div className="columns is-gapless">
+                        <div className="column is-6" style={{ backgroundColor: '#f4f4f4' }}>
+                            <div style={{ padding: '90px 70px 90px 100px' }}>
+                                <h3 className="has-text-left" style={{ marginBottom: '28px' }}>{why.heading}</h3>
+                                <p style={{ marginBottom: '26px' }}>{why.description}</p>
+                                <Link className="btn" to="/blog">
+                                    Get Started
+                                    <span className="icon">
+                                      <i className="fas fa-arrow-right" />
+                                    </span>
+                                </Link>
+                            </div>
+                        </div>
+                        <div
+                            className="column is-6"
+                            style={{
+                                backgroundImage: `url(${
+                                    !!why.image.childImageSharp ? why.image.childImageSharp.fluid.src : why.image
+                                })`,
+                                backgroundSize: 'cover',
+                                backgroundPosition: 'center'
+                            }}
+                        >
+                        </div>
+                    </div>
+                </div>
               <div className="content">
                 <div className="content">
                   <div className="tile">
@@ -123,6 +163,7 @@ IndexPageTemplate.propTypes = {
   description: PropTypes.string,
   intro: PropTypes.shape({
     blurbs: PropTypes.array,
+  subHeading: PropTypes.string
   }),
 }
 
@@ -139,6 +180,7 @@ const IndexPage = ({ data }) => {
         mainpitch={frontmatter.mainpitch}
         description={frontmatter.description}
         intro={frontmatter.intro}
+        why={frontmatter.why}
       />
     </Layout>
   )
@@ -166,6 +208,17 @@ export const pageQuery = graphql`
             }
           }
         }
+        why {
+            heading
+            description
+            image {
+              childImageSharp {
+                fluid(maxWidth: 2048, quality: 100) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+        }
         heading
         subheading
         mainpitch {
@@ -185,6 +238,7 @@ export const pageQuery = graphql`
             text
           }
           heading
+          subHeading
           description
         }
       }

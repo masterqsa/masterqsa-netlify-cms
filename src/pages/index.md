@@ -9,6 +9,16 @@ mainpitch:
   description: >+
     The only solution for PCI Compliance Reporting.
 
+why:
+    heading: Why MasterQSA
+    image: /img/home_2nd-image-benefits.jpg
+    description: >-
+        MasterQSA improves the PCI compliance report creation process for both
+        professional security assessors and the employees of the merchant being
+        assessed. On top of this improved experience, MasterQSA lowers the cost of
+        report creation and improves QSA productivity. With MasterQSA, a QSA company
+        can efficiently complete more reports, creating a competitive advantage and
+        enabling them to win more business.
 
 description: >-
   MasterQSA improves the PCI compliance report creation process for both
@@ -34,16 +44,10 @@ intro:
         merchants working with the QSA companies. As such, we believe our tool
         provides a competitive advantage for QSA companies that choose to use
         it. 
-  heading: What we offer
+  heading: Our mission
+  subHeading: “MasterQSA is a software as a service (SaaS) solution for security compliance reporting.”
   description: >
-    MasterQSA features a report template builder, wizard-based guided UX,
-    project management tools, and means for collaboration and secure information
-    exchange. We utilize a robust quality assurance process to support the
-    strictest requirements around security assessment and reporting. As
-    merchants can choose to report using either of the two most recent versions
-    of PCI report requirements, we enable users to choose which version they
-    wish to use, and we can quickly respond to changes in PCI council
-    requirements.
+    Our mission is to provide QSA companies and professionals with a tool to automate the creation of PCI reports. Our product, MasterQSA, will facilitate a QSA professional’s work by providing guidance throughout report creation, and provide a convenient, web-based channel to collaborate with and gather information from their clients. 
 main:
   heading: Great coffee with no compromises
   description: >
