@@ -1,13 +1,8 @@
 ---
 templateKey: index-page
-title: MASTER QSA
-image: /img/home_first-screen-background.jpg
-heading: The only solution for PCI Compliance Reporting
-subheading: The only solution for PCI Compliance Reporting
-mainpitch:
-  title: Why MasterQSA
-  description: >+
-    The only solution for PCI Compliance Reporting.
+
+image: ../img/home/intro.jpg
+mainpitch: The only solution for PCI Compliance Reporting
 
 why:
     heading: Why MasterQSA
@@ -20,13 +15,6 @@ why:
         can efficiently complete more reports, creating a competitive advantage and
         enabling them to win more business.
 
-description: >-
-  MasterQSA improves the PCI compliance report creation process for both
-  professional security assessors and the employees of the merchant being
-  assessed. On top of this improved experience, MasterQSA lowers the cost of
-  report creation and improves QSA productivity. With MasterQSA, a QSA company
-  can efficiently complete more reports, creating a competitive advantage and
-  enabling them to win more business.
 intro:
   blurbs:
     - image: /img/masterqsa_logo.png
@@ -64,5 +52,15 @@ main:
   image3:
     alt: Coffee beans
     image: /img/products-grid1.jpg
+pricing:
+  title: Product Pricing
+  image: ../img/home/pricing.jpg
+  plans:
+    - name: Basic
+      amount: 1000
+      features: ['60 day free trial', 'All functionality', 'Dedicated subdomain', 'Up to 20 repositories', 'Email and phone support']
+    - name: Professional
+      amount: 1500
+      features: ['60 day free trial', 'All functionality', 'Dedicated subdomain', 'Up to 20 repositories', 'Email and phone support']
 ---
 

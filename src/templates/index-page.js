@@ -5,6 +5,11 @@ import { Link, graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import Features from '../components/Features'
 import BlogRoll from '../components/BlogRoll'
+import { SectionHeader, PageHeader } from '../components/core/Headers'
+import Text from '../components/core/Text'
+import PreviewCompatibleImage from '../components/PreviewCompatibleImage'
+import CallToAction from '../components/callToAction/CallToAction'
+import usePlanOptions from '../hooks/usePlanOptions'
 
 function QuickForm() {
     return (
@@ -31,15 +36,52 @@ function QuickForm() {
     )
 }
 
+function PlansOverview() {
+  const plans = usePlanOptions()
+
+  return (
+    <div className="offers" style={{ maxWidth: `calc(${(360) * plans.length}px + ${plans.length - 1} * 6rem)` }}>
+      {plans.map((plan) => {
+        return (
+          <div className="offer" key={plan.name}>
+            <p className="has-text-centered is-size-4 has-text-weight-semibold	">
+              {plan.name}
+              <span className="is-block is-size-1">
+                ${plan.amount / 100}
+              </span>
+            </p>
+            <Text>
+              <ul>
+                {plan.features.map((feature) => {
+                  return (
+                    <li key={feature}>
+                      <span className="icon has-text-accent">
+                            <i className="fas fa-check" />
+                          </span>
+                          {feature}
+                    </li>
+                  );
+                })}
+              </ul>
+            </Text>
+            <div className="has-text-centered">
+              <Link className="button is-outlined is-primary" to="/blog">
+                Get Started
+              </Link>
+            </div>
+          </div>
+        )
+      })}
+    </div>
+  )
+}
+
 export const IndexPageTemplate = ({
   image,
-  title,
-  heading,
-  subheading,
   mainpitch,
-  description,
   intro,
     why,
+    pricing,
 }) => (
   <div>
     <div
@@ -63,11 +105,7 @@ export const IndexPageTemplate = ({
         }}
       >
           <div style={{ maxWidth: '500px' }}>
-              <h1
-                  className="mainTitle"
-              >
-                  {subheading}
-              </h1>
+            <PageHeader className="mainTitle">{mainpitch}</PageHeader>
           </div>
           <QuickForm />
       </div>
@@ -77,17 +115,16 @@ export const IndexPageTemplate = ({
         <div className="">
           <div className="">
             <div className="">
-                <div className="" style={{ marginBottom: '80px '}}>
-                    <h2>{intro.heading}</h2>
-                    <h3>{intro.subHeading}</h3>
-                    <p className="intro__description">{intro.description}</p>
+                <div className="" style={{ marginTop: '2rem', marginBottom: '80px' }}>
+                    <SectionHeader intro={intro.heading} className="has-text-centered" style={{ maxWidth: '755px', margin: '0 auto' }}>{intro.subHeading}</SectionHeader>
+                    <Text className="intro__description">{intro.description}</Text>
                 </div>
                 <div className="">
                     <div className="columns is-gapless">
                         <div className="column is-6" style={{ backgroundColor: '#f4f4f4' }}>
                             <div style={{ padding: '90px 70px 90px 100px' }}>
-                                <h3 className="has-text-left" style={{ marginBottom: '28px' }}>{why.heading}</h3>
-                                <p style={{ marginBottom: '26px' }}>{why.description}</p>
+                                <SectionHeader className="has-text-left" style={{ marginBottom: '28px' }}>{why.heading}</SectionHeader>
+                                <Text style={{ marginBottom: '26px' }}>{why.description}</Text>
                                 <Link className="btn" to="/blog">
                                     Get Started
                                     <span className="icon">
@@ -109,43 +146,30 @@ export const IndexPageTemplate = ({
                         </div>
                     </div>
                 </div>
-              <div className="content">
-                <div className="content">
-                  <div className="tile">
-                    <h1 className="title">{mainpitch.title}</h1>
-                  </div>
-                  <div className="tile">
-                    <h3 className="subtitle">{mainpitch.description}</h3>
-                  </div>
-                </div>
-                <div className="columns">
-                  <div className="column is-12">
-                    <h3 className="has-text-weight-semibold is-size-2">
-                      {heading}
-                    </h3>
-                    <p>{description}</p>
-                  </div>
-                </div>
-                <Features gridItems={intro.blurbs} />
-                <div className="columns">
-                  <div className="column is-12 has-text-centered">
-                    <Link className="btn" to="/products">
-                      See all products
-                    </Link>
-                  </div>
-                </div>
-                <div className="column is-12">
-                  <h3 className="has-text-weight-semibold is-size-2">
-                    Latest stories
-                  </h3>
+              <div style={{ marginTop: '4rem', marginBottom: '4rem' }}>
+                  <SectionHeader className="has-text-left" intro="Latest stories" style={{ marginBottom: '1rem' }}>Stories</SectionHeader>
                   <BlogRoll />
-                  <div className="column is-12 has-text-centered">
-                    <Link className="btn" to="/blog">
+                  <div className="has-text-centered">
+                    <Link className="button is-outlined is-primary" to="/blog">
                       Read more
                     </Link>
                   </div>
-                </div>
               </div>
+              <div
+                className="pricing-section"
+              >
+                <div
+                  className="background"
+                  style={{
+                    backgroundImage: `url(${
+                      !!pricing.image.childImageSharp ? pricing.image.childImageSharp.fluid.src : pricing.image
+                    })`,
+                  }}
+                ></div>
+                <SectionHeader className="has-text-white has-text-centered">{pricing.title}</SectionHeader>
+                <PlansOverview />
+              </div>
+              <CallToAction />
             </div>
           </div>
         </div>
@@ -156,11 +180,7 @@ export const IndexPageTemplate = ({
 
 IndexPageTemplate.propTypes = {
   image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
-  title: PropTypes.string,
-  heading: PropTypes.string,
-  subheading: PropTypes.string,
-  mainpitch: PropTypes.object,
-  description: PropTypes.string,
+  mainpitch: PropTypes.string,
   intro: PropTypes.shape({
     blurbs: PropTypes.array,
   subHeading: PropTypes.string
@@ -174,13 +194,10 @@ const IndexPage = ({ data }) => {
     <Layout>
       <IndexPageTemplate
         image={frontmatter.image}
-        title={frontmatter.title}
-        heading={frontmatter.heading}
-        subheading={frontmatter.subheading}
         mainpitch={frontmatter.mainpitch}
-        description={frontmatter.description}
         intro={frontmatter.intro}
         why={frontmatter.why}
+        pricing={frontmatter.pricing}
       />
     </Layout>
   )
@@ -200,7 +217,6 @@ export const pageQuery = graphql`
   query IndexPageTemplate {
     markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
       frontmatter {
-        title
         image {
           childImageSharp {
             fluid(maxWidth: 2048, quality: 100) {
@@ -219,13 +235,7 @@ export const pageQuery = graphql`
               }
             }
         }
-        heading
-        subheading
-        mainpitch {
-          title
-          description
-        }
-        description
+        mainpitch
         intro {
           blurbs {
             image {
@@ -240,6 +250,21 @@ export const pageQuery = graphql`
           heading
           subHeading
           description
+        }
+        pricing {
+          title
+          image {
+            childImageSharp {
+              fluid(maxWidth: 2048, quality: 100) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
+          plans {
+            name
+            amount
+            features
+          }
         }
       }
     }
