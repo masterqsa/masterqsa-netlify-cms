@@ -6,6 +6,7 @@ const CONTENT_QUERY = graphql`
       frontmatter {
         plans {
           name
+          terms
           amount
           features
           color

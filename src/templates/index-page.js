@@ -10,6 +10,7 @@ import Text from '../components/core/Text'
 import PreviewCompatibleImage from '../components/PreviewCompatibleImage'
 import CallToAction from '../components/callToAction/CallToAction'
 import usePlanOptions from '../hooks/usePlanOptions'
+import PlansOverview from '../components/PlansOverview'
 
 function QuickForm() {
     return (
@@ -34,46 +35,6 @@ function QuickForm() {
             </button>
         </form>
     )
-}
-
-function PlansOverview() {
-  const plans = usePlanOptions()
-
-  return (
-    <div className="offers" style={{ maxWidth: `calc(${(360) * plans.length}px + ${plans.length - 1} * 6rem)` }}>
-      {plans.map((plan) => {
-        return (
-          <div className="offer" key={plan.name}>
-            <p className="has-text-centered is-size-4 has-text-weight-semibold	">
-              {plan.name}
-              <span className="is-block is-size-1">
-                ${plan.amount / 100}
-              </span>
-            </p>
-            <Text>
-              <ul>
-                {plan.features.map((feature) => {
-                  return (
-                    <li key={feature}>
-                      <span className="icon has-text-accent">
-                            <i className="fas fa-check" />
-                          </span>
-                          {feature}
-                    </li>
-                  );
-                })}
-              </ul>
-            </Text>
-            <div className="has-text-centered">
-              <Link className="button is-outlined is-primary" to="/blog">
-                Get Started
-              </Link>
-            </div>
-          </div>
-        )
-      })}
-    </div>
-  )
 }
 
 export const IndexPageTemplate = ({
@@ -167,7 +128,7 @@ export const IndexPageTemplate = ({
                   }}
                 ></div>
                 <SectionHeader className="has-text-white has-text-centered">{pricing.title}</SectionHeader>
-                <PlansOverview />
+                <PlansOverview variant="HOME" />
               </div>
               <CallToAction />
             </div>

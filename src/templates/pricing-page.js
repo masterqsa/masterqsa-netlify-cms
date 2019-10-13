@@ -2,24 +2,17 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
-import Content, { HTMLContent } from '../components/Content'
+import { SectionHeader } from '../components/core/Headers'
+import PlansOverview from '../components/PlansOverview'
+import CallToAction from '../components/callToAction/CallToAction'
 
-export const PricingPageTemplate = ({ title, content, contentComponent }) => {
-  const PageContent = contentComponent || Content
-
+export const PricingPageTemplate = ({ title }) => {
   return (
     <section className="section section--gradient">
       <div className="container">
-        <div className="columns">
-          <div className="column is-10 is-offset-1">
-            <div className="section">
-              <h2 className="title is-size-3 has-text-weight-bold is-bold-light">
-                {title}
-              </h2>
-              <PageContent className="content" content={content} />
-            </div>
-          </div>
-        </div>
+        <SectionHeader className="has-text-centered" style={{ maxWidth: '326px', margin: '0 auto 5rem' }}>{title}</SectionHeader>
+        <PlansOverview />
+        <CallToAction />
       </div>
     </section>
   )
@@ -27,8 +20,6 @@ export const PricingPageTemplate = ({ title, content, contentComponent }) => {
 
 PricingPageTemplate.propTypes = {
   title: PropTypes.string.isRequired,
-  content: PropTypes.string,
-  contentComponent: PropTypes.func,
 }
 
 const PricingPage = ({ data }) => {
@@ -37,9 +28,7 @@ const PricingPage = ({ data }) => {
   return (
     <Layout>
       <PricingPageTemplate
-        contentComponent={HTMLContent}
         title={post.frontmatter.title}
-        content={post.html}
       />
     </Layout>
   )
