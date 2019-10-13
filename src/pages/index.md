@@ -29,8 +29,7 @@ intro:
         cuts both the time required to compile these reports and the cost of
         the effort in half. Additionally, our web-based interface
         streamlines and improves the report creation experience for
-        merchants working with the QSA companies. Gain competitive advantage by
-	using MasterQSA!
+        merchants working with the QSA companies. Gain competitive advantage by using MasterQSA!
   heading: Our mission
   subHeading: “MasterQSA is a one-stop solution for security compliance reporting.”
   description: >
