@@ -9,7 +9,7 @@ import { HTMLContent } from '../Content'
 
 const CONTENT_QUERY = graphql`
   query CallToActionQuery1 {
-    markdownRemark(frontmatter: { content_key: { eq: "call-to-action" } }) {
+    markdownRemark(frontmatter: { contentKey: { eq: "callToAction" } }) {
       frontmatter {
         image {
           childImageSharp {
