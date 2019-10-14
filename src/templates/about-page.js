@@ -6,9 +6,17 @@ import { SectionHeader, OrganismHeader } from '../components/core/Headers'
 import Text from '../components/core/Text'
 import PreviewCompatibleImage from '../components/PreviewCompatibleImage'
 import CallToAction from '../components/callToAction/CallToAction'
+import DevelopedIcon from '../components/icons/DevelopedIcon'
+import ProductivityIcon from '../components/icons/ProductivityIcon'
+import FocusedIcon from '../components/icons/FocusedIcon'
+
+const pitchIcons = {
+  DevelopedIcon,
+  ProductivityIcon,
+  FocusedIcon,
+}
 
 export const AboutPageTemplate = ({ title, description, heroImage, intro, pitches }) => {
-
   return (
     <React.Fragment>
       <div
@@ -54,9 +62,12 @@ export const AboutPageTemplate = ({ title, description, heroImage, intro, pitche
         </div>
         </div>
         <div className="flex" style={{ alignItems: 'stretch', marginTop: '5rem', marginBottom: '2rem' }}>
-          {pitches.map(({ title, description }, idx, list) => {
+          {pitches.map(({ title, description, icon }, idx, list) => {
+            const Icon = pitchIcons[icon]
+            
             return (
               <div key={title} className="has-text-white" style={{ padding: '3rem', flex: `1 0 ${list.length / 3}%`, backgroundImage: `linear-gradient(rgba(0, 0, 0, ${idx * 0.2}), rgba(0, 0, 0, ${idx * 0.2})), linear-gradient(#2047b5, #2047b5)` }}>
+                {Icon && <Icon style={{ width: '3rem', height: '3rem', marginLeft: '-0.5rem' }} />}
                 <OrganismHeader>{title}</OrganismHeader>
                 <Text style={{ marginTop: '1rem' }}>{description}</Text>
                 </div>
@@ -83,6 +94,7 @@ AboutPageTemplate.propTypes = {
   pitches: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
+    icon: PropTypes.string.isRequired,
   })).isRequired,
 }
 
@@ -135,6 +147,7 @@ export const aboutPageQuery = graphql`
         pitches {
           title
           description
+          icon
         }
       }
     }

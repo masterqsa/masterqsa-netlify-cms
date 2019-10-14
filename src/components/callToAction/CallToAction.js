@@ -5,6 +5,7 @@ import { Link, graphql, useStaticQuery } from 'gatsby'
 import { SectionHeader } from '../core/Headers'
 import Text from '../core/Text'
 import PreviewCompatibleImage from '../PreviewCompatibleImage'
+import { HTMLContent } from '../Content'
 
 const CONTENT_QUERY = graphql`
   query CallToActionQuery1 {
@@ -34,7 +35,9 @@ export const CallToAction = () => {
           <SectionHeader className="qsaGetStarted__header has-text-white">
             {frontmatter.title}
           </SectionHeader>
-          <Text className="qsaGetStarted__description has-text-white">{frontmatter.description}</Text>
+          <Text className="qsaGetStarted__description has-text-white">
+            <HTMLContent content={frontmatter.description} />
+          </Text>
           <Link className="button is-primary" to="/blog">
             Get Started
           </Link>
