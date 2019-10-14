@@ -75,6 +75,7 @@ export const AboutPageTemplate = ({
           className="flex"
           style={{
             alignItems: 'stretch',
+            justifyContent: 'center',
             marginTop: '5rem',
             marginBottom: '2rem',
           }}
@@ -88,7 +89,7 @@ export const AboutPageTemplate = ({
                 className="has-text-white"
                 style={{
                   padding: '3rem',
-                  flex: `1 0 ${list.length / 3}%`,
+                  flex: `0 1 445px`,
                   backgroundImage: `linear-gradient(rgba(0, 0, 0, ${idx *
                     0.2}), rgba(0, 0, 0, ${idx *
                     0.2})), linear-gradient(#2047b5, #2047b5)`,
