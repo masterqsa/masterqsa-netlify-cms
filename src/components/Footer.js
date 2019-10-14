@@ -17,13 +17,12 @@ const Footer = class extends React.Component {
                 <p className="footer__contactTitle">Contact Us</p>
                 <address>
                   <p>
-                    Phone: <a href="tel:+123456789">+1234567890</a><br/>
-                    Email: <a href="mailto:test@test.com">test@test.com</a>
+                    Phone: <a href="tel:+1(205)902-8100">+1(205)902-8100</a><br/>
+                    Email: <a href="mailto:support@masterqsa.com">support@masterqsa.com</a>
                   </p>
                   <p>
-                    1234 Main St S666 <br/>
                     Los Angeles, CA <br/>
-                    90210
+                    90025
                   </p>
                 </address>
               </div>
