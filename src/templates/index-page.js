@@ -5,15 +5,62 @@ import { Link, graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import Features from '../components/Features'
 import BlogRoll from '../components/BlogRoll'
+import { SectionHeader, PageHeader } from '../components/core/Headers'
+import Text from '../components/core/Text'
+import PreviewCompatibleImage from '../components/PreviewCompatibleImage'
+import CallToAction from '../components/callToAction/CallToAction'
+import usePlanOptions from '../hooks/usePlanOptions'
+import PlansOverview from '../components/PlansOverview'
+
+function QuickForm() {
+  return (
+    <form className="quickForm">
+      <div
+        role="group"
+        aria-labelledby="quickForm__label--client"
+        className="field"
+      >
+        <span id="quickForm__label--client" className="label">
+          How can we contact you?
+        </span>
+        <input
+          type="text"
+          name="name"
+          placeholder="Your name"
+          aria-label="Your name"
+          className="field"
+        />
+        <input
+          type="email"
+          name="email"
+          placeholder="Your email"
+          aria-label="Your email"
+          className="field"
+        />
+      </div>
+      <label htmlFor="quickForm__field--source" className="label">
+        How did you hear about us?
+      </label>
+      <div className="field">
+        <div className="select is-block">
+          <select name="source" id="quickForm__field--source">
+            <option value="other">Other</option>
+          </select>
+        </div>
+      </div>
+      <button type="submit" className="button is-primary">
+        Request Demo
+      </button>
+    </form>
+  )
+}
 
 export const IndexPageTemplate = ({
   image,
-  title,
-  heading,
-  subheading,
   mainpitch,
-  description,
   intro,
+  why,
+  pricing,
 }) => (
   <div>
     <div
@@ -24,88 +71,112 @@ export const IndexPageTemplate = ({
         })`,
         backgroundPosition: `top left`,
         backgroundAttachment: `fixed`,
+        backgroundSize: '100%',
+        backgroundPositionY: '-185px',
       }}
     >
       <div
         style={{
           display: 'flex',
-          height: '150px',
-          lineHeight: '1',
-          justifyContent: 'space-around',
-          alignItems: 'left',
-          flexDirection: 'column',
+          justifyContent: 'space-between',
+          maxWidth: '1046px',
+          width: '100%',
         }}
       >
-        <h1
-          className="has-text-weight-bold is-size-3-mobile is-size-2-tablet is-size-1-widescreen"
-          style={{
-            boxShadow:
-              'rgb(255, 68, 0) 0.5rem 0px 0px, rgb(255, 68, 0) -0.5rem 0px 0px',
-            backgroundColor: 'rgb(255, 68, 0)',
-            color: 'white',
-            lineHeight: '1',
-            padding: '0.25em',
-          }}
-        >
-          {title}
-        </h1>
-        <h3
-          className="has-text-weight-bold is-size-5-mobile is-size-5-tablet is-size-4-widescreen"
-          style={{
-            boxShadow:
-              'rgb(255, 68, 0) 0.5rem 0px 0px, rgb(255, 68, 0) -0.5rem 0px 0px',
-            backgroundColor: 'rgb(255, 68, 0)',
-            color: 'white',
-            lineHeight: '1',
-            padding: '0.25em',
-          }}
-        >
-          {subheading}
-        </h3>
+        <div style={{ maxWidth: '500px' }}>
+          <PageHeader className="mainTitle">{mainpitch}</PageHeader>
+        </div>
+        <QuickForm />
       </div>
     </div>
     <section className="section section--gradient">
       <div className="container">
-        <div className="section">
-          <div className="columns">
-            <div className="column is-10 is-offset-1">
-              <div className="content">
-                <div className="content">
-                  <div className="tile">
-                    <h1 className="title">{mainpitch.title}</h1>
+        <div className="">
+          <div className="">
+            <div className="">
+              <div
+                className=""
+                style={{ marginTop: '2rem', marginBottom: '80px' }}
+              >
+                <SectionHeader
+                  intro={intro.heading}
+                  className="has-text-centered"
+                  style={{ maxWidth: '755px', margin: '0 auto' }}
+                >
+                  {intro.subHeading}
+                </SectionHeader>
+                <Text className="intro__description">{intro.description}</Text>
+              </div>
+              <div className="">
+                <div className="columns is-gapless">
+                  <div
+                    className="column is-6"
+                    style={{ backgroundColor: '#f4f4f4' }}
+                  >
+                    <div style={{ padding: '90px 70px 90px 100px' }}>
+                      <SectionHeader
+                        className="has-text-left"
+                        style={{ marginBottom: '28px' }}
+                      >
+                        {why.heading}
+                      </SectionHeader>
+                      <Text style={{ marginBottom: '26px' }}>
+                        {why.description}
+                      </Text>
+                      <Link className="btn" to="/blog">
+                        Get Started
+                        <span className="icon">
+                          <i className="fas fa-arrow-right" />
+                        </span>
+                      </Link>
+                    </div>
                   </div>
-                  <div className="tile">
-                    <h3 className="subtitle">{mainpitch.description}</h3>
-                  </div>
-                </div>
-                <div className="columns">
-                  <div className="column is-12">
-                    <h3 className="has-text-weight-semibold is-size-2">
-                      {heading}
-                    </h3>
-                    <p>{description}</p>
-                  </div>
-                </div>
-                <Features gridItems={intro.blurbs} />
-                <div className="columns">
-                  <div className="column is-12 has-text-centered">
-                    <Link className="btn" to="/products">
-                      See all products
-                    </Link>
-                  </div>
-                </div>
-                <div className="column is-12">
-                  <h3 className="has-text-weight-semibold is-size-2">
-                    Latest stories
-                  </h3>
-                  <BlogRoll />
-                  <div className="column is-12 has-text-centered">
-                    <Link className="btn" to="/blog">
-                      Read more
-                    </Link>
-                  </div>
+                  <div
+                    className="column is-6"
+                    style={{
+                      backgroundImage: `url(${
+                        !!why.image.childImageSharp
+                          ? why.image.childImageSharp.fluid.src
+                          : why.image
+                      })`,
+                      backgroundSize: 'cover',
+                      backgroundPosition: 'center',
+                    }}
+                  ></div>
                 </div>
               </div>
+              <div style={{ marginTop: '4rem', marginBottom: '4rem' }}>
+                <SectionHeader
+                  className="has-text-left"
+                  intro="Latest stories"
+                  style={{ marginBottom: '1rem' }}
+                >
+                  Stories
+                </SectionHeader>
+                <BlogRoll />
+                <div className="has-text-centered">
+                  <Link className="button is-outlined is-primary" to="/blog">
+                    Read more
+                  </Link>
+                </div>
+              </div>
+              <div className="pricing-section">
+                <div
+                  className="background"
+                  style={{
+                    backgroundImage: `url(${
+                      !!pricing.image.childImageSharp
+                        ? pricing.image.childImageSharp.fluid.src
+                        : pricing.image
+                    })`,
+                  }}
+                ></div>
+                <SectionHeader className="has-text-white has-text-centered">
+                  {pricing.title}
+                </SectionHeader>
+                <PlansOverview variant="HOME" />
+              </div>
+              <CallToAction />
             </div>
           </div>
         </div>
@@ -116,13 +187,10 @@ export const IndexPageTemplate = ({
 
 IndexPageTemplate.propTypes = {
   image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
-  title: PropTypes.string,
-  heading: PropTypes.string,
-  subheading: PropTypes.string,
-  mainpitch: PropTypes.object,
-  description: PropTypes.string,
+  mainpitch: PropTypes.string,
   intro: PropTypes.shape({
     blurbs: PropTypes.array,
+    subHeading: PropTypes.string,
   }),
 }
 
@@ -133,12 +201,10 @@ const IndexPage = ({ data }) => {
     <Layout>
       <IndexPageTemplate
         image={frontmatter.image}
-        title={frontmatter.title}
-        heading={frontmatter.heading}
-        subheading={frontmatter.subheading}
         mainpitch={frontmatter.mainpitch}
-        description={frontmatter.description}
         intro={frontmatter.intro}
+        why={frontmatter.why}
+        pricing={frontmatter.pricing}
       />
     </Layout>
   )
@@ -158,7 +224,6 @@ export const pageQuery = graphql`
   query IndexPageTemplate {
     markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
       frontmatter {
-        title
         image {
           childImageSharp {
             fluid(maxWidth: 2048, quality: 100) {
@@ -166,13 +231,18 @@ export const pageQuery = graphql`
             }
           }
         }
-        heading
-        subheading
-        mainpitch {
-          title
+        why {
+          heading
           description
+          image {
+            childImageSharp {
+              fluid(maxWidth: 2048, quality: 100) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
         }
-        description
+        mainpitch
         intro {
           blurbs {
             image {
@@ -185,7 +255,23 @@ export const pageQuery = graphql`
             text
           }
           heading
+          subHeading
           description
+        }
+        pricing {
+          title
+          image {
+            childImageSharp {
+              fluid(maxWidth: 2048, quality: 100) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
+          plans {
+            name
+            amount
+            features
+          }
         }
       }
     }

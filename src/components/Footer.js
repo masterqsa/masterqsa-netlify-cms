@@ -10,100 +10,97 @@ import vimeo from '../img/social/vimeo.svg'
 const Footer = class extends React.Component {
   render() {
     return (
-      <footer className="footer has-background-black has-text-white-ter">
-        <div className="content has-text-centered">
-          <img
-            src={logo}
-            alt="Kaldi"
-            style={{ width: '14em', height: '10em' }}
-          />
-        </div>
-        <div className="content has-text-centered has-background-black has-text-white-ter">
-          <div className="container has-background-black has-text-white-ter">
-            <div className="columns">
-              <div className="column is-4">
-                <section className="menu">
-                  <ul className="menu-list">
-                    <li>
-                      <Link to="/" className="navbar-item">
-                        Home
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="navbar-item" to="/about">
-                        About
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="navbar-item" to="/products">
-                        Products
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="navbar-item" to="/contact/examples">
-                        Form Examples
-                      </Link>
-                    </li>
-                    <li>
-                      <a
-                        className="navbar-item"
-                        href="/admin/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Admin
-                      </a>
-                    </li>
-                  </ul>
-                </section>
+      <footer className="footer has-text-dark">
+        <div className="container">
+          <div className="footer__inner">
+            <div className="footer__contact">
+              <p className="footer__contactTitle">Contact Us</p>
+              <address>
+                <p>
+                  Phone: <a href="tel:+1(205)902-8100">+1(205)902-8100</a>
+                  <br />
+                  Email:{' '}
+                  <a href="mailto:support@masterqsa.com">
+                    support@masterqsa.com
+                  </a>
+                </p>
+                <p>
+                  Los Angeles, CA <br />
+                  90025
+                </p>
+              </address>
+            </div>
+            <div className="footer__links">
+              <div>
+                <p className="menu-label">Information</p>
+                <ul className="menu-list">
+                  <li>
+                    <Link to="/" className="">
+                      Home
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="" to="/about">
+                      About Us
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="" to="/products">
+                      Pricing
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="" to="/contact/examples">
+                      Contacts
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="" to="/contact/examples">
+                      Terms and Conditions
+                    </Link>
+                  </li>
+                </ul>
               </div>
-              <div className="column is-4">
-                <section>
-                  <ul className="menu-list">
-                    <li>
-                      <Link className="navbar-item" to="/blog">
-                        Latest Stories
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="navbar-item" to="/contact">
-                        Contact
-                      </Link>
-                    </li>
-                  </ul>
-                </section>
-              </div>
-              <div className="column is-4 social">
-                <a title="facebook" href="https://facebook.com">
-                  <img
-                    src={facebook}
-                    alt="Facebook"
-                    style={{ width: '1em', height: '1em' }}
-                  />
-                </a>
-                <a title="twitter" href="https://twitter.com">
-                  <img
-                    className="fas fa-lg"
-                    src={twitter}
-                    alt="Twitter"
-                    style={{ width: '1em', height: '1em' }}
-                  />
-                </a>
-                <a title="instagram" href="https://instagram.com">
-                  <img
-                    src={instagram}
-                    alt="Instagram"
-                    style={{ width: '1em', height: '1em' }}
-                  />
-                </a>
-                <a title="vimeo" href="https://vimeo.com">
-                  <img
-                    src={vimeo}
-                    alt="Vimeo"
-                    style={{ width: '1em', height: '1em' }}
-                  />
-                </a>
-              </div>
+            </div>
+          </div>
+          <hr />
+          <div className="flex">
+            <small>© 2019. All rights reserved.</small>
+            <div className="social">
+              {[
+                {
+                  src: facebook,
+                  title: 'Facebook',
+                  href: 'https://facebook.com',
+                },
+                {
+                  src: twitter,
+                  title: 'Twitter',
+                  href: 'https://twitter.com',
+                },
+                {
+                  src: instagram,
+                  title: 'Instagram',
+                  href: 'https://instagram.com',
+                },
+              ].map(({ src, title, href }) => {
+                return (
+                  <a
+                    key={title}
+                    title={title}
+                    aria-label={title}
+                    href={href}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                  >
+                    <img
+                      src={src}
+                      alt=""
+                      style={{ width: '1em', height: '1em' }}
+                    />
+                  </a>
+                )
+              })}
             </div>
           </div>
         </div>

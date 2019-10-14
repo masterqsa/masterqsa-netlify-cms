@@ -1,17 +1,35 @@
 @import "~bulma/sass/utilities/initial-variables"
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap')
 
 // Config vars
 // Kaldi logo brand color: #FD461E
 $kaldi-red: #D64000
 $kaldi-red-invert: #fff
 
-$primary: $kaldi-red
+$brand: #0b6752
+$primary: #efa12b
 $primary-invert: $kaldi-red-invert
-$body-color: #333
+$grey-darker: #333333
+$grey-lighter: #f4f4f4
 $black: #2b2523
 
+$body-color: $grey-darker
+
+// Master QSA colors
+$interactive: #efa12b
+$accent: #2859e2
+
+
+$family-sans-serif: "Open Sans", "Helvetica", "Arial", sans-serif
+
+$label-color: #121212
+$label-weight: 600 !default
+
+$footer-background-color: $grey-lighter
+$footer-padding: 5rem 0 3rem
+
 .navbar .navbar-menu
-  box-shadow:none !important
+  box-shadow: none !important
 
 .content .taglist
   list-style: none
@@ -44,7 +62,7 @@ $black: #2b2523
 
 .full-width-image
     width: 100vw
-    height: 400px
+    height: 541px
     background-size: cover
     background-position: bottom
     display: flex
@@ -52,24 +70,35 @@ $black: #2b2523
     align-items: center
 
 .btn
+    min-width: 160px
     display: inline-block
-    padding: 12px 16px 10px
-    font-size: 18px
+    padding: 16px 25px
+    font-size: 14px
     font-size: 1rem
-    line-height: 1.25
-    background-color: #fff
-    border-radius: .25rem
+    line-height: normal
+    letter-spacing: 0.14px
+    border-radius: 3px
+    border: solid 1px $interactive
+    background-color: $interactive
     text-decoration: none
-    font-weight: 700
-    color: #CC3700
+    font-weight: 600
+    color: #ffffff
     text-align: center
-    -webkit-box-shadow: inset 0 0 0 2px #CC3700
-    box-shadow: inset 0 0 0 2px #f40
     -webkit-transition: all .15s ease
     transition: all .15s ease
 
 .margin-top-0
   margin-top: 0 !important
+
+.navbar-item
+  font-size: 14px
+  font-weight: 600
+  font-style: normal
+  font-stretch: normal
+  line-height: normal
+  letter-spacing: 0.14px
+  text-align: left
+  color: #121212
 
 .navbar-item .icon
   color: $primary
@@ -78,31 +107,23 @@ $black: #2b2523
   width: 1.5rem
   height: 1.5rem
   fill: currentColor
-.navbar-brand .navbar-item.logo
-  padding: 0 1rem
-footer.footer
-  padding: 3rem 0rem 0rem
-  background-color: transparent
 
 //Menu overrides
-$menu-item-color: $white-ter
+// $menu-item-color: $grey-darker
 $menu-item-hover-color: $black !important
-$menu-item-hover-background-color: $black
+$menu-item-hover-background-color: transparent
 $menu-item-active-color: $kaldi-red-invert
 $menu-item-active-background-color:	$kaldi-red-invert
 $menu-list-border-left: 1px solid $kaldi-red-invert
-$menu-label-color: $white-ter
+$menu-label-color: $body-color
+$menu-label-font-size: $size-5	
+$menu-label-letter-spacing: 0
+$menu-list-link-padding: 0.5rem 0
 
+$navbar-item-color: #121212
 
-.menu-label
-  font-size: 1em !important
-  text-align: left
-.menu-list
-  list-style: none !important
-  text-align: left
 .social
-  padding: 2em
-.social a
+  a
     padding: .5em .5em .3em .5em
     border-radius: 1em
     background-color: $white-ter
@@ -112,29 +133,322 @@ $menu-label-color: $white-ter
     vertical-align: middle
     display: inline
 
-// blog roll
-.blog-list-item.is-featured
-  background-color: #d6400033;
-.blog-list-item header
-  display: flex;
-  margin-bottom: 1em;
-.blog-list-item .featured-thumbnail
-  flex-basis: 35%;
-  margin: 0 1.5em 0 0;
-
 
 @import "~bulma"
 
+// blog roll
+.blog-list-item.is-featured
+.blog-list-item header
+  margin-bottom: 1rem
+.blog-list-item .featured-thumbnail
+  margin-bottom: 2rem
+
+.blog-list-item 
+  height: 100%
+
+  &.notification
+    background-color: transparent
+    box-shadow: none
+    padding-left: 0
+    padding-right: 0
+
+  .post-meta
+    display: flex
+    flex-direction: column-reverse
+
+    a.title
+      font-size: inherit
+      color: $body-color
+      text-decoration: none
+      margin-bottom: 0
+
+    .subtitle
+      margin-bottom: 1rem
+
+// Common HTML elements
+h2
+  // color: $accent
+  // text-align: center
+  // font-size: 18.5px
+  // line-height: 70.5px
+  // font-weight: 600
+
+h3
+  text-align: center
+  font-size: 46.5px
+  line-height: 70.5px
+  font-weight: 600
+
+  &.is-centered
+    max-width: 755px
+    margin: 0 auto
+
+hr
+  background-color: #d7d7d7
+
+address
+  font-style: normal
+
+a
+  .icon
+    vertical-align: middle
+
+
+input
+  border-radius: 3px
+  border: solid 1px #d5dbe6
+  background-color: #ffffff
+  color: #121212
+  font-size: 14px
+  height: 60px
+  line-height: 60px
+  padding: 0 26px
+
+  +placeholder
+    opacity: 0.5
+
+.select
+  &:not(.is-multiple)
+    height: auto
+
+    &:not(.is-loading)::after
+      right: 26px
+      border-color: #a1a7af
+      border-width: 2px
+
+  select
+    width: 100%
+    border-radius: 3px
+    border: solid 1px #d5dbe6
+    color: #121212
+    font-size: 14px
+    height: 60px
+    padding: 0 26px
+
+.button
+  min-width: 160px
+  height: auto
+  display: inline-block
+  padding: 16px 25px
+  font-size: 14px
+  font-size: 1rem
+  line-height: normal
+  letter-spacing: 0.14px
+  border-radius: 3px
+  font-weight: 600
+
+
+.menu-label
+  text-align: left
+  text-transform: none
+.menu-list
+  list-style: none !important
+  text-align: left
+
+  a
+    &:hover
+      text-decoration: underline
+
+// Components
+.navbar-brand img
+  max-height: 3rem
+
+.navbar-item.logo
+  padding: 0
+
+.navbar-start
+  margin-left: 5rem
+
+.notification
+  .subtitle
+    color: $brand
+    font-size: 14px
+    font-weight: 600
+
+$offer-card-padding: 3rem
+
+.pricing-section
+
+  position: relative
+  padding-top: 5rem
+  
+  .background
+    position: absolute
+    width: 100%
+    height: calc(100% - #{$offer-card-padding} - 28px) // 28px is half of button height
+    top: 0
+    left: 0
+    z-index: -1
+    background-size: 150%
+    background-position: center
+
+    &::after
+      content: ""
+      position: absolute
+      width: 100%
+      height: 100%
+      opacity: .8
+      background-color: $accent
+
+
+.offers
+  display: flex
+  align-items: stretch
+  justify-content: space-between
+  max-width: 804px
+  margin: 3rem auto
+
+  .offer
+    flex-grow: 1
+
+
+.offer
+  max-width: 360px
+  box-shadow: 0px 12px 30px 0 rgba(22, 22, 22, 0.06)
+  background-color: #ffffff
+  padding: 0 0 $offer-card-padding
+  text-align: center
+
+  &__mainInfoContainer
+    padding-top: $offer-card-padding
+    padding-bottom: 1.5rem
+    position: relative
+    overflow: hidden
+
+  &__mainInfoBackground
+    display: block
+    position: absolute
+    z-index: 0
+    top: 0
+    bottom: 0
+    width: 130%
+    left: -15%
+    border-radius: 0 0 50% 50%
+
+  &__mainInfo
+    position: relative
+    z-index: 1
+
+  ul
+    display: inline-block
+    margin: 2rem auto
+    text-align: left
+    line-height: 2.36
+
+    .icon
+      vertical-align: middle
+      margin-right: 1rem
+
+.qsaGetStarted
+  $image-offset: 4rem
+
+  padding-top: $image-offset
+  position: relative
+  overflow: hidden
+
+  &__inner
+    background-color: $brand
+    padding: 0 8rem
+    display: flex
+
+  &__content
+    padding: 6rem 0
+    max-width: 612px
+
+  &__header
+    margin-bottom: 2rem
+
+  &__description
+    margin-bottom: 3rem
+
+    a
+      color: $primary
+
+      &:hover
+        text-decoration: underline
+
+  &__imageContainer
+    flex: 0 0 226px
+    position: relative
+
+  &__image
+    position: absolute
+    top: -$image-offset
+    width: 120%
+
+// Core components
+.qsaHeader
+  &__intro
+    color: $accent
+    margin-bottom: 1rem
+
+  &--page
+    line-height: 1.18
+
+  &--organism
+      
+
+.qsaText
+  line-height: 1.65
+// Custom classes
+
+.mainTitle
+  line-height: 1.18
+  color: #fefefe
+  padding-top: 17%
+
+.quickForm
+  max-width: 370px
+  flex: 1 0 100%
+  border-radius: 3px
+  box-shadow: 0 19px 37px 0 rgba(18, 18, 18, 0.35)
+  background-color: #fefefe
+  padding: 46px 30px 48px
+
+  input, button, .field
+    width: 100%
+
+.intro__description
+  text-align: center
+  max-width: 676px
+  margin: 38px auto 0
+
+.footer
+  &__inner
+    display: flex
+
+  &__contactTitle
+    color: $menu-label-color
+    font-size: $menu-label-font-size
+    letter-spacing: $menu-label-letter-spacing
+    margin-bottom: $menu-label-spacing
+
+  &__links
+    display: flex
+
+
+// helpers
+.has-text-accent
+  color: $accent
+
+.flex
+  display: flex
+  align-items: center
+  justify-content: space-between
 
 // responsiveness
++desktop
+  .navbar
+    min-height: 6.75rem
+
 +tablet-only
   .blog-list-item .featured-thumbnail
-    flex-basis: 50%;
+    flex-basis: 50%
 
 +mobile
   .blog-list-item header
     display: block
   .blog-list-item .featured-thumbnail
-    text-align: center;
-    max-width: 70%;
-    margin: 0 0 1em;
+    text-align: center
+    max-width: 70%
+    margin: 0 0 1em
