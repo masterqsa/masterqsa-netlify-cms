@@ -95,6 +95,6 @@ collections:
         fields:
           - {label: "Content Key", name: "contentKey", widget: "hidden", default: "callToAction"}
           - {label: Title, name: title, widget: string}
-          - {label: Description, name: description, widget: markdown}
+          - {label: Description, name: descriptionMd, widget: markdown}
           - {label: Image, name: image, widget: image}
 

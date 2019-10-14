@@ -19,7 +19,13 @@ const CONTENT_QUERY = graphql`
           }
         }
         title
-        description
+      }
+      fields {
+        frontmattermd {
+          descriptionMd {
+            html
+          }
+        }
       }
     }
   }
@@ -27,7 +33,7 @@ const CONTENT_QUERY = graphql`
 
 export const CallToAction = () => {
   const {
-    markdownRemark: { frontmatter },
+    markdownRemark: { frontmatter, fields },
   } = useStaticQuery(CONTENT_QUERY)
 
   return (
@@ -38,7 +44,7 @@ export const CallToAction = () => {
             {frontmatter.title}
           </SectionHeader>
           <Text className="qsaGetStarted__description has-text-white">
-            <HTMLContent content={frontmatter.description} />
+            <HTMLContent content={fields.frontmattermd.descriptionMd.html} />
           </Text>
           <Link className="button is-primary" to="/blog">
             Get Started
@@ -69,7 +75,14 @@ CallToAction.propTypes = {
       frontmatter: PropTypes.shape({
         image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
         title: PropTypes.string,
-        description: PropTypes.string,
+        descriptionMd: PropTypes.string,
+      }),
+      fields: PropTypes.shape({
+        frontmattermd: PropTypes.shape({
+          descriptionMd: PropTypes.shape({
+            html: PropTypes.string,
+          }),
+        }),
       }),
     }),
   }),
