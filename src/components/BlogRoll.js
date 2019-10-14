@@ -26,18 +26,13 @@ class BlogRoll extends React.Component {
                       <PreviewCompatibleImage
                         imageInfo={{
                           image: post.frontmatter.featuredimage,
-                          alt: `featured image thumbnail for post ${
-                            post.title
-                          }`,
+                          alt: `featured image thumbnail for post ${post.title}`,
                         }}
                       />
                     </div>
                   ) : null}
                   <OrganismHeader className="post-meta">
-                    <Link
-                      className="title"
-                      to={post.fields.slug}
-                    >
+                    <Link className="title" to={post.fields.slug}>
                       {post.frontmatter.title}
                     </Link>
                     <time className="subtitle is-block">

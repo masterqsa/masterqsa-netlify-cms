@@ -10,7 +10,12 @@ export const PricingPageTemplate = ({ title }) => {
   return (
     <section className="section section--gradient">
       <div className="container">
-        <SectionHeader className="has-text-centered" style={{ maxWidth: '326px', margin: '0 auto 5rem' }}>{title}</SectionHeader>
+        <SectionHeader
+          className="has-text-centered"
+          style={{ maxWidth: '326px', margin: '0 auto 5rem' }}
+        >
+          {title}
+        </SectionHeader>
         <PlansOverview />
         <CallToAction />
       </div>
@@ -27,9 +32,7 @@ const PricingPage = ({ data }) => {
 
   return (
     <Layout>
-      <PricingPageTemplate
-        title={post.frontmatter.title}
-      />
+      <PricingPageTemplate title={post.frontmatter.title} />
     </Layout>
   )
 }

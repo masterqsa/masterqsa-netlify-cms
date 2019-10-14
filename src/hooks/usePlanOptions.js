@@ -17,7 +17,9 @@ const CONTENT_QUERY = graphql`
 `
 
 export default function usePlanOptions() {
-  const { markdownRemark: { frontmatter } } = useStaticQuery(CONTENT_QUERY)
+  const {
+    markdownRemark: { frontmatter },
+  } = useStaticQuery(CONTENT_QUERY)
 
   return frontmatter.plans
 }

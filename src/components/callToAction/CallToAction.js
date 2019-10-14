@@ -26,7 +26,9 @@ const CONTENT_QUERY = graphql`
 `
 
 export const CallToAction = () => {
-  const { markdownRemark: { frontmatter } } = useStaticQuery(CONTENT_QUERY)
+  const {
+    markdownRemark: { frontmatter },
+  } = useStaticQuery(CONTENT_QUERY)
 
   return (
     <div className="qsaGetStarted">
@@ -43,16 +45,14 @@ export const CallToAction = () => {
           </Link>
         </div>
         <div style={{ flexGrow: 1 }}></div>
-        <div
-          className="qsaGetStarted__imageContainer"
-        >
-          <div 
-            className="qsaGetStarted__image"
-          >
+        <div className="qsaGetStarted__imageContainer">
+          <div className="qsaGetStarted__image">
             <PreviewCompatibleImage
               imageInfo={{
                 image: frontmatter.image,
-                childImageSharp: frontmatter.image ? frontmatter.image.childImageSharp : frontmatter.image
+                childImageSharp: frontmatter.image
+                  ? frontmatter.image.childImageSharp
+                  : frontmatter.image,
               }}
             />
           </div>

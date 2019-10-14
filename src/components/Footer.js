@@ -11,26 +11,28 @@ const Footer = class extends React.Component {
   render() {
     return (
       <footer className="footer has-text-dark">
-          <div className="container">
-            <div className="footer__inner">
-              <div className="footer__contact">
-                <p className="footer__contactTitle">Contact Us</p>
-                <address>
-                  <p>
-                    Phone: <a href="tel:+1(205)902-8100">+1(205)902-8100</a><br/>
-                    Email: <a href="mailto:support@masterqsa.com">support@masterqsa.com</a>
-                  </p>
-                  <p>
-                    Los Angeles, CA <br/>
-                    90025
-                  </p>
-                </address>
-              </div>
-              <div className="footer__links">
-                <div>
-                <p className="menu-label">
-                  Information
+        <div className="container">
+          <div className="footer__inner">
+            <div className="footer__contact">
+              <p className="footer__contactTitle">Contact Us</p>
+              <address>
+                <p>
+                  Phone: <a href="tel:+1(205)902-8100">+1(205)902-8100</a>
+                  <br />
+                  Email:{' '}
+                  <a href="mailto:support@masterqsa.com">
+                    support@masterqsa.com
+                  </a>
                 </p>
+                <p>
+                  Los Angeles, CA <br />
+                  90025
+                </p>
+              </address>
+            </div>
+            <div className="footer__links">
+              <div>
+                <p className="menu-label">Information</p>
                 <ul className="menu-list">
                   <li>
                     <Link to="/" className="">
@@ -58,43 +60,50 @@ const Footer = class extends React.Component {
                     </Link>
                   </li>
                 </ul>
-                </div>
-              </div>
-            </div>
-            <hr />
-            <div className="flex">
-              <small>© 2019. All rights reserved.</small>
-              <div className="social">
-                {[
-                  {
-                    src: facebook,
-                    title: 'Facebook',
-                    href: 'https://facebook.com',
-                  },
-                  {
-                    src: twitter,
-                    title: 'Twitter',
-                    href: 'https://twitter.com',
-                  },
-                  {
-                    src: instagram,
-                    title: 'Instagram',
-                    href: 'https://instagram.com',
-                  },
-                ].map(({ src, title, href }) => {
-                  return (
-                    <a key={title} title={title} aria-label={title} href={href} target="_blank" rel="noreferrer noopener">
-                      <img
-                        src={src}
-                        alt=""
-                        style={{ width: '1em', height: '1em' }}
-                      />
-                    </a>
-                  )
-                })}
               </div>
             </div>
           </div>
+          <hr />
+          <div className="flex">
+            <small>© 2019. All rights reserved.</small>
+            <div className="social">
+              {[
+                {
+                  src: facebook,
+                  title: 'Facebook',
+                  href: 'https://facebook.com',
+                },
+                {
+                  src: twitter,
+                  title: 'Twitter',
+                  href: 'https://twitter.com',
+                },
+                {
+                  src: instagram,
+                  title: 'Instagram',
+                  href: 'https://instagram.com',
+                },
+              ].map(({ src, title, href }) => {
+                return (
+                  <a
+                    key={title}
+                    title={title}
+                    aria-label={title}
+                    href={href}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                  >
+                    <img
+                      src={src}
+                      alt=""
+                      style={{ width: '1em', height: '1em' }}
+                    />
+                  </a>
+                )
+              })}
+            </div>
+          </div>
+        </div>
       </footer>
     )
   }
