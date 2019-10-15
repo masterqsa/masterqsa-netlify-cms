@@ -7,22 +7,21 @@ import CallToAction from '../components/callToAction/CallToAction'
 import ContactForm from '../components/contact/ContactForm'
 
 export const ContactPageTemplate = ({ title, address, phone, email, formTitle, image }) => {
-  const backgroundImage = image ? `url(${
+  const backgroundImage = image ? 
     !!image.childImageSharp
       ? image.childImageSharp.fluid.src
       : image
-  })` : ''
+   : ''
 
   return (
     <React.Fragment>
       <div
         className="full-width-image margin-top-0"
         style={{
-          // height: '587px',
           height: 'auto',
           padding: '7rem 0 8rem',
-          backgroundImage: `linear-gradient(rgb(40, 89, 226), rgb(40, 89, 226)) ${backgroundImage}`,
-          backgroundPosition: `center 40px`,
+          backgroundImage: `linear-gradient(rgba(40, 89, 226, .8), rgba(40, 89, 226, .8))${backgroundImage ? `, url(${backgroundImage})` : ``}`,
+          backgroundPosition: `center 0`,
           backgroundAttachment: `fixed`,
           backgroundSize: 'contain',
         }}
