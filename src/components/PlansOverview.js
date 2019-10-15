@@ -1,12 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link, graphql } from 'gatsby'
+import { Link } from 'gatsby'
 import Text from './core/Text'
 import usePlanOptions from '../hooks/usePlanOptions'
 
-export default function PlansOverview({ variant = 'DEFAULT' }) {
-  const plans = usePlanOptions()
-
+export function PlansOverviewTemplate({ plans = [], variant = 'DEFAULT' }) {
   return (
     <div
       className="offers"
@@ -68,6 +66,23 @@ export default function PlansOverview({ variant = 'DEFAULT' }) {
       })}
     </div>
   )
+}
+
+PlansOverviewTemplate.propTypes = {
+  plans: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    amount: PropTypes.number.isRequired,
+    terms: PropTypes.string.isRequired,
+    color: PropTypes.string,
+    features: PropTypes.arrayOf(PropTypes.string).isRequired,
+  })),
+  variant: PropTypes.oneOf(['HOME', 'DEFAULT']),
+}
+
+export default function PlansOverview({ variant }) {
+  const plans = usePlanOptions()
+
+  return <PlansOverviewTemplate plans={plans} variant={variant} />
 }
 
 PlansOverview.propTypes = {

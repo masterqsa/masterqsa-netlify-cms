@@ -61,6 +61,7 @@ export const IndexPageTemplate = ({
   intro,
   why,
   pricing,
+  isPreview = false
 }) => (
   <div>
     <div
@@ -103,7 +104,7 @@ export const IndexPageTemplate = ({
                   className="has-text-centered"
                   style={{ maxWidth: '755px', margin: '0 auto' }}
                 >
-                  {intro.subHeading}
+                  {intro.subheading}
                 </SectionHeader>
                 <Text className="intro__description">{intro.description}</Text>
               </div>
@@ -172,11 +173,11 @@ export const IndexPageTemplate = ({
                   }}
                 ></div>
                 <SectionHeader className="has-text-white has-text-centered">
-                  {pricing.title}
+                  {pricing.heading}
                 </SectionHeader>
-                <PlansOverview variant="HOME" />
+                {!isPreview && <PlansOverview variant="HOME" />}
               </div>
-              <CallToAction />
+              {!isPreview && <CallToAction />}
             </div>
           </div>
         </div>
@@ -189,9 +190,20 @@ IndexPageTemplate.propTypes = {
   image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   mainpitch: PropTypes.string,
   intro: PropTypes.shape({
-    blurbs: PropTypes.array,
-    subHeading: PropTypes.string,
+    heading: PropTypes.string,
+    subheading: PropTypes.string,
+    description: PropTypes.string,
   }),
+  why: PropTypes.shape({
+    heading: PropTypes.string,
+    description: PropTypes.string,
+    image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+  }),
+  pricing: PropTypes.shape({
+    heading: PropTypes.string,
+    description: PropTypes.string,
+  }),
+  isPreview: PropTypes.bool,
 }
 
 const IndexPage = ({ data }) => {
@@ -224,6 +236,7 @@ export const pageQuery = graphql`
   query IndexPageTemplate {
     markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
       frontmatter {
+        mainpitch
         image {
           childImageSharp {
             fluid(maxWidth: 2048, quality: 100) {
@@ -242,35 +255,19 @@ export const pageQuery = graphql`
             }
           }
         }
-        mainpitch
         intro {
-          blurbs {
-            image {
-              childImageSharp {
-                fluid(maxWidth: 240, quality: 64) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
-            text
-          }
           heading
-          subHeading
+          subheading
           description
         }
         pricing {
-          title
+          heading
           image {
             childImageSharp {
               fluid(maxWidth: 2048, quality: 100) {
                 ...GatsbyImageSharpFluid
               }
             }
-          }
-          plans {
-            name
-            amount
-            features
           }
         }
       }

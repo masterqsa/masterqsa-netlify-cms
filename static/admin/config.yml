@@ -29,14 +29,28 @@ collections:
         name: "index"
         fields:
           - {label: "Template Key", name: "templateKey", widget: "hidden", default: "index-page"}
-          - {label: Title, name: title, widget: string}
+          - {label: Main Pitch, name: mainpitch, widget: string}
           - {label: Image, name: image, widget: image}
-          - {label: Heading, name: heading, widget: string}
-          - {label: Subheading, name: subheading, widget: string}
-          - {label: Mainpitch, name: mainpitch, widget: object, fields: [{label: Title, name: title, widget: string}, {label: Description, name: description, widget: text}]}
-          - {label: Description, name: description, widget: string}
-          - {label: Intro, name: intro, widget: object, fields: [{label: Heading, name: heading, widget: string}, {label: Description, name: description, widget: text}, {label: Blurbs, name: blurbs, widget: list, fields: [{label: Image, name: image, widget: image}, {label: Text, name: text, widget: text}]}]}
-          - {label: Main, name: main, widget: object, fields: [{label: Heading, name: heading, widget: string}, {label: Description, name: description, widget: text}, {label: Image1, name: image1, widget: object, fields: [{label: Image, name: image, widget: image}, {label: Alt, name: alt, widget: string}]}, {label: Image2, name: image2, widget: object, fields: [{label: Image, name: image, widget: image}, {label: Alt, name: alt, widget: string}]}, {label: Image3, name: image3, widget: object, fields: [{label: Image, name: image, widget: image}, {label: Alt, name: alt, widget: string}]}]}
+          - label: "Intro"
+            name: intro
+            widget: object
+            fields:
+              - {label: Heading, name: heading, widget: string}
+              - {label: Subheading, name: subheading, widget: string}
+              - {label: Description, name: description, widget: markdown}
+          - label: "Why MasterQSA?"
+            name: why
+            widget: object
+            fields:
+              - {label: Heading, name: heading, widget: string}
+              - {label: Description, name: description, widget: markdown}
+              - {label: Image, name: image, widget: image}
+          - label: "Pricing"
+            name: pricing
+            widget: object
+            fields:
+              - {label: Heading, name: heading, widget: string}
+              - {label: Image, name: image, widget: image}
       - file: "src/pages/about/index.md"
         label: "About Us"
         name: "about"
@@ -108,4 +122,18 @@ collections:
           - {label: Title, name: title, widget: string}
           - {label: Description, name: descriptionMd, widget: markdown}
           - {label: Image, name: image, widget: image}
+      - name: "plans"
+        label: "Plans"
+        file: "src/content/plans.md"
+        fields:
+          - {label: "Content Key", name: "contentKey", widget: "hidden", default: "plans"}
+          - label: Plans
+            name: plans
+            widget: list
+            fields:
+              - {label: "Plan Name", name: "name", widget: "string"}
+              - {label: "Plan Amount (in cents)", name: "amount", widget: "number"}
+              - {label: "Terms", name: "terms", widget: "string"}
+              - {label: "Color", name: "color", widget: "string"}
+              - {label: "Features", name: "features", widget: "list"}
 
