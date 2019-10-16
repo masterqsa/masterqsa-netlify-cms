@@ -8,7 +8,7 @@ import PreviewCompatibleImage from '../PreviewCompatibleImage'
 import { HTMLContent } from '../Content'
 
 const CONTENT_QUERY = graphql`
-  query CallToActionQuery1 {
+  query CallToActionQuery {
     markdownRemark(frontmatter: { contentKey: { eq: "callToAction" } }) {
       frontmatter {
         image {

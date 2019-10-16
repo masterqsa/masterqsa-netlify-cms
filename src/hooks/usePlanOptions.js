@@ -2,7 +2,7 @@ import { graphql, useStaticQuery } from 'gatsby'
 
 const CONTENT_QUERY = graphql`
   query PlanOptionsQuery {
-    markdownRemark(frontmatter: { content_key: { eq: "plans" } }) {
+    markdownRemark(frontmatter: { contentKey: { eq: "plans" } }) {
       frontmatter {
         plans {
           name

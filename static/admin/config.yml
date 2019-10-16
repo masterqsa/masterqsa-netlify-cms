@@ -136,4 +136,25 @@ collections:
               - {label: "Terms", name: "terms", widget: "string"}
               - {label: "Color", name: "color", widget: "string"}
               - {label: "Features", name: "features", widget: "list"}
+      - name: "footer"
+        label: "Footer"
+        file: "src/content/footer.md"
+        fields:
+          - {label: "Content Key", name: "contentKey", widget: "hidden", default: "footer"}
+          - {label: "'Contact Us' title", name: "contactTitle", widget: "string"}
+          - {label: "'Information' title", name: "informationTitle", widget: "string"}
+          - {label: "Copyright", name: "copyright", widget: "string"}
+          - label: Links
+            name: links
+            widget: list
+            fields:
+              - {label: "Link label", name: "label", widget: "string"}
+              - {label: "Path", hint: "relative, i.e. 'pricing' for 'https://www.masterqsa.com/pricing'", name: "path", widget: "string"}
+          - label: Social media links
+            name: socialMedia
+            widget: list
+            fields:
+              - {label: "Social network", name: "socialNetwork", widget: "select", options: ["facebook", "twitter", "instagram", "vimeo"]}
+              - {label: "Link title", name: "title", widget: "string"}
+              - {label: "URL", name: "href", widget: "string"}
 

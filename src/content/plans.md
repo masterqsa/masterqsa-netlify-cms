@@ -1,5 +1,5 @@
 ---
-content-key: plans
+contentKey: plans
 
 plans:
   - name: Early Adopter

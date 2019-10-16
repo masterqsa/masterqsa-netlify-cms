@@ -109,6 +109,7 @@ $footer-padding: 5rem 0 3rem
   fill: currentColor
 
 //Menu overrides
+$menu-list-link-padding-v: 0.5rem
 // $menu-item-color: $grey-darker
 $menu-item-hover-color: $black !important
 $menu-item-hover-background-color: transparent
@@ -118,7 +119,7 @@ $menu-list-border-left: 1px solid $kaldi-red-invert
 $menu-label-color: $body-color
 $menu-label-font-size: $size-5	
 $menu-label-letter-spacing: 0
-$menu-list-link-padding: 0.5rem 0
+$menu-list-link-padding: $menu-list-link-padding-v 0
 
 $navbar-item-color: #121212
 
@@ -417,6 +418,9 @@ $offer-card-padding: 3rem
   &__inner
     display: flex
 
+  &__contact
+    flex-basis: 25%
+
   &__contactTitle
     color: $menu-label-color
     font-size: $menu-label-font-size
@@ -425,6 +429,9 @@ $offer-card-padding: 3rem
 
   &__links
     display: flex
+
+    .menu-list
+      margin-top: -$menu-list-link-padding-v
 
 .contactForm
   max-width: 752px
