@@ -81,9 +81,7 @@ export default class ContactForm extends React.Component {
         <span id="quickForm__label--client" className="label">
           How can we contact you?
         </span>
-        <div className="field">
             <input
-              className="input"
               type={'text'}
               name={'name'}
               onChange={this.handleChange}
@@ -94,7 +92,6 @@ export default class ContactForm extends React.Component {
               className="field"
             />
             <input
-              className="input"
               type={'email'}
               name={'email'}
               onChange={this.handleChange}
@@ -105,14 +102,12 @@ export default class ContactForm extends React.Component {
               className="field"
             />
         </div>
-        </div>
         <div className="field">
           <label className="label" htmlFor={'companyName'}>
             Your company name
           </label>
           <div className="control">
             <input
-              className="input"
               type={'text'}
               name={'companyName'}
               onChange={this.handleChange}
