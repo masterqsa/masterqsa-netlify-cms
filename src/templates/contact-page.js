@@ -95,7 +95,6 @@ const ContactPage = ({ data }) => {
         phone={post.frontmatter.phone}
         email={post.frontmatter.email}
         formTitle={post.frontmatter.formTitle}
-        address={post.frontmatter.address}
         image={post.frontmatter.image}
       />
     </Layout>

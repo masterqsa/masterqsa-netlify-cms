@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, useStaticQuery } from 'gatsby'
+import { Link, useStaticQuery, graphql } from 'gatsby'
 
 import facebook from '../img/social/facebook.svg'
 import instagram from '../img/social/instagram.svg'
@@ -41,7 +41,6 @@ const Footer = () => {
   const {
     markdownRemark: { frontmatter },
   } = useStaticQuery(CONTENT_QUERY)
-  console.log(frontmatter)
 
   return (
     <footer className="footer has-text-dark">

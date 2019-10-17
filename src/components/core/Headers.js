@@ -1,20 +1,22 @@
 import React from 'react'
 
-export function PageHeader(props) {
+export function PageHeader({ children, className, ...rest }) {
   return (
     <h1
-      {...props}
+      {...rest}
       className={[
         `qsaHeader--page`,
         `is-size-1`,
         `has-text-weight-semibold`,
-        props.className || '',
+        className || '',
       ].join(' ')}
-    />
+    >
+      {children}
+    </h1>
   )
 }
 
-export function SectionHeader({ intro, children, ...rest }) {
+export function SectionHeader({ intro, children, className, ...rest }) {
   return (
     <h2
       {...rest}
@@ -22,7 +24,7 @@ export function SectionHeader({ intro, children, ...rest }) {
         `qsaHeader--section`,
         `is-size-2`,
         `has-text-weight-semibold`,
-        rest.className || '',
+        className || '',
       ].join(' ')}
     >
       {intro && (
@@ -33,16 +35,18 @@ export function SectionHeader({ intro, children, ...rest }) {
   )
 }
 
-export function OrganismHeader(props) {
+export function OrganismHeader({ children, className, ...rest }) {
   return (
     <h4
-      {...props}
+      {...rest}
       className={[
         `qsaHeader--organism`,
         `is-size-4`,
         `has-text-weight-semibold`,
-        props.className || '',
+        className || '',
       ].join(' ')}
-    />
+    >
+      {children}
+    </h4>
   )
 }

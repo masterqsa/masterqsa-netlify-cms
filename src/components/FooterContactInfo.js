@@ -1,5 +1,5 @@
 import React from 'react'
-import { useStaticQuery } from 'gatsby'
+import { useStaticQuery, graphql } from 'gatsby'
 
 const CONTACT_INFO_QUERY = graphql`
   query ContactInfo {
