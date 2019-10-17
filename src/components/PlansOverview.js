@@ -69,13 +69,15 @@ export function PlansOverviewTemplate({ plans = [], variant = 'DEFAULT' }) {
 }
 
 PlansOverviewTemplate.propTypes = {
-  plans: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    amount: PropTypes.number.isRequired,
-    terms: PropTypes.string.isRequired,
-    color: PropTypes.string,
-    features: PropTypes.arrayOf(PropTypes.string).isRequired,
-  })),
+  plans: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      amount: PropTypes.number.isRequired,
+      terms: PropTypes.string.isRequired,
+      color: PropTypes.string,
+      features: PropTypes.arrayOf(PropTypes.string).isRequired,
+    })
+  ),
   variant: PropTypes.oneOf(['HOME', 'DEFAULT']),
 }
 

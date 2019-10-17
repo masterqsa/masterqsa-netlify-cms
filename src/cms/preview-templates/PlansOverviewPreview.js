@@ -3,9 +3,7 @@ import PropTypes from 'prop-types'
 import { PlansOverviewTemplate } from '../../components/PlansOverview'
 
 const PlansOverviewPreview = ({ entry }) => (
-  <PlansOverviewTemplate
-    plans={entry.getIn(['data', 'plans']).toJS()}
-  />
+  <PlansOverviewTemplate plans={entry.getIn(['data', 'plans']).toJS()} />
 )
 
 PlansOverviewPreview.propTypes = {

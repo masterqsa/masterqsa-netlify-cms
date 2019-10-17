@@ -6,12 +6,19 @@ import { SectionHeader } from '../components/core/Headers'
 import CallToAction from '../components/callToAction/CallToAction'
 import ContactForm from '../components/contact/ContactForm'
 
-export const ContactPageTemplate = ({ title, address, phone, email, formTitle, image }) => {
-  const backgroundImage = image ? 
-    !!image.childImageSharp
+export const ContactPageTemplate = ({
+  title,
+  address,
+  phone,
+  email,
+  formTitle,
+  image,
+}) => {
+  const backgroundImage = image
+    ? !!image.childImageSharp
       ? image.childImageSharp.fluid.src
       : image
-   : ''
+    : ''
 
   return (
     <React.Fragment>
@@ -20,7 +27,9 @@ export const ContactPageTemplate = ({ title, address, phone, email, formTitle, i
         style={{
           height: 'auto',
           padding: '7rem 0 8rem',
-          backgroundImage: `linear-gradient(rgba(40, 89, 226, .8), rgba(40, 89, 226, .8))${backgroundImage ? `, url(${backgroundImage})` : ``}`,
+          backgroundImage: `linear-gradient(rgba(40, 89, 226, .8), rgba(40, 89, 226, .8))${
+            backgroundImage ? `, url(${backgroundImage})` : ``
+          }`,
           backgroundPosition: `center 0`,
           backgroundAttachment: `fixed`,
           backgroundSize: 'contain',
@@ -35,11 +44,20 @@ export const ContactPageTemplate = ({ title, address, phone, email, formTitle, i
           </SectionHeader>
           <div>
             <address style={{ marginBottom: '6rem' }} className="is-size-5">
-              {address}<br/>
-              <a href={`tel:${phone}`} className="has-text-white">{phone}</a><br/>
-              <a href={`mailto:${email}`} className="has-text-white">{email}</a>
+              {address}
+              <br />
+              <a href={`tel:${phone}`} className="has-text-white">
+                {phone}
+              </a>
+              <br />
+              <a href={`mailto:${email}`} className="has-text-white">
+                {email}
+              </a>
             </address>
-            <div className="is-size-4 has-text-weight-semibold" style={{ maxWidth: '374px', margin: '0 auto' }}>
+            <div
+              className="is-size-4 has-text-weight-semibold"
+              style={{ maxWidth: '374px', margin: '0 auto' }}
+            >
               {formTitle}
             </div>
           </div>

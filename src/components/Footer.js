@@ -34,11 +34,13 @@ const socialMediaIconSrc = {
   facebook,
   instagram,
   twitter,
-  vimeo
+  vimeo,
 }
 
 const Footer = () => {
-  const { markdownRemark: { frontmatter }} = useStaticQuery(CONTENT_QUERY)
+  const {
+    markdownRemark: { frontmatter },
+  } = useStaticQuery(CONTENT_QUERY)
   console.log(frontmatter)
 
   return (

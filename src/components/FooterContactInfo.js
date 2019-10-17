@@ -15,18 +15,18 @@ const CONTACT_INFO_QUERY = graphql`
 `
 
 const FooterContactInfo = () => {
-  const { markdownRemark: { frontmatter }} = useStaticQuery(CONTACT_INFO_QUERY)
+  const {
+    markdownRemark: { frontmatter },
+  } = useStaticQuery(CONTACT_INFO_QUERY)
 
   return (
     <address>
       <p>
         Phone: <a href={`tel:${frontmatter.phone}`}>{frontmatter.phone}</a>
         <br />
-        Email:{' '}<a href={`tel:${frontmatter.email}`}>{frontmatter.email}</a>
+        Email: <a href={`tel:${frontmatter.email}`}>{frontmatter.email}</a>
       </p>
-      <p>
-        {frontmatter.address}
-      </p>
+      <p>{frontmatter.address}</p>
     </address>
   )
 }

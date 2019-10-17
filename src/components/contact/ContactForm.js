@@ -40,20 +40,27 @@ export default class ContactForm extends React.Component {
 
     if (this.state.submitted) {
       return (
-        <div className={`${baseClassName} quickForm--submitted`} style={{ height: this.formRef.current ? this.formRef.current.clientHeight : undefined }}>
+        <div
+          className={`${baseClassName} quickForm--submitted`}
+          style={{
+            height: this.formRef.current
+              ? this.formRef.current.clientHeight
+              : undefined,
+          }}
+        >
           <p className="has-text-centered">
             <span className="icon is-large has-text-brand">
               <i className="fas fa-check-circle fa-3x" />
             </span>
           </p>
-          <br/>
+          <br />
           <p className="has-text-centered is-size-4">
             Thank you! We'll get in touch with you soon!
           </p>
         </div>
       )
     }
-    
+
     return (
       <form
         name="contact"
@@ -78,29 +85,29 @@ export default class ContactForm extends React.Component {
           aria-labelledby="quickForm__label--client"
           className="field"
         >
-        <span id="quickForm__label--client" className="label">
-          How can we contact you?
-        </span>
-            <input
-              type={'text'}
-              name={'name'}
-              onChange={this.handleChange}
-              id={'name'}
-              required={true}
-              placeholder="Your name"
-              aria-label="Your name"
-              className="field"
-            />
-            <input
-              type={'email'}
-              name={'email'}
-              onChange={this.handleChange}
-              id={'email'}
-              required={true}
-              placeholder="Your email"
-              aria-label="Your email"
-              className="field"
-            />
+          <span id="quickForm__label--client" className="label">
+            How can we contact you?
+          </span>
+          <input
+            type={'text'}
+            name={'name'}
+            onChange={this.handleChange}
+            id={'name'}
+            required={true}
+            placeholder="Your name"
+            aria-label="Your name"
+            className="field"
+          />
+          <input
+            type={'email'}
+            name={'email'}
+            onChange={this.handleChange}
+            id={'email'}
+            required={true}
+            placeholder="Your email"
+            aria-label="Your email"
+            className="field"
+          />
         </div>
         <div className="field">
           <label className="label" htmlFor={'companyName'}>
@@ -118,7 +125,7 @@ export default class ContactForm extends React.Component {
             />
           </div>
         </div>
-        <br/>
+        <br />
         <div className="field">
           <button className="button is-primary" type="submit">
             Request Demo

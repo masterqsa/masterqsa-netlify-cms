@@ -16,7 +16,7 @@ export const IndexPageTemplate = ({
   intro,
   why,
   pricing,
-  isPreview = false
+  isPreview = false,
 }) => (
   <div>
     <div
