@@ -3,57 +3,12 @@ import PropTypes from 'prop-types'
 import { Link, graphql } from 'gatsby'
 
 import Layout from '../components/Layout'
-import Features from '../components/Features'
 import BlogRoll from '../components/BlogRoll'
 import { SectionHeader, PageHeader } from '../components/core/Headers'
 import Text from '../components/core/Text'
-import PreviewCompatibleImage from '../components/PreviewCompatibleImage'
 import CallToAction from '../components/callToAction/CallToAction'
-import usePlanOptions from '../hooks/usePlanOptions'
 import PlansOverview from '../components/PlansOverview'
-
-function QuickForm() {
-  return (
-    <form className="quickForm">
-      <div
-        role="group"
-        aria-labelledby="quickForm__label--client"
-        className="field"
-      >
-        <span id="quickForm__label--client" className="label">
-          How can we contact you?
-        </span>
-        <input
-          type="text"
-          name="name"
-          placeholder="Your name"
-          aria-label="Your name"
-          className="field"
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="Your email"
-          aria-label="Your email"
-          className="field"
-        />
-      </div>
-      <label htmlFor="quickForm__field--source" className="label">
-        How did you hear about us?
-      </label>
-      <div className="field">
-        <div className="select is-block">
-          <select name="source" id="quickForm__field--source">
-            <option value="other">Other</option>
-          </select>
-        </div>
-      </div>
-      <button type="submit" className="button is-primary">
-        Request Demo
-      </button>
-    </form>
-  )
-}
+import ContactForm from '../components/contact/ContactForm'
 
 export const IndexPageTemplate = ({
   image,
@@ -87,7 +42,7 @@ export const IndexPageTemplate = ({
         <div style={{ maxWidth: '500px' }}>
           <PageHeader className="mainTitle">{mainpitch}</PageHeader>
         </div>
-        <QuickForm />
+        <ContactForm className="quickForm--home" />
       </div>
     </div>
     <section className="section section--gradient">

@@ -104,8 +104,8 @@ $footer-padding: 5rem 0 3rem
   color: $primary
 // Override for use of svg's from https://simpleicons.org/
 .icon svg
-  width: 1.5rem
-  height: 1.5rem
+  // width: 1.5rem
+  // height: 1.5rem
   fill: currentColor
 
 //Menu overrides
@@ -399,8 +399,6 @@ $offer-card-padding: 3rem
   padding-top: 17%
 
 .quickForm
-  max-width: 370px
-  flex: 1 0 100%
   border-radius: 3px
   box-shadow: 0 19px 37px 0 rgba(18, 18, 18, 0.35)
   background-color: #fefefe
@@ -408,6 +406,18 @@ $offer-card-padding: 3rem
 
   input, button, .field
     width: 100%
+
+  &--home
+    max-width: 370px
+    flex: 1 0 100%
+
+  &--submitted
+    display: flex
+    flex-direction: column
+    justify-content: center
+
+    &:not(.quickForm--home)
+      padding-bottom: 20%
 
 .intro__description
   text-align: center
@@ -444,6 +454,9 @@ $offer-card-padding: 3rem
 // helpers
 .has-text-accent
   color: $accent
+
+.has-text-brand
+  color: $brand
 
 .flex
   display: flex
