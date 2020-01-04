@@ -26,21 +26,17 @@ export const AboutPageTemplate = ({
   return (
     <React.Fragment>
       <div
-        className="full-width-image margin-top-0"
+        className="full-width-image margin-top-0 aboutPage__heroImage"
         style={{
-          height: '354px',
           backgroundImage: `linear-gradient(rgba(11, 103, 82, .9), rgba(11, 103, 82, .9)), url(${
             !!heroImage.childImageSharp
               ? heroImage.childImageSharp.fluid.src
               : heroImage
           })`,
-          backgroundPosition: `center 40px`,
-          backgroundAttachment: `fixed`,
-          backgroundSize: 'contain',
         }}
       >
         <div className="container">
-          <div className="has-text-white" style={{ maxWidth: '500px' }}>
+          <div className="has-text-white aboutPage__header">
             <SectionHeader style={{ marginBottom: '2rem' }}>
               {title}
             </SectionHeader>
@@ -55,11 +51,7 @@ export const AboutPageTemplate = ({
             <p className="is-size-4">{intro.description}</p>
           </Text>
           <div
-            style={{
-              maxHeight: '558px',
-              marginTop: '4rem',
-              overflow: 'hidden',
-            }}
+            className="aboutPage__image"
           >
             <PreviewCompatibleImage
               imageInfo={{
@@ -72,13 +64,7 @@ export const AboutPageTemplate = ({
           </div>
         </div>
         <div
-          className="flex"
-          style={{
-            alignItems: 'stretch',
-            justifyContent: 'center',
-            marginTop: '5rem',
-            marginBottom: '2rem',
-          }}
+          className="aboutPage__pitches"
         >
           {pitches.map(({ title, description, icon }, idx, list) => {
             const Icon = pitchIcons[icon]
@@ -86,10 +72,8 @@ export const AboutPageTemplate = ({
             return (
               <div
                 key={title}
-                className="has-text-white"
+                className="has-text-white aboutPage__pitch"
                 style={{
-                  padding: '3rem',
-                  flex: `0 1 445px`,
                   backgroundImage: `linear-gradient(rgba(0, 0, 0, ${idx *
                     0.2}), rgba(0, 0, 0, ${idx *
                     0.2})), linear-gradient(#2047b5, #2047b5)`,

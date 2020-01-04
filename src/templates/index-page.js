@@ -17,32 +17,32 @@ export const IndexPageTemplate = ({
   why,
   pricing,
   isPreview = false,
-}) => (
+}) => {
+  return (
   <div>
     <div
-      className="full-width-image margin-top-0"
+      className="full-width-image mainpitch__image margin-top-0"
       style={{
         backgroundImage: `url(${
           !!image.childImageSharp ? image.childImageSharp.fluid.src : image
         })`,
-        backgroundPosition: `top left`,
-        backgroundAttachment: `fixed`,
-        backgroundSize: '100%',
-        backgroundPositionY: '-185px',
       }}
     >
       <div
         style={{
           display: 'flex',
+          flexWrap: 'wrap',
           justifyContent: 'space-between',
           maxWidth: '1046px',
           width: '100%',
         }}
       >
         <div style={{ maxWidth: '500px' }}>
-          <PageHeader className="mainTitle">{mainpitch}</PageHeader>
+          <PageHeader className="mainTitle">
+            <span style={{ backgroundColor: `rgba(0, 0, 0, 0.5)` }}>{mainpitch}</span>
+          </PageHeader>
         </div>
-        <ContactForm className="quickForm--home" />
+        <ContactForm className="quickForm--home is-hidden-mobile" />
       </div>
     </div>
     <section className="section section--gradient">
@@ -67,9 +67,8 @@ export const IndexPageTemplate = ({
                 <div className="columns is-gapless">
                   <div
                     className="column is-6"
-                    style={{ backgroundColor: '#f4f4f4' }}
                   >
-                    <div style={{ padding: '90px 70px 90px 100px' }}>
+                    <div className="introWhy">
                       <SectionHeader
                         className="has-text-left"
                         style={{ marginBottom: '28px' }}
@@ -140,6 +139,7 @@ export const IndexPageTemplate = ({
     </section>
   </div>
 )
+                }
 
 IndexPageTemplate.propTypes = {
   image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),

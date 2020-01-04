@@ -11,8 +11,7 @@ export const PricingPageTemplate = ({ title }) => {
     <section className="section section--gradient">
       <div className="container">
         <SectionHeader
-          className="has-text-centered"
-          style={{ maxWidth: '326px', margin: '0 auto 5rem' }}
+          className="has-text-centered pricingPage__header"
         >
           {title}
         </SectionHeader>

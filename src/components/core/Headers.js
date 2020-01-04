@@ -7,6 +7,7 @@ export function PageHeader({ children, className, ...rest }) {
       className={[
         `qsaHeader--page`,
         `is-size-1`,
+        `is-size-3-mobile`,
         `has-text-weight-semibold`,
         className || '',
       ].join(' ')}
@@ -23,6 +24,7 @@ export function SectionHeader({ intro, children, className, ...rest }) {
       className={[
         `qsaHeader--section`,
         `is-size-2`,
+        `is-size-4-mobile`,
         `has-text-weight-semibold`,
         className || '',
       ].join(' ')}

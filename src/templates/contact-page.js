@@ -23,27 +23,21 @@ export const ContactPageTemplate = ({
   return (
     <React.Fragment>
       <div
-        className="full-width-image margin-top-0"
+        className="full-width-image margin-top-0 contactPage__heroImage"
         style={{
-          height: 'auto',
-          padding: '7rem 0 8rem',
           backgroundImage: `linear-gradient(rgba(40, 89, 226, .8), rgba(40, 89, 226, .8))${
             backgroundImage ? `, url(${backgroundImage})` : ``
           }`,
-          backgroundPosition: `center 0`,
-          backgroundAttachment: `fixed`,
-          backgroundSize: 'contain',
         }}
       >
         <div className="container has-text-white has-text-centered">
           <SectionHeader
-            className="has-text-centered"
-            style={{ maxWidth: '326px', margin: '0 auto 5rem' }}
+            className="contactPage__header has-text-centered"
           >
             {title}
           </SectionHeader>
           <div>
-            <address style={{ marginBottom: '6rem' }} className="is-size-5">
+            <address className="contactPage__address is-size-5">
               {address}
               <br />
               <a href={`tel:${phone}`} className="has-text-white">
@@ -55,7 +49,7 @@ export const ContactPageTemplate = ({
               </a>
             </address>
             <div
-              className="is-size-4 has-text-weight-semibold"
+              className="is-size-4 is-size-5-mobile has-text-weight-semibold"
               style={{ maxWidth: '374px', margin: '0 auto' }}
             >
               {formTitle}
