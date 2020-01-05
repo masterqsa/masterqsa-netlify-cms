@@ -1,14 +1,5 @@
 import React from 'react'
 
-function debounce(func, delay) {
-    let inDebounce
-    return function() {
-      const context = this
-      const args = arguments
-      clearTimeout(inDebounce)
-      inDebounce = setTimeout(() => func.apply(context, args), delay)
-    }
-  }
   function throttle(func, limit) {
     let lastFunc
     let lastRan
@@ -29,56 +20,58 @@ function debounce(func, delay) {
       }
     }
   }
-export default function useResponsiveHeroImage() {
-    const media = '(max-width: 768px)'
-  
-    const [imageWidth, setImageWidth] = React.useState(null)
+export default function useResponsiveHeroImage(image) {
     const [imageHeight, setImageHeight] = React.useState(null)
-    const heroRef = React.useRef()
+    const imageContainer = React.useRef()
+    const imageRef = React.useRef()
   
-    const resizeHeroImage = (isMobile) => {
-      if (!heroRef.current) {
+    const resizeHeroImage = () => {
+      if (!imageContainer.current || !imageRef.current || !image.childImageSharp) {
         return
       }
-      if (!isMobile) {
-        setImageHeight(null)
-        setImageWidth(null)
+
+      const offsetTop = imageContainer.current.offsetTop
+
+      if (imageRef.current.clientHeight - offsetTop < imageContainer.current.clientHeight) {
+          const newHeight = imageContainer.current.clientHeight + offsetTop
+        setImageHeight(newHeight)
+      } else if (imageRef.current.clientWidth < imageContainer.current.clientWidth) {
+          setImageHeight(null)
       } else {
-        setImageHeight(heroRef.current.clientHeight)
-        setImageWidth(heroRef.current.clientWidth)
+        setImageHeight(null)
       }
-    }
+    }  
     
-    React.useEffect(() => {
-      resizeHeroImage(window.matchMedia(media).matches)
+    React.useLayoutEffect(() => {
+      resizeHeroImage()
 
       const listener = throttle(() => {
-        resizeHeroImage(window.matchMedia(media).matches)
+        resizeHeroImage()
       }, 400)
 
       window.addEventListener('resize', listener)
   
-    //   const listener = (e) => {
-    //     resizeHeroImage(e.matches)
-    //   }
-  
-    //   window.matchMedia(media).addEventListener('change', listener)
-  
       return () => {
         window.removeEventListener('resize', listener)
-        // window.matchMedia(media).removeEventListener('change', listener)
       }
-    }, [])
-
-    // const useWidth = imageWidth > imageHeight
-    const useWidth = imageWidth / imageHeight >= 4 / 3
-    console.log({ imageWidth, imageHeight, useWidth })
+    }, [image, imageContainer.current, imageRef.current])
+  
+    const imageStyle = imageHeight ? {
+      height: `${imageHeight}px`,
+      width: "auto",
+    } : {}
 
     return {
-      heroRef,
-      style: imageHeight && imageWidth ? {
-        backgroundSize: useWidth ? `calc(100vw + ${heroRef.current.offsetLeft}px) auto` : `auto ${imageHeight}px`,
-        backgroundPosition: `center 0`,
-      } : {},
+        imageContainerRef: imageContainer,
+        imageRef: imageRef,
+        imageStyle: imageStyle,
+        imageProps: {
+            src: image.childImageSharp ? image.childImageSharp.fluid.src : image,
+            srcSet: image.childImageSharp ? image.childImageSharp.fluid.srcSet : undefined,
+            alt: '',
+            className: "heroImage",
+            style: imageStyle,
+            ref: imageRef,
+        }
     }
   }

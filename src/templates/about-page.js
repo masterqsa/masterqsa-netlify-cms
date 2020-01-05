@@ -9,6 +9,7 @@ import CallToAction from '../components/callToAction/CallToAction'
 import DevelopedIcon from '../components/icons/DevelopedIcon'
 import ProductivityIcon from '../components/icons/ProductivityIcon'
 import FocusedIcon from '../components/icons/FocusedIcon'
+import HeroPageLayout from '../components/HeroPageLayout'
 
 const pitchIcons = {
   DevelopedIcon,
@@ -19,22 +20,14 @@ const pitchIcons = {
 export const AboutPageTemplate = ({
   title,
   description,
-  heroImage,
+  heroImage: image,
   intro,
   pitches,
 }) => {
   return (
-    <React.Fragment>
-      <div
-        className="full-width-image margin-top-0 aboutPage__heroImage"
-        style={{
-          backgroundImage: `linear-gradient(rgba(11, 103, 82, .9), rgba(11, 103, 82, .9)), url(${
-            !!heroImage.childImageSharp
-              ? heroImage.childImageSharp.fluid.src
-              : heroImage
-          })`,
-        }}
-      >
+    <HeroPageLayout
+      heroImage={image}
+      heroContent={(
         <div className="container">
           <div className="has-text-white aboutPage__header">
             <SectionHeader style={{ marginBottom: '2rem' }}>
@@ -43,7 +36,14 @@ export const AboutPageTemplate = ({
             <Text>{description}</Text>
           </div>
         </div>
-      </div>
+      )}
+      heroProps={{
+        className: `aboutPage__heroImage`,
+        style: {
+          backgroundImage: `linear-gradient(rgba(11, 103, 82, .9), rgba(11, 103, 82, .9))`
+        },
+      }}
+    >
       <section className="section section--gradient">
         <div className="container has-text-centered">
           <SectionHeader intro={intro.heading} style={{ marginTop: '2rem' }} />
@@ -98,7 +98,7 @@ export const AboutPageTemplate = ({
           <CallToAction />
         </div>
       </section>
-    </React.Fragment>
+    </HeroPageLayout>
   )
 }
 

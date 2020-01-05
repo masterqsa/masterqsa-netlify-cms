@@ -292,8 +292,8 @@ input
 $offer-card-padding: 3rem
 
 .pricing-section
-
   position: relative
+  z-index: 1
   padding-top: 5rem
 
   +touch
@@ -325,15 +325,16 @@ $offer-card-padding: 3rem
       opacity: .8
       background-color: $accent
 
+.default-background
+  background-color: #fff
+
+.heroImage
+  position: fixed
+  top: 0
+  z-index: -1
+  object-fit: cover
+
 .mainPage
-  &__heroImage
-    background-attachment: fixed
-    background-position-y: -185px
-    +touch
-      background-size: cover
-      background-attachment: scroll
-      background-position: center bottom
-      
   &__pitch
     display: flex
     justify-content: space-between
@@ -382,13 +383,7 @@ $offer-card-padding: 3rem
 .aboutPage
   &__heroImage
     height: 354px
-    background-position: center 40px
-    background-attachment: fixed
-    background-size: contain
     +touch
-      background-size: cover
-      background-attachment: scroll
-      background-position: center bottom
       height: auto
       padding: 2rem 0 3rem
 
@@ -613,12 +608,8 @@ $offer-card-padding: 3rem
   &__heroImage
     height: auto
     padding: 7rem 0 8rem
-    background-position: center 0
-    background-attachment: fixed
     +touch
       padding: 3rem 0 8rem
-      background-attachment: scroll
-      background-size: cover
 
   &__header
     max-width: 326px

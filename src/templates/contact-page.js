@@ -5,6 +5,7 @@ import Layout from '../components/Layout'
 import { SectionHeader } from '../components/core/Headers'
 import CallToAction from '../components/callToAction/CallToAction'
 import ContactForm from '../components/contact/ContactForm'
+import HeroPageLayout from '../components/HeroPageLayout'
 
 export const ContactPageTemplate = ({
   title,
@@ -14,22 +15,10 @@ export const ContactPageTemplate = ({
   formTitle,
   image,
 }) => {
-  const backgroundImage = image
-    ? !!image.childImageSharp
-      ? image.childImageSharp.fluid.src
-      : image
-    : ''
-
   return (
-    <React.Fragment>
-      <div
-        className="full-width-image margin-top-0 contactPage__heroImage"
-        style={{
-          backgroundImage: `linear-gradient(rgba(40, 89, 226, .8), rgba(40, 89, 226, .8))${
-            backgroundImage ? `, url(${backgroundImage})` : ``
-          }`,
-        }}
-      >
+    <HeroPageLayout
+      heroImage={image}
+      heroContent={(
         <div className="container has-text-white has-text-centered">
           <SectionHeader
             className="contactPage__header has-text-centered"
@@ -56,7 +45,14 @@ export const ContactPageTemplate = ({
             </div>
           </div>
         </div>
-      </div>
+      )}
+      heroProps={{
+        className: `contactPage__heroImage`,
+        style: {
+          backgroundImage: `linear-gradient(rgba(40, 89, 226, .8), rgba(40, 89, 226, .8))`,
+        },
+      }}
+    >
       <div className="contactForm">
         <ContactForm />
       </div>
@@ -65,7 +61,7 @@ export const ContactPageTemplate = ({
           <CallToAction />
         </div>
       </div>
-    </React.Fragment>
+    </HeroPageLayout>
   )
 }
 

@@ -9,6 +9,7 @@ import Text from '../components/core/Text'
 import CallToAction from '../components/callToAction/CallToAction'
 import PlansOverview from '../components/PlansOverview'
 import ContactForm from '../components/contact/ContactForm'
+import HeroPageLayout from '../components/HeroPageLayout'
 
 export const IndexPageTemplate = ({
   image,
@@ -19,15 +20,9 @@ export const IndexPageTemplate = ({
   isPreview = false,
 }) => {
   return (
-  <div>
-    <div
-      className="full-width-image mainPage__heroImage margin-top-0"
-      style={{
-        backgroundImage: `url(${
-          !!image.childImageSharp ? image.childImageSharp.fluid.src : image
-        })`,
-      }}
-    >
+  <HeroPageLayout
+    heroImage={image}
+    heroContent={(
       <div
         className="mainPage__pitch"
       >
@@ -38,7 +33,8 @@ export const IndexPageTemplate = ({
         </div>
         <ContactForm className="quickForm--home is-hidden-mobile" />
       </div>
-    </div>
+    )}
+  >
     <section className="section section--gradient">
       <div className="container">
         <div className="">
@@ -131,7 +127,7 @@ export const IndexPageTemplate = ({
         </div>
       </div>
     </section>
-  </div>
+  </HeroPageLayout>
 )
                 }
 
