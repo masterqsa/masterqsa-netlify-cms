@@ -20,116 +20,116 @@ export const IndexPageTemplate = ({
   isPreview = false,
 }) => {
   return (
-  <HeroPageLayout
-    heroImage={image}
-    heroContent={(
-      <div
-        className="mainPage__pitch"
-      >
-        <div style={{ maxWidth: '500px' }}>
-          <PageHeader className="mainPage__title">
-            <span style={{ backgroundColor: `rgba(0, 0, 0, 0.5)` }}>{mainpitch}</span>
-          </PageHeader>
+    <HeroPageLayout
+      heroImage={image}
+      heroContent={
+        <div className="mainPage__pitch">
+          <div style={{ maxWidth: '500px' }}>
+            <PageHeader className="mainPage__title">
+              <span style={{ backgroundColor: `rgba(0, 0, 0, 0.5)` }}>
+                {mainpitch}
+              </span>
+            </PageHeader>
+          </div>
+          <ContactForm className="quickForm--home is-hidden-mobile" />
         </div>
-        <ContactForm className="quickForm--home is-hidden-mobile" />
-      </div>
-    )}
-  >
-    <section className="section section--gradient">
-      <div className="container">
-        <div className="">
+      }
+    >
+      <section className="section section--gradient">
+        <div className="container">
           <div className="">
             <div className="">
-              <div
-                className=""
-                style={{ marginTop: '2rem', marginBottom: '80px' }}
-              >
-                <SectionHeader
-                  intro={intro.heading}
-                  className="has-text-centered"
-                  style={{ maxWidth: '755px', margin: '0 auto' }}
-                >
-                  {intro.subheading}
-                </SectionHeader>
-                <Text className="intro__description">{intro.description}</Text>
-              </div>
               <div className="">
-                <div className="columns is-gapless mainPage__intro">
-                  <div
-                    className="column is-half-desktop is-two-thirds-tablet"
+                <div
+                  className=""
+                  style={{ marginTop: '2rem', marginBottom: '80px' }}
+                >
+                  <SectionHeader
+                    intro={intro.heading}
+                    className="has-text-centered"
+                    style={{ maxWidth: '755px', margin: '0 auto' }}
                   >
-                    <div className="mainPage__introText">
-                      <SectionHeader
-                        className="has-text-left"
-                        style={{ marginBottom: '28px' }}
-                      >
-                        {why.heading}
-                      </SectionHeader>
-                      <Text style={{ marginBottom: '26px' }}>
-                        {why.description}
-                      </Text>
-                      <Link className="btn" to="/blog">
-                        Get Started
-                        <span className="icon">
-                          <i className="fas fa-arrow-right" />
-                        </span>
-                      </Link>
+                    {intro.subheading}
+                  </SectionHeader>
+                  <Text className="intro__description">
+                    {intro.description}
+                  </Text>
+                </div>
+                <div className="">
+                  <div className="columns is-gapless mainPage__intro">
+                    <div className="column is-half-desktop is-two-thirds-tablet">
+                      <div className="mainPage__introText">
+                        <SectionHeader
+                          className="has-text-left"
+                          style={{ marginBottom: '28px' }}
+                        >
+                          {why.heading}
+                        </SectionHeader>
+                        <Text style={{ marginBottom: '26px' }}>
+                          {why.description}
+                        </Text>
+                        <Link className="btn" to="/blog">
+                          Get Started
+                          <span className="icon">
+                            <i className="fas fa-arrow-right" />
+                          </span>
+                        </Link>
+                      </div>
                     </div>
+                    <div
+                      className="column is-half-desktop is-one-third-tablet"
+                      style={{
+                        backgroundImage: `url(${
+                          !!why.image.childImageSharp
+                            ? why.image.childImageSharp.fluid.src
+                            : why.image
+                        })`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                      }}
+                    ></div>
                   </div>
+                </div>
+                <div style={{ marginTop: '4rem', marginBottom: '4rem' }}>
+                  <SectionHeader
+                    className="has-text-left"
+                    intro="Latest stories"
+                    style={{ marginBottom: '1rem' }}
+                  >
+                    Stories
+                  </SectionHeader>
+                  <BlogRoll />
+                  <div className="has-text-centered">
+                    <Link className="button is-outlined is-primary" to="/blog">
+                      Read more
+                    </Link>
+                  </div>
+                </div>
+                <div className="pricing-section">
                   <div
-                    className="column is-half-desktop is-one-third-tablet"
+                    className="background"
                     style={{
                       backgroundImage: `url(${
-                        !!why.image.childImageSharp
-                          ? why.image.childImageSharp.fluid.src
-                          : why.image
+                        !!pricing.image.childImageSharp
+                          ? pricing.image.childImageSharp.fluid.src
+                          : pricing.image
                       })`,
-                      backgroundSize: 'cover',
-                      backgroundPosition: 'center',
                     }}
                   ></div>
+                  <SectionHeader className="has-text-white has-text-centered">
+                    {pricing.heading}
+                  </SectionHeader>
+                  {!isPreview && <PlansOverview variant="HOME" />}
                 </div>
+                {!isPreview && <CallToAction />}
               </div>
-              <div style={{ marginTop: '4rem', marginBottom: '4rem' }}>
-                <SectionHeader
-                  className="has-text-left"
-                  intro="Latest stories"
-                  style={{ marginBottom: '1rem' }}
-                >
-                  Stories
-                </SectionHeader>
-                <BlogRoll />
-                <div className="has-text-centered">
-                  <Link className="button is-outlined is-primary" to="/blog">
-                    Read more
-                  </Link>
-                </div>
-              </div>
-              <div className="pricing-section">
-                <div
-                  className="background"
-                  style={{
-                    backgroundImage: `url(${
-                      !!pricing.image.childImageSharp
-                        ? pricing.image.childImageSharp.fluid.src
-                        : pricing.image
-                    })`,
-                  }}
-                ></div>
-                <SectionHeader className="has-text-white has-text-centered">
-                  {pricing.heading}
-                </SectionHeader>
-                {!isPreview && <PlansOverview variant="HOME" />}
-              </div>
-              {!isPreview && <CallToAction />}
             </div>
           </div>
         </div>
-      </div>
-    </section>
-  </HeroPageLayout>
-)
-                }
+      </section>
+    </HeroPageLayout>
+  )
+}
 
 IndexPageTemplate.propTypes = {
   image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),

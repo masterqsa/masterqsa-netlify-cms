@@ -71,8 +71,8 @@ module.exports = {
     {
       resolve: 'gatsby-transformer-remark-frontmatter',
       options: {
-        whitelist: ['descriptionMd']
-      }
+        whitelist: ['descriptionMd'],
+      },
     },
     {
       resolve: 'gatsby-plugin-netlify-cms',

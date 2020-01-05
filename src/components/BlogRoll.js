@@ -44,10 +44,16 @@ class BlogRoll extends React.Component {
                   {post.excerpt}
                   <br />
                   <br />
-                  <Link className="button is-dark is-outlined is-hidden-mobile" to={post.fields.slug}>
+                  <Link
+                    className="button is-dark is-outlined is-hidden-mobile"
+                    to={post.fields.slug}
+                  >
                     Keep Reading →
                   </Link>
-                  <Link className="is-dark is-outlined is-hidden-tablet" to={post.fields.slug}>
+                  <Link
+                    className="is-dark is-outlined is-hidden-tablet"
+                    to={post.fields.slug}
+                  >
                     Keep Reading →
                   </Link>
                 </Text>

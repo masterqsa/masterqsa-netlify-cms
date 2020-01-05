@@ -10,9 +10,7 @@ export const PricingPageTemplate = ({ title }) => {
   return (
     <section className="section section--gradient">
       <div className="container">
-        <SectionHeader
-          className="has-text-centered pricingPage__header"
-        >
+        <SectionHeader className="has-text-centered pricingPage__header">
           {title}
         </SectionHeader>
         <PlansOverview />

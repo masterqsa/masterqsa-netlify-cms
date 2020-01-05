@@ -18,11 +18,9 @@ export const ContactPageTemplate = ({
   return (
     <HeroPageLayout
       heroImage={image}
-      heroContent={(
+      heroContent={
         <div className="container has-text-white has-text-centered">
-          <SectionHeader
-            className="contactPage__header has-text-centered"
-          >
+          <SectionHeader className="contactPage__header has-text-centered">
             {title}
           </SectionHeader>
           <div>
@@ -45,7 +43,7 @@ export const ContactPageTemplate = ({
             </div>
           </div>
         </div>
-      )}
+      }
       heroProps={{
         className: `contactPage__heroImage`,
         style: {

@@ -27,7 +27,7 @@ export const AboutPageTemplate = ({
   return (
     <HeroPageLayout
       heroImage={image}
-      heroContent={(
+      heroContent={
         <div className="container">
           <div className="has-text-white aboutPage__header">
             <SectionHeader style={{ marginBottom: '2rem' }}>
@@ -36,11 +36,11 @@ export const AboutPageTemplate = ({
             <Text>{description}</Text>
           </div>
         </div>
-      )}
+      }
       heroProps={{
         className: `aboutPage__heroImage`,
         style: {
-          backgroundImage: `linear-gradient(rgba(11, 103, 82, .9), rgba(11, 103, 82, .9))`
+          backgroundImage: `linear-gradient(rgba(11, 103, 82, .9), rgba(11, 103, 82, .9))`,
         },
       }}
     >
@@ -50,9 +50,7 @@ export const AboutPageTemplate = ({
           <Text style={{ maxWidth: '951px', margin: '0 auto' }}>
             <p className="is-size-4">{intro.description}</p>
           </Text>
-          <div
-            className="aboutPage__image"
-          >
+          <div className="aboutPage__image">
             <PreviewCompatibleImage
               imageInfo={{
                 image: intro.image,
@@ -63,9 +61,7 @@ export const AboutPageTemplate = ({
             />
           </div>
         </div>
-        <div
-          className="aboutPage__pitches"
-        >
+        <div className="aboutPage__pitches">
           {pitches.map(({ title, description, icon }, idx, list) => {
             const Icon = pitchIcons[icon]
 
