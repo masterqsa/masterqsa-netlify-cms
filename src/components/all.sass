@@ -28,9 +28,6 @@ $label-weight: 600 !default
 $footer-background-color: $grey-lighter
 $footer-padding: 5rem 0 3rem
 
-.navbar .navbar-menu
-  box-shadow: none !important
-
 .content .taglist
   list-style: none
   margin-bottom: 0
@@ -141,6 +138,11 @@ $navbar-item-color: #121212
   +mobile
     background-size: auto 400px
     height: auto
+
+
+.navbar .navbar-menu
+  +desktop
+    box-shadow: none !important
 
 // blog roll
 .blog-list-item.is-featured
@@ -256,6 +258,10 @@ input
       text-decoration: underline
 
 // Components
+.navbar-brand
+  +tablet-only
+    padding: 0.5rem
+
 .navbar-brand img
   max-height: 3rem
 
@@ -267,10 +273,10 @@ input
   padding: 0
 
 .navbar-start
-  margin-left: 5rem
+  margin-left: 1rem
 
-  +mobile
-    margin-left: 1rem
+  +desktop
+    margin-left: 5rem
 
 .navbar-end
   .navbar-item
@@ -283,16 +289,6 @@ input
     font-size: 14px
     font-weight: 600
 
-.mainpitch
-  &__image
-    background-attachment: fixed
-    background-position-y: -185px
-    +mobile
-      background-size: cover
-      background-attachment: scroll
-      background-position: center bottom
-      
-
 $offer-card-padding: 3rem
 
 .pricing-section
@@ -300,9 +296,12 @@ $offer-card-padding: 3rem
   position: relative
   padding-top: 5rem
 
-  +mobile
+  +touch
     margin: 0 -1.5rem
     padding: 3rem 1.5rem 1.5rem
+
+  +tablet-only
+    padding-bottom: 0.5rem
   
   .background
     position: absolute
@@ -326,6 +325,52 @@ $offer-card-padding: 3rem
       opacity: .8
       background-color: $accent
 
+.mainPage
+  &__heroImage
+    background-attachment: fixed
+    background-position-y: -185px
+    +touch
+      background-size: cover
+      background-attachment: scroll
+      background-position: center bottom
+      
+  &__pitch
+    display: flex
+    justify-content: space-between
+    max-width: 1046px
+    width: 100%
+
+    +tablet-only
+      max-width: 90%
+
+  &__title
+    line-height: 1.18
+    color: #fefefe
+    padding-top: 17%
+
+    +tablet-only
+      line-height: 1.38
+      padding-right: 2rem
+
+    +mobile
+      line-height: 2.7rem
+      padding: 4rem 2rem
+
+  &__intro
+    +touch
+      margin: -1.5rem !important
+
+  &__introText
+    padding: 90px 70px 90px 100px
+    background-color: #f4f4f4
+
+    +tablet-only
+      padding: 2rem 2rem
+
+    +mobile
+      padding: 2rem 1.5rem
+
+
 .pricingPage
   &__header
     margin: 0 auto 5rem
@@ -340,15 +385,17 @@ $offer-card-padding: 3rem
     background-position: center 40px
     background-attachment: fixed
     background-size: contain
-    +mobile
+    +touch
       background-size: cover
+      background-attachment: scroll
+      background-position: center bottom
       height: auto
       padding: 2rem 0 3rem
 
 
   &__header
     max-width: 500px
-    +mobile
+    +touch
       margin: 0 1.5rem
 
   &__image
@@ -364,13 +411,14 @@ $offer-card-padding: 3rem
     justify-content: center
     margin-top: 5rem
     margin-bottom: 2rem
-    +mobile
+    +touch
       flex-wrap: wrap
 
   &__pitch
     padding: 3rem
     flex: 0 1 445px
-    +mobile
+    +touch
+      padding-top: 1.5rem
       flex-basis: 100%
 
 .offers
@@ -478,7 +526,6 @@ $offer-card-padding: 3rem
     margin-bottom: 1rem
 
   &--page
-    line-height: 1.18
 
   &--organism
       
@@ -487,14 +534,6 @@ $offer-card-padding: 3rem
   line-height: 1.65
 // Custom classes
 
-.mainTitle
-  line-height: 1.18
-  color: #fefefe
-  padding-top: 17%
-
-  +mobile
-    line-height: 2.7rem
-    padding: 4rem 2rem
 
 .quickForm
   border-radius: 3px
@@ -522,15 +561,10 @@ $offer-card-padding: 3rem
   max-width: 676px
   margin: 38px auto 0
 
-.introWhy
-  padding: 90px 70px 90px 100px
-  background-color: #f4f4f4
-
-  +mobile
-    padding: 2rem 1.5rem
-    margin: -1.5rem
 
 .footer
+  +tablet-only
+    padding: 2rem 2.5rem
   +mobile
     padding: 1.5rem
 
@@ -542,6 +576,10 @@ $offer-card-padding: 3rem
 
   &__contact
     flex-basis: 25%
+
+    +tablet-only
+      flex-basis: auto
+      margin-right: 2rem
 
     +mobile
       margin-bottom: 1rem
@@ -577,7 +615,7 @@ $offer-card-padding: 3rem
     padding: 7rem 0 8rem
     background-position: center 0
     background-attachment: fixed
-    +mobile
+    +touch
       padding: 3rem 0 8rem
       background-attachment: scroll
       background-size: cover

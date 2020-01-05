@@ -6,8 +6,9 @@ export function PageHeader({ children, className, ...rest }) {
       {...rest}
       className={[
         `qsaHeader--page`,
-        `is-size-1`,
+        `is-size-1-desktop`,
         `is-size-3-mobile`,
+        `is-size-2-tablet`,
         `has-text-weight-semibold`,
         className || '',
       ].join(' ')}

@@ -21,7 +21,7 @@ export const IndexPageTemplate = ({
   return (
   <div>
     <div
-      className="full-width-image mainpitch__image margin-top-0"
+      className="full-width-image mainPage__heroImage margin-top-0"
       style={{
         backgroundImage: `url(${
           !!image.childImageSharp ? image.childImageSharp.fluid.src : image
@@ -29,16 +29,10 @@ export const IndexPageTemplate = ({
       }}
     >
       <div
-        style={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          justifyContent: 'space-between',
-          maxWidth: '1046px',
-          width: '100%',
-        }}
+        className="mainPage__pitch"
       >
         <div style={{ maxWidth: '500px' }}>
-          <PageHeader className="mainTitle">
+          <PageHeader className="mainPage__title">
             <span style={{ backgroundColor: `rgba(0, 0, 0, 0.5)` }}>{mainpitch}</span>
           </PageHeader>
         </div>
@@ -64,11 +58,11 @@ export const IndexPageTemplate = ({
                 <Text className="intro__description">{intro.description}</Text>
               </div>
               <div className="">
-                <div className="columns is-gapless">
+                <div className="columns is-gapless mainPage__intro">
                   <div
-                    className="column is-6"
+                    className="column is-half-desktop is-two-thirds-tablet"
                   >
-                    <div className="introWhy">
+                    <div className="mainPage__introText">
                       <SectionHeader
                         className="has-text-left"
                         style={{ marginBottom: '28px' }}
@@ -87,7 +81,7 @@ export const IndexPageTemplate = ({
                     </div>
                   </div>
                   <div
-                    className="column is-6"
+                    className="column is-half-desktop is-one-third-tablet"
                     style={{
                       backgroundImage: `url(${
                         !!why.image.childImageSharp
