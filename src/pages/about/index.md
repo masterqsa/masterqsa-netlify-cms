@@ -2,9 +2,10 @@
 templateKey: about-page
 title: About our values
 description: >-
-  Our values are in our company's DNA. It's the continuous improvement and
-  innovation, integrity and team work that define how MasterQSA operates and how
-  we deliver services to our clients
+  Our values are in our company's DNA. It's the **continuous improvement** and
+  **innovation**, **integrity** and **team work** that define how MasterQSA
+  operates and how we deliver services to our clients
+image: ../../img/about/hero.jpg
 intro:
   description: >-
     MasterQSA improves the PCI compliance report creation process for both
@@ -12,6 +13,7 @@ intro:
     assessed. On top of this improved experience, MasterQSA lowers the cost of
     report creation and improves QSA productivity.
   heading: Our Benefits
+  image: ../../img/about/benefits.jpg
 pitches:
   - title: Focused on Customer Service
     description: >-
