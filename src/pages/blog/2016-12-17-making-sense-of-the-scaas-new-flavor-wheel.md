@@ -1,12 +1,15 @@
 ---
 templateKey: blog-post
 title: Assessment Nightmares
-date: 2016-12-17T15:04:10.000Z
+date: 2019-01-07T15:04:10.000Z
 description: Diary of a QSA
 featuredpost: false
 featuredimage: /img/about-us_background-title.jpg
 tags:
-  - pci dss requirements
+  - PCI-DSS
+  - Assessment
+  - QSA
+  - ISA
 ---
 Here we go again.  When it rains, it pours!  I have just been notified by my boss that another client needs a ROC with a tight deadline.  Ok,  let me add this to the other four assessments I have going...
 
