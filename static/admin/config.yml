@@ -58,12 +58,14 @@ collections:
           - {label: "Template Key", name: "templateKey", widget: "hidden", default: "about-page"}
           - {label: "Title", name: "title", widget: "string"}
           - {label: "Description", name: "description", widget: "markdown"}
+          - {label: Image, name: image, widget: image}
           - label: "Intro"
             name: intro
             widget: object
             fields:
               - {label: Heading, name: heading, widget: string}
               - {label: "Description", name: "description", widget: "markdown"}
+              - {label: Image, name: image, widget: image}
           - label: Pitches
             name: pitches
             widget: list

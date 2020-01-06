@@ -10,6 +10,7 @@ import DevelopedIcon from '../components/icons/DevelopedIcon'
 import ProductivityIcon from '../components/icons/ProductivityIcon'
 import FocusedIcon from '../components/icons/FocusedIcon'
 import HeroPageLayout from '../components/HeroPageLayout'
+import { HTMLContent } from '../components/Content'
 
 const pitchIcons = {
   DevelopedIcon,
@@ -20,7 +21,7 @@ const pitchIcons = {
 export const AboutPageTemplate = ({
   title,
   description,
-  heroImage: image,
+  image,
   intro,
   pitches,
 }) => {
@@ -33,7 +34,9 @@ export const AboutPageTemplate = ({
             <SectionHeader style={{ marginBottom: '2rem' }}>
               {title}
             </SectionHeader>
-            <Text>{description}</Text>
+            <Text>
+              <HTMLContent content={description} />
+            </Text>
           </div>
         </div>
       }
@@ -48,7 +51,7 @@ export const AboutPageTemplate = ({
         <div className="container has-text-centered">
           <SectionHeader intro={intro.heading} style={{ marginTop: '2rem' }} />
           <Text style={{ maxWidth: '951px', margin: '0 auto' }}>
-            <p className="is-size-4">{intro.description}</p>
+            <HTMLContent className="is-size-4" content={intro.description} />
           </Text>
           <div className="aboutPage__image">
             <PreviewCompatibleImage
@@ -100,7 +103,7 @@ export const AboutPageTemplate = ({
 
 AboutPageTemplate.propTypes = {
   title: PropTypes.string.isRequired,
-  heroImage: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+  image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   intro: PropTypes.shape({
     heading: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
@@ -123,7 +126,7 @@ const AboutPage = ({ data }) => {
       <AboutPageTemplate
         title={post.frontmatter.title}
         description={post.frontmatter.description}
-        heroImage={post.frontmatter.heroImage}
+        image={post.frontmatter.image}
         intro={post.frontmatter.intro}
         pitches={post.frontmatter.pitches}
       />
@@ -143,7 +146,7 @@ export const aboutPageQuery = graphql`
       frontmatter {
         title
         description
-        heroImage {
+        image {
           childImageSharp {
             fluid(maxWidth: 2048, quality: 100) {
               ...GatsbyImageSharpFluid
