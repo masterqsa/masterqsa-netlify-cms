@@ -2,9 +2,9 @@
 templateKey: about-page
 title: About our values
 description: >-
-  Our values are in our company's DNA. It's the **continuous improvement** and
-  **innovation**, **integrity** and **team work** that define how MasterQSA
-  operates and how we deliver services to our clients
+  Our values are in our company's DNA. It's the continuous improvement and
+  innovation, integrity and team work that define how MasterQSA operates and how
+  we deliver services to our clients
 image: ../../img/about/hero.jpg
 intro:
   description: >-
