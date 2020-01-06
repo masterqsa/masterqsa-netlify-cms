@@ -11,7 +11,7 @@ tags:
   - QSA
   - ISA
 ---
-Here we go again.  When it rains, it pours!  I have just been notified by my boss that another client needs a ROC with a tight deadline.  Ok,  let me add this to the other four assessments I have going...
+Here we go again.  When it rains, it pours!  I have just been notified by my boss that another client needs a ROC with a tight deadline.  Ok,  let me add this to the other three assessments I have going...
 
 Assessment number 1 is a standard brick and mortar Level I merchant with 2 payment channels.  Payment channel number 1 is a P2PE solution (not validated - but a NESA is in place) - easy enough.  Payment channel 2 is ecommerce application hosted on a popular cloud provider with an iframe payment page from a well known payment processor.  
 
