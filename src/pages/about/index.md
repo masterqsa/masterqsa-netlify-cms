@@ -33,20 +33,21 @@ pitches:
     description: >-
       When we started MasterQSA we had a good reason to do so.  We knew that
       performing PCI assessments for merchants and service providers was a
-      difficult and arduous process.  We knew that very few options existed to
-      simplify the process.  We also knew that the cost of anything available
-      put it out of reach for many assessor firms.  What makes us unique is not
-      only do we have a sensible pricing model, but our product is 100% focused
-      on improving productivity.  You will spend more valuable time helping your
+      complicated process from every aspect.  We knew that very few options
+      existed to simplify the process.  We also knew that the cost of anything
+      available put it out of reach for many assessor firms.  What makes us
+      unique is not only do we have a sensible pricing model, but our product is
+      100% focused on improving productivity, accuracy and consistency in
+      assessment outcomes.  You will spend more valuable time helping your
       customers rather than using the PCI Counsel’s template for ROC completion.
     icon: ProductivityIcon
   - title: Developed by QSAs
     description: >-
       MasterQSA is QSA / ISA focused.  We know how you think, how you prefer to
       operate, and we know you are busy.  We have incorporated features into our
-      products to take the headaches out of assessments so yu can focus on
+      products to take the headaches out of assessments so you can focus on
       higher quality outcomes, not scheduling meetings and trying to keep up
-      with 10 different ROC projects at the same time.  Try our products
+      with several different ROC projects at the same time.  Try our products
       absolutely free for 30 days and see how MasterQSA can transform your
       business.
     icon: DevelopedIcon
