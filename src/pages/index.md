@@ -20,9 +20,9 @@ why:
     completion.  MasterQSA facilitates all aspects of each assessment project
     and improves consistency, quality and productivity of every person involved
     in the assessment. With MasterQSA, your QSA company can efficiently complete
-    more reports, creating a competitive advantage and enabling you to win more
-    business.
-  heading: Why MasterQSA
+    more assessments, creating a competitive advantage and enabling you to win
+    more business.
+  heading: Why MasterQSA?
   image: /img/home_2nd-image-benefits.jpg
 pricing:
   heading: Product Pricing
