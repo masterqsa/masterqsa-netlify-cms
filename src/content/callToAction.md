@@ -1,8 +1,8 @@
 ---
-contentKey: "callToAction"
-title: Interested to get started?
+contentKey: callToAction
+title: Interested in learning more?
 descriptionMd: >-
-  Let us know - shoot an email at <mailto:sales@masterqsa.com> and we will get
+  Let us know - shoot an email to <mailto:sales@masterqsa.com> and we will get
   back to you shortly!
 image: /img/hand-cropped.png
 ---
