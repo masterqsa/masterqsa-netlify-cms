@@ -4,14 +4,16 @@ title: About our values
 description: >-
   Our values are in our company's DNA. It's the continuous improvement and
   innovation, integrity and team work that define how MasterQSA operates and how
-  we deliver services to our clients
+  we deliver services to our customers.
 image: ../../img/about/hero.jpg
 intro:
   description: >-
-    MasterQSA improves the PCI compliance report creation process for both
-    professional security assessors and the employees of the merchant being
-    assessed. On top of this improved experience, MasterQSA lowers the cost of
-    report creation and improves QSA productivity.
+    MasterQSA improves the PCI-DSS assessment process for both professional
+    security assessors  (QSA and ISA personnel) and the employees of the
+    merchant or service provider being assessed. On top of this, MasterQSA
+    lowers the cost of PCI-DSS assessments, improves consistency of outcomes,
+    improves overall accuracy and accountability and increases QSA / ISA
+    productivity as well as the productivity of those being assessed.
   heading: Our Benefits
   image: ../../img/about/benefits.jpg
 pitches:
