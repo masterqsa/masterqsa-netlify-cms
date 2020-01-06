@@ -1,25 +1,23 @@
 ---
 contentKey: footer
-
 contactTitle: Contact
 informationTitle: Information
-copyright: "© 2019. All rights reserved."
-
+copyright: © 2019. All rights reserved.
 links:
   - label: Home
-    path: "/"
+    path: /
   - label: Pricing
-    path: "pricing"
+    path: pricing
   - label: About Us
-    path: "about"
+    path: about
   - label: Contact
-    path: "contact"
-
+    path: contact
 socialMedia:
-  - socialNetwork: facebook
+  - href: 'https://www.facebook.com/masterqsacom'
+    socialNetwork: facebook
     title: MasterQSA on Facebook
-    href: "https://facebook.com"
-  - socialNetwork: twitter
+  - href: 'https://twitter.com/masterqsa'
+    socialNetwork: twitter
     title: MasterQSA on Twitter
-    href: "https://twitter.com"
 ---
+
