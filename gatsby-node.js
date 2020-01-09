@@ -2,6 +2,8 @@ const _ = require('lodash')
 const path = require('path')
 const { createFilePath } = require('gatsby-source-filesystem')
 const { fmImagesToRelative } = require('gatsby-remark-relative-images')
+const remark = require('remark')
+const remarkHTML = require('remark-html')
 
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions
@@ -74,9 +76,50 @@ exports.createPages = ({ actions, graphql }) => {
   })
 }
 
+function fnParseFrontmatterMarkdownFields(node, whitelist = [`description`]) {
+  if (node.frontmatter) {
+    if (
+      node.fileAbsolutePath &&
+      node.fileAbsolutePath.includes('about/index.md')
+    ) {
+      parseMarkdownFields(node.frontmatter)
+    }
+  }
+
+  function parseMarkdownFields(frontmatterNode) {
+    if (
+      !frontmatterNode ||
+      typeof frontmatterNode !== 'object' ||
+      Object.keys(frontmatterNode).length === 0
+    ) {
+      return
+    }
+    for (const field in frontmatterNode) {
+      if (!frontmatterNode.hasOwnProperty(field)) {
+        continue
+      }
+
+      if (
+        whitelist.includes(field) &&
+        typeof frontmatterNode[field] === 'string'
+      ) {
+        // It's not a good practice to perform changes on fields in-place,
+        // but it is the easiest solution to transform Markdown to HTML
+        frontmatterNode[field] = remark()
+          .use(remarkHTML)
+          .processSync(frontmatterNode[field])
+          .toString()
+      } else {
+        parseMarkdownFields(frontmatterNode[field])
+      }
+    }
+  }
+}
+
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
   fmImagesToRelative(node) // convert image paths for gatsby images
+  fnParseFrontmatterMarkdownFields(node) // convert Markdown frontmatter fields to HTML
 
   if (node.internal.type === `MarkdownRemark`) {
     const value = createFilePath({ node, getNode })
