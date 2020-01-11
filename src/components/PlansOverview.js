@@ -42,7 +42,7 @@ export function PlansOverviewTemplate({ plans = [], variant = 'DEFAULT' }) {
                 </span>
               </p>
             </div>
-            <Text>
+            <Text className="offer__featuresContainer">
               <ul>
                 {plan.features.map(feature => {
                   return (
@@ -57,7 +57,7 @@ export function PlansOverviewTemplate({ plans = [], variant = 'DEFAULT' }) {
               </ul>
             </Text>
             <div className="has-text-centered">
-              <Link className="button is-outlined is-primary" to="/blog">
+              <Link className="button is-outlined is-primary" to="/contact">
                 Get Started
               </Link>
             </div>

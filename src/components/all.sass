@@ -430,6 +430,8 @@ $offer-card-padding: 3rem
 
   .offer
     flex-grow: 1
+    display: flex
+    flex-direction: column
 
     +mobile
       margin-bottom: 1rem
@@ -445,6 +447,8 @@ $offer-card-padding: 3rem
   &__mainInfoContainer
     padding-top: $offer-card-padding
     padding-bottom: 1.5rem
+    padding-left: 3rem
+    padding-right: 3rem
     position: relative
     overflow: hidden
 
@@ -461,6 +465,9 @@ $offer-card-padding: 3rem
   &__mainInfo
     position: relative
     z-index: 1
+
+  &__featuresContainer
+    flex-grow: 1
 
   ul
     display: inline-block

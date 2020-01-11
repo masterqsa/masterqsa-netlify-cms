@@ -5,6 +5,7 @@ import Helmet from 'react-helmet'
 import { graphql, Link } from 'gatsby'
 import Layout from '../components/Layout'
 import Content, { HTMLContent } from '../components/Content'
+import PreviewCompatibleImage from '../components/PreviewCompatibleImage'
 
 export const BlogPostTemplate = ({
   content,
@@ -12,6 +13,7 @@ export const BlogPostTemplate = ({
   description,
   tags,
   title,
+  featuredimage,
   helmet,
 }) => {
   const PostContent = contentComponent || Content
@@ -25,7 +27,19 @@ export const BlogPostTemplate = ({
             <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
               {title}
             </h1>
-            <p>{description}</p>
+            <HTMLContent content={description} className="is-size-4" />
+            {featuredimage && (
+              <PreviewCompatibleImage
+                imageInfo={{
+                  image: featuredimage,
+                  alt: `featured image for post ${title}`,
+                  style: {
+                    marginTop: `1rem`,
+                    marginBottom: `2rem`,
+                  }
+                }}
+              />
+            )}
             <PostContent content={content} />
             {tags && tags.length ? (
               <div style={{ marginTop: `4rem` }}>
@@ -51,10 +65,11 @@ BlogPostTemplate.propTypes = {
   contentComponent: PropTypes.func,
   description: PropTypes.string,
   title: PropTypes.string,
+  featuredimage: PropTypes.object,
   helmet: PropTypes.object,
 }
 
-const BlogPost = ({ data }) => {
+const BlogPost = ({ data, uri }) => {
   const { markdownRemark: post } = data
 
   return (
@@ -70,10 +85,25 @@ const BlogPost = ({ data }) => {
               name="description"
               content={`${post.frontmatter.description}`}
             />
+            <meta
+              property="og:title"
+              content={`${post.frontmatter.title}`}
+            />
+            <meta
+              property="og:url"
+              content={`${uri}`}
+            />
+            {post.frontmatter.featuredimage && (
+              <meta
+                property="og:image"
+                content={`${post.frontmatter.featuredimage.childImageSharp.fluid.src}`}
+              />
+            )}
           </Helmet>
         }
         tags={post.frontmatter.tags}
         title={post.frontmatter.title}
+        featuredimage={post.frontmatter.featuredimage}
       />
     </Layout>
   )
@@ -96,6 +126,13 @@ export const pageQuery = graphql`
         date(formatString: "MMMM DD, YYYY")
         title
         description
+        featuredimage {
+          childImageSharp {
+            fluid(maxWidth: 2048, quality: 100) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
         tags
       }
     }

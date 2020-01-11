@@ -88,7 +88,7 @@ export const AboutPageTemplate = ({
                   />
                 )}
                 <OrganismHeader>{title}</OrganismHeader>
-                <Text style={{ marginTop: '1rem' }}>{description}</Text>
+                <HTMLContent content={description} style={{ marginTop: '1rem' }} />
               </div>
             )
           })}

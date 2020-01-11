@@ -10,6 +10,7 @@ import CallToAction from '../components/callToAction/CallToAction'
 import PlansOverview from '../components/PlansOverview'
 import ContactForm from '../components/contact/ContactForm'
 import HeroPageLayout from '../components/HeroPageLayout'
+import { HTMLContent } from '../components/Content'
 
 export const IndexPageTemplate = ({
   image,
@@ -51,9 +52,7 @@ export const IndexPageTemplate = ({
                   >
                     {intro.subheading}
                   </SectionHeader>
-                  <Text className="intro__description">
-                    {intro.description}
-                  </Text>
+                  <HTMLContent content={intro.description} className="intro__description" />
                 </div>
                 <div className="">
                   <div className="columns is-gapless mainPage__intro">
@@ -65,10 +64,8 @@ export const IndexPageTemplate = ({
                         >
                           {why.heading}
                         </SectionHeader>
-                        <Text style={{ marginBottom: '26px' }}>
-                          {why.description}
-                        </Text>
-                        <Link className="btn" to="/blog">
+                        <HTMLContent content={why.description} style={{ marginBottom: '26px' }} />
+                        <Link className="btn" to="/contact">
                           Get Started
                           <span className="icon">
                             <i className="fas fa-arrow-right" />

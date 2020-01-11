@@ -46,7 +46,7 @@ export const CallToAction = () => {
           <Text className="qsaGetStarted__description has-text-white">
             <HTMLContent content={fields.frontmattermd.descriptionMd.html} />
           </Text>
-          <Link className="button is-primary" to="/blog">
+          <Link className="button is-primary" to="/contact">
             Get Started
           </Link>
         </div>
