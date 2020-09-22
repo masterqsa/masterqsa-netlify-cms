@@ -110,6 +110,7 @@ $menu-label-letter-spacing: 0
 $menu-list-link-padding: $menu-list-link-padding-v 0
 
 $navbar-item-color: #121212
+$navbar-item-active-color: $brand
 
 .social
   a
@@ -213,7 +214,7 @@ input
   padding: 0 26px
 
   +placeholder
-    opacity: 0.5
+    opacity: 0.8
 
 .select
   &:not(.is-multiple)
@@ -268,6 +269,10 @@ input
   +mobile
     max-height: 2rem
     margin-left: 1rem
+
+a.navbar-item
+  &:hover
+    text-decoration: underline
 
 .navbar-item.logo
   padding: 0
