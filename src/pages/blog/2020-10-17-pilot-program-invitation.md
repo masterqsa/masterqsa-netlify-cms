@@ -12,9 +12,9 @@ tags:
 ---
 
 
-![](/img/top_logo.png)
 
-## Track progress effortlessly
+##
+## Track progress effortlessly 
 
 ![Track progress](/img/feature1.png "Track progress")
 
@@ -52,3 +52,7 @@ Click the link below to sign up and help make the world a cyber-safer place!
 
 [**Get Started
 !**](https://www.masterqsa.com/pilot)
+
+[![FB](/img/fb.png)](https://www.facebook.com/masterqsacom)
+[![FB](/img/twi.png)](https://www.twitter.com/masterqsa)
+[![FB](/img/web.png)](https://www.masterqsa.com/pilot)
