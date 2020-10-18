@@ -51,6 +51,4 @@ Click the button below to sign up and help make the world a cyber-safer place!
 
 [![Get Started](/img/get_started.png)](https://www.masterqsa.com/pilot)
 
-[![FB](/img/fb.png)](https://www.facebook.com/masterqsacom)
-[![FB](/img/twi.png)](https://www.twitter.com/masterqsa)
-[![FB](/img/web.png)](https://www.masterqsa.com/pilot)
+[![FB](/img/fb.png)](https://www.facebook.com/masterqsacom) [![FB](/img/twi.png)](https://www.twitter.com/masterqsa) [![FB](/img/web.png)](https://www.masterqsa.com/pilot)
