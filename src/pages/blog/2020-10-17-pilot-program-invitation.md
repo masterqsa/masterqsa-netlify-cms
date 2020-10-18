@@ -6,10 +6,14 @@ description: >-
   Finally! A PCI-DSS assessment tool made for QSAs by QSAs that makes the
   process easier, more accurate and productive!
 featuredpost: true
-featuredimage: /img/top_logo.png
+featuredimage: /img/blake-wisz-jjg90oanwi-unsplash-1-.jpg
 tags:
   - pilot assessment signup
 ---
+
+
+![](/img/top_logo.png)
+
 ## Track progress effortlessly
 
 ![Track progress](/img/feature1.png "Track progress")
@@ -46,5 +50,5 @@ And a lot more, all in one system!
 
 Click the link below to sign up and help make the world a cyber-safer place!
 
-\***\*[**Get Started
-!**](https://www.masterqsa.com/pilot)\*\***
+[**Get Started
+!**](https://www.masterqsa.com/pilot)
