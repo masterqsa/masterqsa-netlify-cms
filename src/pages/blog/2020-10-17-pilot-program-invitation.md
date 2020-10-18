@@ -10,11 +10,9 @@ featuredimage: /img/blake-wisz-jjg90oanwi-unsplash-1-.jpg
 tags:
   - pilot assessment signup
 ---
+## 
 
-
-
-##
-## Track progress effortlessly 
+## Track progress effortlessly
 
 ![Track progress](/img/feature1.png "Track progress")
 
@@ -48,10 +46,10 @@ And a lot more, all in one system!
 * Pilot testing begins November 1st
 * No software license fees or hosting fees during pilot
 
-Click the link below to sign up and help make the world a cyber-safer place!
+Click the button below to sign up and help make the world a cyber-safer place!
 
-[**Get Started
-!**](https://www.masterqsa.com/pilot)
+
+[![Get Started](/img/get_started.png)](https://www.masterqsa.com/pilot)
 
 [![FB](/img/fb.png)](https://www.facebook.com/masterqsacom)
 [![FB](/img/twi.png)](https://www.twitter.com/masterqsa)
