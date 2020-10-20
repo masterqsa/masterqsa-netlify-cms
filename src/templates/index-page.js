@@ -102,7 +102,7 @@ export const IndexPageTemplate = ({
                     </Link>
                   </div>
                 </div>
-                <div className="pricing-section">
+                {/* <div className="pricing-section">
                   <div
                     className="background"
                     style={{
@@ -117,7 +117,7 @@ export const IndexPageTemplate = ({
                     {pricing.heading}
                   </SectionHeader>
                   {!isPreview && <PlansOverview variant="HOME" />}
-                </div>
+                </div> */}
                 {!isPreview && <CallToAction />}
               </div>
             </div>
