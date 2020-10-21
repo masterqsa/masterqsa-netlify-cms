@@ -10,6 +10,7 @@ featuredimage: /img/blake-wisz-jjg90oanwi-unsplash-1-.jpg
 tags:
   - pilot assessment signup
 ---
+
 ## 
 
 ## Track progress effortlessly
@@ -41,17 +42,21 @@ And a lot more, all in one system!
 **We are seeking Pilot Testers**
 
 * An exciting opportunity to use the application absolutely free for up to a year
-* Shape the first general release of MasterQSA
+* Shape the first general release of TurboQSA
 * Perform actual assessments
 * Pilot testing begins November 1st
 * No software license fees or hosting fees during pilot
 
 Click the button below to sign up and help make the world a cyber-safer place!
 
-[![Get Started](/img/get_started.png)](https://www.masterqsa.com/pilot)
+<div class="has-text-centered">
+  <a href="https://www.turboqsa.com/pilot" class="button is-primary">
+    Get Started
+  </a>
+</div>
 
-[![FB](/img/fb.png)](https://www.facebook.com/masterqsacom)[![FB](/img/twi.png)](https://www.twitter.com/masterqsa)[![FB](/img/web.png)](https://www.masterqsa.com/pilot)
+[![FB](/img/fb.png)](https://www.facebook.com/masterqsacom)[![FB](/img/twi.png)](https://www.twitter.com/turboqsa)[![FB](/img/web.png)](https://www.turboqsa.com/pilot)
 
 
 
-![](/img/top_logo.png)
+![](/img/logo.png)
