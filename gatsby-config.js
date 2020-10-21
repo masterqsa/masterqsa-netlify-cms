@@ -2,9 +2,9 @@ var proxy = require('http-proxy-middleware')
 
 module.exports = {
   siteMetadata: {
-    title: 'MasterQSA PCI Compliance',
+    title: 'TurboQSA PCI Compliance',
     description:
-      'MasterQSA improves the PCI compliance report creation process for both professional security assessors and the employees of the merchant being assessed',
+      'TurboQSA improves the PCI compliance report creation process for both professional security assessors and the employees of the merchant being assessed',
   },
   plugins: [
     'gatsby-plugin-react-helmet',

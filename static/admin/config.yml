@@ -38,7 +38,7 @@ collections:
               - {label: Heading, name: heading, widget: string}
               - {label: Subheading, name: subheading, widget: string}
               - {label: Description, name: description, widget: markdown}
-          - label: "Why MasterQSA?"
+          - label: "Why TurboQSA?"
             name: why
             widget: object
             fields:
@@ -151,7 +151,7 @@ collections:
             widget: list
             fields:
               - {label: "Link label", name: "label", widget: "string"}
-              - {label: "Path", hint: "relative, i.e. 'pricing' for 'https://www.masterqsa.com/pricing'", name: "path", widget: "string"}
+              - {label: "Path", hint: "relative, i.e. 'pricing' for 'https://www.turboqsa.com/pricing'", name: "path", widget: "string"}
           - label: Social media links
             name: socialMedia
             widget: list

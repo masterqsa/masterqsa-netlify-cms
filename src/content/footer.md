@@ -15,9 +15,9 @@ links:
 socialMedia:
   - href: 'https://www.facebook.com/masterqsacom'
     socialNetwork: facebook
-    title: MasterQSA on Facebook
-  - href: 'https://twitter.com/masterqsa'
+    title: TurboQSA on Facebook
+  - href: 'https://twitter.com/turboqsa'
     socialNetwork: twitter
-    title: MasterQSA on Twitter
+    title: TurboQSA on Twitter
 ---
 
