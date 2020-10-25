@@ -679,3 +679,45 @@ $offer-card-padding: 3rem
   .blog-list-item
     & + &
       border-top: 1px solid #dedede
+
+.mainFeature
+  display: grid
+  align-items: center
+  padding: 2rem 5rem
+  position: relative
+  margin-bottom: 4rem
+
+  &::before
+    content: ""
+    position: absolute
+    height: 100%
+    width: 70%
+    background: $grey-lighter
+    top: 0
+
+  &.even
+    grid-template-columns: 2fr 3fr
+    grid-template-areas: "summary image"
+    &::before
+      left: 0
+
+  &.odd
+    grid-template-columns: 3fr 2fr
+    grid-template-areas: "image summary"
+    &::before
+      right: 0
+
+  &__summary
+    grid-area: summary
+    padding: 2rem 2rem 2rem 0
+    position: relative
+  
+  &__imageContainer
+    grid-area: image
+    position: relative
+
+  &__image
+    margin: 0 7rem
+    box-shadow: 0 0.5em 1em -0.125em rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.02)
+    border-radius: 6px
+    overflow: hidden
