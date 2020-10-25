@@ -45,6 +45,14 @@ collections:
               - {label: Heading, name: heading, widget: string}
               - {label: Description, name: description, widget: markdown}
               - {label: Image, name: image, widget: image}
+          - {label: Features Title, name: featuresTitle, widget: string}
+          - label: Features
+            name: features
+            widget: list
+            fields:
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Description", name: "description", widget: "markdown"}
+              - {label: Image, name: image, widget: image}
           - label: "Pricing"
             name: pricing
             widget: object

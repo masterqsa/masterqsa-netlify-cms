@@ -24,6 +24,28 @@ why:
     more business.
   heading: Why TurboQSA?
   image: /img/home_2nd-image-benefits.jpg
+featuresTitle: What we offer
+features:
+  - title: One-click ROC Completion
+    description: >-
+      Use MasterQSA to complete all aspects of the assessment
+      Upon completion, peer review and auto-audit simply click “Export to MS Word” and the PCI ROC Template will be filled in for you within seconds.  This button is available at any stage of your assessment to provide a preview of work completed.
+    image: ../img/home/one-click.png
+  - title: Payment Channels
+    description: >-
+      Oftentimes when working through a ROC, the customer being assessed has more than a single payment channel.
+      While completing the assessment for each requirement the QSA is required to select a payment channel to provide a response for.
+      You may select and provide a response for each payment channel, or you may select “All Payment Channel” and provide a single response.
+    image: ../img/home/payment-channel.png
+  - title: Customer Roles
+    description: >-
+      When you define a contact for your customer, you assign an “Area of Responsibility”. 
+      This allows smart assignment for relative roles when requesting evidence, scheduling interviews and more.
+    image: ../img/home/user-role.png
+  - title: Impactful Interview Scheduler
+    description: >-
+      Where a requires an interview, you simply click “Request Interview” to schedule it and send to the relevant parties based on responsibility areas.
+    image: ../img/home/scheduler.png
 pricing:
   heading: Product Pricing
   image: ../img/home/pricing.jpg
