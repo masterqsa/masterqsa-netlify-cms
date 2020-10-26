@@ -16,9 +16,9 @@ if (!spaceId || !accessToken) {
 
 module.exports = {
   siteMetadata: {
-    title: 'MasterQSA PCI Compliance',
+    title: 'TurboQSA PCI Compliance',
     description:
-      'MasterQSA improves the PCI compliance report creation process for both professional security assessors and the employees of the merchant being assessed',
+      'TurboQSA improves the PCI compliance report creation process for both professional security assessors and the employees of the merchant being assessed',
   },
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -93,6 +93,10 @@ module.exports = {
       options: {
         modulePath: `${__dirname}/src/cms/cms.js`,
       },
+    },
+    {
+      resolve: 'gatsby-plugin-exclude',
+      options: { paths: ['/pricing'] },
     },
     {
       resolve: 'gatsby-plugin-purgecss', // purges all unused/unreferenced css rules

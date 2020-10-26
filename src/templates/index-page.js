@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link, graphql } from 'gatsby'
+import Img from 'gatsby-image'
 
 import Layout from '../components/Layout'
 import BlogRoll from '../components/BlogRoll'
@@ -18,6 +19,8 @@ export const IndexPageTemplate = ({
   intro,
   why,
   pricing,
+  featuresTitle,
+  features,
   isPreview = false,
 }) => {
   return (
@@ -88,6 +91,33 @@ export const IndexPageTemplate = ({
                   </div>
                 </div>
                 <div style={{ marginTop: '4rem', marginBottom: '4rem' }}>
+                  <SectionHeader>
+                    {featuresTitle}
+                  </SectionHeader>
+                  <ul style={{ marginTop: '2rem' }}>
+                    {features.map((feature, idx) => {
+                      return (
+                        <li key={feature.title}>
+                          <div className={`mainFeature ${idx % 2 === 0 ? `even` : `odd`}`}>
+                            <section className="mainFeature__summary">
+                              <h3 className="has-text-left is-size-4">{feature.title}</h3>
+                              <p>
+                                {feature.description}
+                              </p>
+
+                            </section>
+                            <div>
+                            <div className="mainFeature__imageContainer">
+                              <Img fixed={feature.image.childImageSharp.fixed} alt="" className="mainFeature__image" />
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      )
+                    })}
+                  </ul>
+                </div>
+                <div style={{ marginTop: '4rem', marginBottom: '4rem' }}>
                   <SectionHeader
                     className="has-text-left"
                     intro="Latest stories"
@@ -102,7 +132,7 @@ export const IndexPageTemplate = ({
                     </Link>
                   </div>
                 </div>
-                <div className="pricing-section">
+                {/* <div className="pricing-section">
                   <div
                     className="background"
                     style={{
@@ -117,7 +147,7 @@ export const IndexPageTemplate = ({
                     {pricing.heading}
                   </SectionHeader>
                   {!isPreview && <PlansOverview variant="HOME" />}
-                </div>
+                </div> */}
                 {!isPreview && <CallToAction />}
               </div>
             </div>
@@ -145,6 +175,12 @@ IndexPageTemplate.propTypes = {
     heading: PropTypes.string,
     description: PropTypes.string,
   }),
+  featuresTitle: PropTypes.string,
+  features: PropTypes.arrayOf(PropTypes.shape({
+    title: PropTypes.string,
+    description: PropTypes.string,
+    image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+  })),
   isPreview: PropTypes.bool,
 }
 
@@ -159,6 +195,8 @@ const IndexPage = ({ data }) => {
         intro={frontmatter.intro}
         why={frontmatter.why}
         pricing={frontmatter.pricing}
+        featuresTitle={frontmatter.featuresTitle}
+        features={frontmatter.features}
       />
     </Layout>
   )
@@ -201,6 +239,21 @@ export const pageQuery = graphql`
           heading
           subheading
           description
+        }
+        featuresTitle
+        features {
+          title
+          description
+          image {
+            childImageSharp {
+              fluid(maxWidth: 1024, quality: 100) {
+                ...GatsbyImageSharpFluid
+              }
+              fixed(width: 1024) {
+                ...GatsbyImageSharpFixed
+              }
+            }
+          }
         }
         pricing {
           heading
