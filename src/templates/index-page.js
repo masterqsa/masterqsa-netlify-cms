@@ -106,12 +106,12 @@ export const IndexPageTemplate = ({
                         <li key={feature.heading}>
                           <div className={`mainFeature ${idx % 2 === 0 ? `even` : `odd`}`}>
                             <section className="mainFeature__summary">
-                              <h3 className="has-text-left is-size-4">{feature.heading}</h3>
+                              <h3 className="has-text-left is-size-4" style={{ lineHeight: 1.5, marginBottom: '1.5rem' }}>{feature.heading}</h3>
                               <HTMLContent content={feature.description} />
                             </section>
                             <div>
                             <div className="mainFeature__imageContainer">
-                              <Img fixed={feature.image.fixed} alt="" className="mainFeature__image" />
+                              <Img fluid={feature.image.fluid} alt="" className="mainFeature__image" />
                             </div>
                           </div>
                         </div>
@@ -201,9 +201,7 @@ const IndexPage = ({ data }) => {
 
 IndexPage.propTypes = {
   data: PropTypes.shape({
-    markdownRemark: PropTypes.shape({
-      frontmatter: PropTypes.object,
-    }),
+    contentfulLandingPage: PropTypes.object,
   }),
 }
 
@@ -240,6 +238,9 @@ export const pageQuery = graphql`
         image {
           fixed(width: 640, quality: 100) {
             ...GatsbyContentfulFixed
+          }
+          fluid(maxWidth: 840, quality: 100) {
+            ...GatsbyContentfulFluid
           }
         }
       }

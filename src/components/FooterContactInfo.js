@@ -24,7 +24,7 @@ const FooterContactInfo = () => {
       <p>
         Phone: <a href={`tel:${frontmatter.phone}`}>{frontmatter.phone}</a>
         <br />
-        Email: <a href={`tel:${frontmatter.email}`}>{frontmatter.email}</a>
+        Email: <a href={`mailto:${frontmatter.email}`}>{frontmatter.email}</a>
       </p>
       <p>{frontmatter.address}</p>
     </address>

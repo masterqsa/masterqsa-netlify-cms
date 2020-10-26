@@ -55,7 +55,7 @@ Click the button below to sign up and help make the world a cyber-safer place!
   </a>
 </div>
 
-[![FB](/img/fb.png)](https://www.facebook.com/masterqsacom)[![FB](/img/twi.png)](https://www.twitter.com/turboqsa)[![FB](/img/web.png)](https://www.turboqsa.com/pilot)
+[![FB](/img/fb.png)](https://www.facebook.com/turboqsacom)[![FB](/img/twi.png)](https://www.twitter.com/turboqsa)[![FB](/img/web.png)](https://www.turboqsa.com/pilot)
 
 
 
