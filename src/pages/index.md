@@ -24,7 +24,7 @@ why:
     business.
   heading: Why TurboQSA?
   image: /img/home_2nd-image-benefits.jpg
-featuresTitle: What we offer
+featuresTitle: Productivity Space - Delivered
 features:
   - description: >-
       Use TurboQSA to complete all aspects of the assessment Upon completion,
@@ -47,7 +47,7 @@ features:
       When you define a contact for your customer, you assign an “Area of
       Responsibility”.  This allows smart assignment for relative roles when
       requesting evidence, scheduling interviews and more.
-    image: ../img/home/user-role.png
+    image: /img/responsibility_areas.png
     title: Customer Roles
   - description: >-
       Where a requires an interview, you simply click “Request Interview” to
