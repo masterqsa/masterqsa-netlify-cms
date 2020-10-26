@@ -20,16 +20,16 @@ function throttle(func, limit) {
     }
   }
 }
-export default function useResponsiveHeroImage(image) {
+export default function useResponsiveHeroImage(image, isContentfulImage = false) {
   const [imageHeight, setImageHeight] = React.useState(null)
   const imageContainer = React.useRef()
   const imageRef = React.useRef()
 
-  const resizeHeroImage = () => {
+  const resizeHeroImage = React.useCallback(() => {
     if (
       !imageContainer.current ||
       !imageRef.current ||
-      !image.childImageSharp
+      (!isContentfulImage && !image.childImageSharp)
     ) {
       return
     }
@@ -49,7 +49,7 @@ export default function useResponsiveHeroImage(image) {
     } else {
       setImageHeight(null)
     }
-  }
+  }, [isContentfulImage, image])
 
   React.useLayoutEffect(() => {
     resizeHeroImage()
@@ -63,7 +63,7 @@ export default function useResponsiveHeroImage(image) {
     return () => {
       window.removeEventListener('resize', listener)
     }
-  }, [image, imageContainer.current, imageRef.current])
+  }, [image, resizeHeroImage])
 
   const imageStyle = imageHeight
     ? {
@@ -77,10 +77,10 @@ export default function useResponsiveHeroImage(image) {
     imageRef: imageRef,
     imageStyle: imageStyle,
     imageProps: {
-      src: image.childImageSharp ? image.childImageSharp.fluid.src : image,
-      srcSet: image.childImageSharp
+      src: isContentfulImage ? (image ? image.fluid.src : image) : (image.childImageSharp ? image.childImageSharp.fluid.src : image),
+      srcSet: isContentfulImage ? (image ? image.fluid.srcSet : undefined) : (image.childImageSharp
         ? image.childImageSharp.fluid.srcSet
-        : undefined,
+        : undefined),
       alt: '',
       className: 'heroImage',
       style: imageStyle,
