@@ -9,23 +9,19 @@ import FooterContactInfo from './FooterContactInfo'
 
 const CONTENT_QUERY = graphql`
   query FooterQuery {
-    markdownRemark(frontmatter: { contentKey: { eq: "footer" } }) {
-      frontmatter {
-        contactTitle
-        informationTitle
-        copyright
-
-        links {
-          label
-          path
-        }
-
-        socialMedia {
-          socialNetwork
-          title
-          href
-        }
+    contentfulFooter {
+      contactSectionTitle
+      navSectionTitle
+      socialMediaLinks {
+        label
+        profileUrl
+        socialMedia
       }
+      navSectionLinks {
+        linkLabel
+        linkPath
+      }
+      copyright
     }
   }
 `
@@ -39,7 +35,7 @@ const socialMediaIconSrc = {
 
 const Footer = () => {
   const {
-    markdownRemark: { frontmatter },
+    contentfulFooter,
   } = useStaticQuery(CONTENT_QUERY)
 
   return (
@@ -47,18 +43,18 @@ const Footer = () => {
       <div className="container">
         <div className="footer__inner">
           <div className="footer__contact">
-            <p className="footer__contactTitle">{frontmatter.contactTitle}</p>
+            <p className="footer__contactTitle">{contentfulFooter.contactSectionTitle}</p>
             <FooterContactInfo />
           </div>
           <div className="footer__links">
             <div>
-              <p className="menu-label">{frontmatter.informationTitle}</p>
+              <p className="menu-label">{contentfulFooter.navSectionTitle}</p>
               <ul className="menu-list">
-                {frontmatter.links.map(({ label, path }) => {
+                {contentfulFooter.navSectionLinks.map(({ linkLabel, linkPath }) => {
                   return (
-                    <li key={label}>
-                      <Link to={path} className="">
-                        {label}
+                    <li key={linkLabel}>
+                      <Link to={linkPath} className="">
+                        {linkLabel}
                       </Link>
                     </li>
                   )
@@ -69,20 +65,20 @@ const Footer = () => {
         </div>
         <hr />
         <div className="flex">
-          <small>{frontmatter.copyright}</small>
+          <small>{contentfulFooter.copyright}</small>
           <div className="social">
-            {frontmatter.socialMedia.map(({ socialNetwork, title, href }) => {
-              return socialMediaIconSrc[socialNetwork] ? (
+            {contentfulFooter.socialMediaLinks.map(({ socialMedia, label, profileUrl }) => {
+              return socialMediaIconSrc[socialMedia] ? (
                 <a
-                  key={title}
-                  title={title}
-                  aria-label={title}
-                  href={href}
+                  key={socialMedia}
+                  title={label}
+                  aria-label={label}
+                  href={profileUrl}
                   target="_blank"
                   rel="noreferrer noopener"
                 >
                   <img
-                    src={socialMediaIconSrc[socialNetwork]}
+                    src={socialMediaIconSrc[socialMedia]}
                     alt=""
                     style={{ width: '1em', height: '1em' }}
                   />
