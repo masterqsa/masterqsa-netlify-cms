@@ -10,16 +10,19 @@ exports.createPages = ({ actions, graphql }) => {
 
   return graphql(`
     {
-      allMarkdownRemark(limit: 1000) {
+      contentfulLandingPage {
+        id
+      }
+      contentfulAboutUsPage {
+        id
+      }
+      allContentfulBlogPost(limit: 1000) {
         edges {
           node {
             id
-            fields {
-              slug
-            }
-            frontmatter {
-              tags
-              templateKey
+            slug
+            tags {
+              label
             }
           }
         }
@@ -31,17 +34,39 @@ exports.createPages = ({ actions, graphql }) => {
       return Promise.reject(result.errors)
     }
 
-    const posts = result.data.allMarkdownRemark.edges.filter(
-      edge => !!edge.node.frontmatter.templateKey
-    )
+    createPage({
+      path: `/`,
+      component: path.resolve(`src/templates/index-page.js`),
+      context: {
+        id: result.data.contentfulLandingPage.id
+      }
+    })
+
+    createPage({
+      path: `/about`,
+      component: path.resolve(`src/templates/about-page.js`),
+      context: {
+        id: result.data.contentfulAboutUsPage.id
+      }
+    })
+
+    createPage({
+      path: `/`,
+      component: path.resolve(`src/templates/index-page.js`),
+      context: {
+        id: result.data.contentfulAboutUsPage.id
+      }
+    })
+
+    const posts = result.data.allContentfulBlogPost.edges
 
     posts.forEach(edge => {
       const id = edge.node.id
       createPage({
-        path: edge.node.fields.slug,
-        tags: edge.node.frontmatter.tags,
+        path: `/blog/${edge.node.slug}`,
+        tags: edge.node.tags,
         component: path.resolve(
-          `src/templates/${String(edge.node.frontmatter.templateKey)}.js`
+          `src/templates/blog-post.js`
         ),
         // additional data can be passed via context
         context: {
@@ -54,8 +79,8 @@ exports.createPages = ({ actions, graphql }) => {
     let tags = []
     // Iterate through each post, putting all found tags into `tags`
     posts.forEach(edge => {
-      if (_.get(edge, `node.frontmatter.tags`)) {
-        tags = tags.concat(edge.node.frontmatter.tags)
+      if (_.get(edge, `node.tags`)) {
+        tags = tags.concat(edge.node.tags)
       }
     })
     // Eliminate duplicate tags
@@ -63,13 +88,13 @@ exports.createPages = ({ actions, graphql }) => {
 
     // Make tag pages
     tags.forEach(tag => {
-      const tagPath = `/tags/${_.kebabCase(tag)}/`
+      const tagPath = `/tags/${_.kebabCase(tag.label)}/`
 
       createPage({
         path: tagPath,
         component: path.resolve(`src/templates/tags.js`),
         context: {
-          tag,
+          tag: tag.label,
         },
       })
     })
@@ -116,17 +141,7 @@ function fnParseFrontmatterMarkdownFields(node, whitelist = [`description`]) {
   }
 }
 
-exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions
+exports.onCreateNode = ({ node }) => {
   fmImagesToRelative(node) // convert image paths for gatsby images
   fnParseFrontmatterMarkdownFields(node) // convert Markdown frontmatter fields to HTML
-
-  if (node.internal.type === `MarkdownRemark`) {
-    const value = createFilePath({ node, getNode })
-    createNodeField({
-      name: `slug`,
-      node,
-      value,
-    })
-  }
 }
