@@ -139,7 +139,7 @@ export default AboutPage
 
 export const aboutPageQuery = graphql`
   query AboutPage {
-    contentfulAboutUsPage(id: {eq: "95d720e0-b04e-5449-9b77-995c036d4e72"}) {
+    contentfulAboutUsPage {
       title
       lede {
         childMarkdownRemark {

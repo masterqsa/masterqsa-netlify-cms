@@ -50,6 +50,7 @@ export const ContactPageTemplate = ({
           backgroundImage: `linear-gradient(rgba(40, 89, 226, .8), rgba(40, 89, 226, .8))`,
         },
       }}
+      isContentfulImage
     >
       <div className="contactForm">
         <ContactForm />
@@ -73,17 +74,17 @@ ContactPageTemplate.propTypes = {
 }
 
 const ContactPage = ({ data }) => {
-  const { markdownRemark: post } = data
+  const { contentfulContactPage, contentfulContactInformation } = data
 
   return (
     <Layout>
       <ContactPageTemplate
-        title={post.frontmatter.title}
-        address={post.frontmatter.address}
-        phone={post.frontmatter.phone}
-        email={post.frontmatter.email}
-        formTitle={post.frontmatter.formTitle}
-        image={post.frontmatter.image}
+        title={contentfulContactPage.title}
+        address={contentfulContactInformation.address}
+        phone={contentfulContactInformation.phoneNumber}
+        email={contentfulContactInformation.email}
+        formTitle={contentfulContactPage.formTitle}
+        image={contentfulContactPage.heroImage}
       />
     </Layout>
   )
@@ -96,23 +97,21 @@ ContactPage.propTypes = {
 export default ContactPage
 
 export const contactPageQuery = graphql`
-  query ContactPage($id: String!) {
-    markdownRemark(id: { eq: $id }) {
-      html
-      frontmatter {
-        title
-        address
-        phone
-        email
-        formTitle
-        image {
-          childImageSharp {
-            fluid(maxWidth: 2048, quality: 100) {
-              ...GatsbyImageSharpFluid
-            }
-          }
+  query ContactPage {
+    contentfulContactPage {
+      title
+      formTitle
+      heroImage {
+        fluid(maxWidth: 2048, quality: 100) {
+          ...GatsbyContentfulFluid
         }
       }
+    }
+
+    contentfulContactInformation {
+      email
+      phoneNumber
+      address
     }
   }
 `

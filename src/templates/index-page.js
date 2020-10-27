@@ -209,7 +209,7 @@ export default IndexPage
 
 export const pageQuery = graphql`
   query LandingPage {
-    contentfulLandingPage(id: { eq: "f12cbc14-accc-5549-be40-312682538029" }) {
+    contentfulLandingPage {
       mainPitch
       heroImage {
         fluid(maxWidth: 2048, quality: 100) {

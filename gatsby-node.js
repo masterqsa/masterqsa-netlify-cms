@@ -16,6 +16,12 @@ exports.createPages = ({ actions, graphql }) => {
       contentfulAboutUsPage {
         id
       }
+      contentfulContactPage {
+        id
+      }
+      contentfulPilotPage {
+        id
+      }
       allContentfulBlogPost(limit: 1000) {
         edges {
           node {
@@ -51,10 +57,26 @@ exports.createPages = ({ actions, graphql }) => {
     })
 
     createPage({
-      path: `/`,
-      component: path.resolve(`src/templates/index-page.js`),
+      path: `/about`,
+      component: path.resolve(`src/templates/about-page.js`),
       context: {
         id: result.data.contentfulAboutUsPage.id
+      }
+    })
+
+    createPage({
+      path: `/contact`,
+      component: path.resolve(`src/templates/contact-page.js`),
+      context: {
+        id: result.data.contentfulContactPage.id
+      }
+    })
+
+    createPage({
+      path: `/pilot`,
+      component: path.resolve(`src/templates/pilot-page.js`),
+      context: {
+        id: result.data.contentfulPilotPage.id
       }
     })
 
