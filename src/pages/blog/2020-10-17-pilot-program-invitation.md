@@ -10,7 +10,6 @@ featuredimage: /img/blake-wisz-jjg90oanwi-unsplash-1-.jpg
 tags:
   - pilot assessment signup
 ---
-
 ## 
 
 ## Track progress effortlessly
@@ -53,10 +52,4 @@ Click the button below to sign up and help make the world a cyber-safer place!
   <a href="https://www.turboqsa.com/pilot" class="button is-primary">
     Get Started
   </a>
-</div>
-
-[![FB](/img/fb.png)](https://www.facebook.com/masterqsacom)[![FB](/img/twi.png)](https://www.twitter.com/turboqsa)[![FB](/img/web.png)](https://www.turboqsa.com/pilot)
-
-
-
-![](/img/logo.png)
+</div
