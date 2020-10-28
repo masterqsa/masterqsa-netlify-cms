@@ -1,5 +1,19 @@
 var proxy = require('http-proxy-middleware')
 
+const contentfulConfig = {
+  spaceId: process.env.CONTENTFUL_SPACE_ID,
+  accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+  host: process.env.CONTENTFUL_HOST
+}
+
+const { spaceId, accessToken } = contentfulConfig
+
+if (!spaceId || !accessToken) {
+  throw new Error(
+    'Contentful spaceId and the access token need to be provided.'
+  )
+}
+
 module.exports = {
   siteMetadata: {
     title: 'TurboQSA PCI Compliance',
@@ -38,18 +52,22 @@ module.exports = {
         name: 'images',
       },
     },
+    {
+      resolve: 'gatsby-source-contentful',
+      options: contentfulConfig,
+    },
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     {
       resolve: 'gatsby-transformer-remark',
       options: {
         plugins: [
-          {
-            resolve: 'gatsby-remark-relative-images',
-            options: {
-              name: 'uploads',
-            },
-          },
+          // {
+          //   resolve: 'gatsby-remark-relative-images',
+          //   options: {
+          //     name: 'uploads',
+          //   },
+          // },
           {
             resolve: 'gatsby-remark-images',
             options: {
@@ -90,7 +108,7 @@ module.exports = {
         develop: true, // Activates purging in npm run develop
         purgeOnly: ['/all.sass'], // applies purging only on the bulma css file
       },
-    }, // must be after other CSS plugins
+    }, // must be after other CSS plugins,
     'gatsby-plugin-netlify', // make sure to keep it last in the array
   ],
   // for avoiding CORS while developing Netlify Functions locally

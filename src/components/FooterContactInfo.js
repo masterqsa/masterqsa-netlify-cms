@@ -3,30 +3,27 @@ import { useStaticQuery, graphql } from 'gatsby'
 
 const CONTACT_INFO_QUERY = graphql`
   query ContactInfo {
-    markdownRemark(frontmatter: { templateKey: { eq: "contact-page" } }) {
-      html
-      frontmatter {
-        address
-        phone
-        email
-      }
+    contentfulContactInformation {
+      email
+      phoneNumber
+      address
     }
   }
 `
 
 const FooterContactInfo = () => {
   const {
-    markdownRemark: { frontmatter },
+    contentfulContactInformation,
   } = useStaticQuery(CONTACT_INFO_QUERY)
 
   return (
     <address>
       <p>
-        Phone: <a href={`tel:${frontmatter.phone}`}>{frontmatter.phone}</a>
+        Phone: <a href={`tel:${contentfulContactInformation.phoneNumber}`}>{contentfulContactInformation.phoneNumber}</a>
         <br />
-        Email: <a href={`tel:${frontmatter.email}`}>{frontmatter.email}</a>
+        Email: <a href={`mailto:${contentfulContactInformation.email}`}>{contentfulContactInformation.email}</a>
       </p>
-      <p>{frontmatter.address}</p>
+      <p>{contentfulContactInformation.address}</p>
     </address>
   )
 }

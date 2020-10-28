@@ -34,6 +34,7 @@ export const PilotPageTemplate = ({
           backgroundImage: `linear-gradient(rgb(11, 103, 82, 0.9), rgba(11, 103, 82, 0.5))`,
         },
       }}
+      isContentfulImage
     >
       <div className="contactForm">
         <PilotForm />
@@ -54,14 +55,14 @@ PilotPageTemplate.propTypes = {
 }
 
 const PilotPage = ({ data }) => {
-  const { markdownRemark: post } = data
+  const { contentfulPilotPage } = data
 
   return (
     <Layout>
       <PilotPageTemplate
-        title={post.frontmatter.title}
-        description={post.frontmatter.description}
-        image={post.frontmatter.image}
+        title={contentfulPilotPage.title}
+        description={contentfulPilotPage.description}
+        image={contentfulPilotPage.heroImage}
       />
     </Layout>
   )
@@ -74,18 +75,13 @@ PilotPage.propTypes = {
 export default PilotPage
 
 export const pilotPageQuery = graphql`
-  query PilotPage($id: String!) {
-    markdownRemark(id: { eq: $id }) {
-      html
-      frontmatter {
-        title
-        description
-        image {
-          childImageSharp {
-            fluid(maxWidth: 2048, quality: 100) {
-              ...GatsbyImageSharpFluid
-            }
-          }
+  query PilotPage {
+    contentfulPilotPage {
+      title
+      description
+      heroImage {
+        fluid(maxWidth: 2048, quality: 100) {
+          ...GatsbyContentfulFluid
         }
       }
     }

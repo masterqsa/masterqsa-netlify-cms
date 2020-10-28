@@ -6,7 +6,7 @@ import Layout from '../../components/Layout'
 
 const TagsPage = ({
   data: {
-    allMarkdownRemark: { group },
+    allContentfulBlogPost: { group },
     site: {
       siteMetadata: { title },
     },
@@ -47,8 +47,8 @@ export const tagPageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(limit: 1000) {
-      group(field: frontmatter___tags) {
+    allContentfulBlogPost(limit: 1000) {
+      group(field: tags___label) {
         fieldValue
         totalCount
       }

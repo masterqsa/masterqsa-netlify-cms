@@ -7,8 +7,9 @@ export const HeroPageLayout = ({
   heroContent,
   heroProps = {},
   children,
+  isContentfulImage = false
 }) => {
-  const { imageContainerRef, imageProps } = useResponsiveHeroImage(heroImage)
+  const { imageContainerRef, imageProps } = useResponsiveHeroImage(heroImage, isContentfulImage)
 
   return (
     <React.Fragment>
@@ -32,6 +33,7 @@ HeroPageLayout.propTypes = {
   heroContent: PropTypes.node.isRequired,
   heroProps: PropTypes.object,
   children: PropTypes.node.isRequired,
+  isContentfulImage: PropTypes.bool
 }
 
 export default HeroPageLayout

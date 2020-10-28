@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
+import Img from 'gatsby-image'
 import Layout from '../components/Layout'
 import { SectionHeader, OrganismHeader } from '../components/core/Headers'
 import Text from '../components/core/Text'
-import PreviewCompatibleImage from '../components/PreviewCompatibleImage'
 import CallToAction from '../components/callToAction/CallToAction'
 import DevelopedIcon from '../components/icons/DevelopedIcon'
 import ProductivityIcon from '../components/icons/ProductivityIcon'
@@ -22,7 +22,9 @@ export const AboutPageTemplate = ({
   title,
   description,
   image,
-  intro,
+  introHeading,
+  introDescription,
+  introImage,
   pitches,
 }) => {
   return (
@@ -35,7 +37,7 @@ export const AboutPageTemplate = ({
               {title}
             </SectionHeader>
             <Text>
-              <HTMLContent content={description} />
+              <HTMLContent content={description.childMarkdownRemark.html} />
             </Text>
           </div>
         </div>
@@ -46,22 +48,16 @@ export const AboutPageTemplate = ({
           backgroundImage: `linear-gradient(rgba(11, 103, 82, .9), rgba(11, 103, 82, .9))`,
         },
       }}
+      isContentfulImage
     >
       <section className="section section--gradient">
         <div className="container has-text-centered">
-          <SectionHeader intro={intro.heading} style={{ marginTop: '2rem' }} />
+          <SectionHeader intro={introHeading} style={{ marginTop: '2rem' }} />
           <Text style={{ maxWidth: '951px', margin: '0 auto' }}>
-            <HTMLContent className="is-size-4" content={intro.description} />
+            <HTMLContent className="is-size-4" content={introDescription} />
           </Text>
           <div className="aboutPage__image">
-            <PreviewCompatibleImage
-              imageInfo={{
-                image: intro.image,
-                childImageSharp: intro.image
-                  ? intro.image.childImageSharp
-                  : intro.image,
-              }}
-            />
+            <Img {...introImage} />
           </div>
         </div>
         <div className="aboutPage__pitches">
@@ -103,32 +99,33 @@ export const AboutPageTemplate = ({
 
 AboutPageTemplate.propTypes = {
   title: PropTypes.string.isRequired,
+  description: PropTypes.object,
   image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
-  intro: PropTypes.shape({
-    heading: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
-  }).isRequired,
+  introHeading: PropTypes.string.isRequired,
+  introDescription: PropTypes.object,
+  introImage: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   pitches: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string.isRequired,
-      description: PropTypes.string.isRequired,
+      description: PropTypes.object.isRequired,
       icon: PropTypes.string.isRequired,
     })
   ).isRequired,
 }
 
 const AboutPage = ({ data }) => {
-  const { markdownRemark: post } = data
+  const { contentfulAboutUsPage } = data
 
   return (
     <Layout>
       <AboutPageTemplate
-        title={post.frontmatter.title}
-        description={post.frontmatter.description}
-        image={post.frontmatter.image}
-        intro={post.frontmatter.intro}
-        pitches={post.frontmatter.pitches}
+        title={contentfulAboutUsPage.title}
+        description={contentfulAboutUsPage.lede}
+        image={contentfulAboutUsPage.heroImage}
+        introHeading={contentfulAboutUsPage.introHeading}
+        introDescription={contentfulAboutUsPage.introDescription}
+        introImage={contentfulAboutUsPage.introImage}
+        pitches={contentfulAboutUsPage.pitches}
       />
     </Layout>
   )
@@ -141,34 +138,34 @@ AboutPage.propTypes = {
 export default AboutPage
 
 export const aboutPageQuery = graphql`
-  query AboutPage($id: String!) {
-    markdownRemark(id: { eq: $id }) {
-      frontmatter {
+  query AboutPage {
+    contentfulAboutUsPage {
+      title
+      lede {
+        childMarkdownRemark {
+          html
+        }
+      }
+      heroImage {
+        fluid(maxWidth: 2048, quality: 100) {
+          ...GatsbyContentfulFluid
+        }
+      }
+      introHeading
+      introDescription {
+        json
+      }
+      introImage {
+        fluid(maxWidth: 2048, quality: 100) {
+          ...GatsbyContentfulFluid
+        }
+      }
+      pitches {
         title
-        description
-        image {
-          childImageSharp {
-            fluid(maxWidth: 2048, quality: 100) {
-              ...GatsbyImageSharpFluid
-            }
-          }
+        description {
+          json
         }
-        intro {
-          heading
-          description
-          image {
-            childImageSharp {
-              fluid(maxWidth: 2048, quality: 100) {
-                ...GatsbyImageSharpFluid
-              }
-            }
-          }
-        }
-        pitches {
-          title
-          description
-          icon
-        }
+        icon
       }
     }
   }

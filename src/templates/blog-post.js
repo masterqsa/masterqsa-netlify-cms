@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 import { kebabCase } from 'lodash'
 import Helmet from 'react-helmet'
 import { graphql, Link } from 'gatsby'
+import Img from 'gatsby-image'
 import Layout from '../components/Layout'
 import Content, { HTMLContent } from '../components/Content'
-import PreviewCompatibleImage from '../components/PreviewCompatibleImage'
 
 export const BlogPostTemplate = ({
   content,
@@ -13,7 +13,7 @@ export const BlogPostTemplate = ({
   description,
   tags,
   title,
-  featuredimage,
+  featuredImage,
   helmet,
 }) => {
   const PostContent = contentComponent || Content
@@ -28,15 +28,13 @@ export const BlogPostTemplate = ({
               {title}
             </h1>
             <HTMLContent content={description} className="is-size-4" />
-            {featuredimage && (
-              <PreviewCompatibleImage
-                imageInfo={{
-                  image: featuredimage,
-                  alt: `featured image for post ${title}`,
-                  style: {
-                    marginTop: `1rem`,
-                    marginBottom: `2rem`,
-                  }
+            {featuredImage && (
+              <Img
+                {...featuredImage}
+                alt={`featured image for post ${title}`}
+                style={{
+                  marginTop: `1rem`,
+                  marginBottom: `2rem`,
                 }}
               />
             )}
@@ -46,8 +44,8 @@ export const BlogPostTemplate = ({
                 <h4>Tags</h4>
                 <ul className="taglist">
                   {tags.map(tag => (
-                    <li key={tag + `tag`}>
-                      <Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
+                    <li key={tag.label + `tag`}>
+                      <Link to={`/tags/${kebabCase(tag.label)}/`}>{tag.label}</Link>
                     </li>
                   ))}
                 </ul>
@@ -70,40 +68,40 @@ BlogPostTemplate.propTypes = {
 }
 
 const BlogPost = ({ data, uri }) => {
-  const { markdownRemark: post } = data
+  const { contentfulBlogPost } = data
 
   return (
     <Layout>
       <BlogPostTemplate
-        content={post.html}
+        title={contentfulBlogPost.title}
+        content={contentfulBlogPost.body.childMarkdownRemark.html}
+        description={contentfulBlogPost.description.childMarkdownRemark.html}
         contentComponent={HTMLContent}
-        description={post.frontmatter.description}
+        tags={contentfulBlogPost.tags}
+        featuredImage={contentfulBlogPost.featuredImage}
         helmet={
           <Helmet titleTemplate="%s | Blog">
-            <title>{`${post.frontmatter.title}`}</title>
+            <title>{`${contentfulBlogPost.title}`}</title>
             <meta
               name="description"
-              content={`${post.frontmatter.description}`}
+              content={`${contentfulBlogPost.description.rawMarkdownBody}`}
             />
             <meta
               property="og:title"
-              content={`${post.frontmatter.title}`}
+              content={`${contentfulBlogPost.title}`}
             />
             <meta
               property="og:url"
               content={`${uri}`}
             />
-            {post.frontmatter.featuredimage && (
+            {contentfulBlogPost.featuredimage && (
               <meta
                 property="og:image"
-                content={`${post.frontmatter.featuredimage.childImageSharp.fluid.src}`}
+                content={`${contentfulBlogPost.featuredimage.fluid.src}`}
               />
             )}
           </Helmet>
         }
-        tags={post.frontmatter.tags}
-        title={post.frontmatter.title}
-        featuredimage={post.frontmatter.featuredimage}
       />
     </Layout>
   )
@@ -111,7 +109,7 @@ const BlogPost = ({ data, uri }) => {
 
 BlogPost.propTypes = {
   data: PropTypes.shape({
-    markdownRemark: PropTypes.object,
+    contentfulBlogPost: PropTypes.object,
   }),
 }
 
@@ -119,21 +117,27 @@ export default BlogPost
 
 export const pageQuery = graphql`
   query BlogPostByID($id: String!) {
-    markdownRemark(id: { eq: $id }) {
+    contentfulBlogPost(id: { eq: $id }) {
       id
-      html
-      frontmatter {
-        date(formatString: "MMMM DD, YYYY")
-        title
-        description
-        featuredimage {
-          childImageSharp {
-            fluid(maxWidth: 2048, quality: 100) {
-              ...GatsbyImageSharpFluid
-            }
-          }
+      title
+      description {
+        childMarkdownRemark {
+          html
+          rawMarkdownBody
         }
-        tags
+      }
+      body {
+        childMarkdownRemark {
+          html
+        }
+      }
+      featuredImage {
+        fluid(maxWidth: 2048, quality: 100) {
+          ...GatsbyContentfulFluid
+        }
+      }
+      tags {
+        label
       }
     }
   }

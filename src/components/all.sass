@@ -15,7 +15,7 @@ $black: #2b2523
 
 $body-color: $grey-darker
 
-// Master QSA colors
+// Turbo QSA colors
 $interactive: #efa12b
 $accent: #2859e2
 
@@ -683,41 +683,69 @@ $offer-card-padding: 3rem
 .mainFeature
   display: grid
   align-items: center
-  padding: 2rem 5rem
+  padding: 2rem 2rem
   position: relative
   margin-bottom: 4rem
+  grid-template-areas: "summary" "image"
+
+  +tablet
+    padding: 2rem 5rem
 
   &::before
     content: ""
     position: absolute
-    height: 100%
-    width: 70%
     background: $grey-lighter
     top: 0
+    height: 80%
+    width: 100%
+
+    +tablet
+      height: 60%
+
+    +widescreen
+      height: 100%
+      width: 70%
 
   &.even
-    grid-template-columns: 2fr 3fr
-    grid-template-areas: "summary image"
     &::before
       left: 0
+    .mainFeature__image
+      margin-left: 0
+
+      +desktop
+        margin-left: 7rem
+    
+    +widescreen
+      grid-template-columns: 2fr 3fr
+      grid-template-areas: "summary image"
 
   &.odd
-    grid-template-columns: 3fr 2fr
-    grid-template-areas: "image summary"
     &::before
       right: 0
+    .mainFeature__image
+      margin-right: 0
+
+      +desktop
+        margin-right: 7rem
+    
+    +widescreen
+      grid-template-columns: 3fr 2fr
+      grid-template-areas: "image summary"
 
   &__summary
     grid-area: summary
-    padding: 2rem 2rem 2rem 0
     position: relative
+    padding: 2rem 0
+
+    +widescreen
+      padding: 8rem 2rem 8rem 0
   
   &__imageContainer
     grid-area: image
     position: relative
 
   &__image
-    margin: 0 7rem
+    margin: 0
     filter: drop-shadow(2px 7px 5px rgba(10,10,10,.1))
     border-radius: 6px
     overflow: hidden

@@ -6,9 +6,9 @@ import Img from 'gatsby-image'
 import Layout from '../components/Layout'
 import BlogRoll from '../components/BlogRoll'
 import { SectionHeader, PageHeader } from '../components/core/Headers'
-import Text from '../components/core/Text'
+// import Text from '../components/core/Text'
 import CallToAction from '../components/callToAction/CallToAction'
-import PlansOverview from '../components/PlansOverview'
+// import PlansOverview from '../components/PlansOverview'
 import ContactForm from '../components/contact/ContactForm'
 import HeroPageLayout from '../components/HeroPageLayout'
 import { HTMLContent } from '../components/Content'
@@ -16,7 +16,12 @@ import { HTMLContent } from '../components/Content'
 export const IndexPageTemplate = ({
   image,
   mainpitch,
-  intro,
+  introHeading,
+  introSubheading,
+  introDescription,
+  whyHeading,
+  whyDescription,
+  whyImage,
   why,
   pricing,
   featuresTitle,
@@ -38,6 +43,7 @@ export const IndexPageTemplate = ({
           <ContactForm className="quickForm--home is-hidden-mobile" />
         </div>
       }
+      isContentfulImage
     >
       <section className="section section--gradient">
         <div className="container">
@@ -49,13 +55,13 @@ export const IndexPageTemplate = ({
                   style={{ marginTop: '2rem', marginBottom: '80px' }}
                 >
                   <SectionHeader
-                    intro={intro.heading}
+                    intro={introHeading}
                     className="has-text-centered"
                     style={{ maxWidth: '755px', margin: '0 auto' }}
                   >
-                    {intro.subheading}
+                    {introSubheading}
                   </SectionHeader>
-                  <HTMLContent content={intro.description} className="intro__description" />
+                  <HTMLContent content={introDescription} className="intro__description" />
                 </div>
                 <div className="">
                   <div className="columns is-gapless mainPage__intro">
@@ -65,9 +71,9 @@ export const IndexPageTemplate = ({
                           className="has-text-left"
                           style={{ marginBottom: '28px' }}
                         >
-                          {why.heading}
+                          {whyHeading}
                         </SectionHeader>
-                        <HTMLContent content={why.description} style={{ marginBottom: '26px' }} />
+                        <HTMLContent content={whyDescription} style={{ marginBottom: '26px' }} />
                         <Link className="btn" to="/contact">
                           Get Started
                           <span className="icon">
@@ -80,9 +86,9 @@ export const IndexPageTemplate = ({
                       className="column is-half-desktop is-one-third-tablet"
                       style={{
                         backgroundImage: `url(${
-                          !!why.image.childImageSharp
-                            ? why.image.childImageSharp.fluid.src
-                            : why.image
+                          !!whyImage
+                            ? whyImage.fluid.src
+                            : whyImage
                         })`,
                         backgroundSize: 'cover',
                         backgroundPosition: 'center',
@@ -97,18 +103,15 @@ export const IndexPageTemplate = ({
                   <ul style={{ marginTop: '2rem' }}>
                     {features.map((feature, idx) => {
                       return (
-                        <li key={feature.title}>
+                        <li key={feature.heading}>
                           <div className={`mainFeature ${idx % 2 === 0 ? `even` : `odd`}`}>
                             <section className="mainFeature__summary">
-                              <h3 className="has-text-left is-size-4">{feature.title}</h3>
-                              <p>
-                                {feature.description}
-                              </p>
-
+                              <h3 className="has-text-left is-size-4" style={{ lineHeight: 1.5, marginBottom: '1.5rem' }}>{feature.heading}</h3>
+                              <HTMLContent content={feature.description} />
                             </section>
                             <div>
                             <div className="mainFeature__imageContainer">
-                              <Img fixed={feature.image.childImageSharp.fixed} alt="" className="mainFeature__image" />
+                              <Img fluid={feature.image.fluid} alt="" className="mainFeature__image" />
                             </div>
                           </div>
                         </div>
@@ -161,42 +164,36 @@ export const IndexPageTemplate = ({
 IndexPageTemplate.propTypes = {
   image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   mainpitch: PropTypes.string,
-  intro: PropTypes.shape({
-    heading: PropTypes.string,
-    subheading: PropTypes.string,
-    description: PropTypes.string,
-  }),
-  why: PropTypes.shape({
-    heading: PropTypes.string,
-    description: PropTypes.string,
-    image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
-  }),
-  pricing: PropTypes.shape({
-    heading: PropTypes.string,
-    description: PropTypes.string,
-  }),
+  introHeading: PropTypes.string,
+  introSubheading: PropTypes.string,
+  introDescription: PropTypes.object,
+  whyHeading: PropTypes.string,
+  whyDescription: PropTypes.object,
+  whyImage: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   featuresTitle: PropTypes.string,
   features: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string,
-    description: PropTypes.string,
+    description: PropTypes.object,
     image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   })),
-  isPreview: PropTypes.bool,
 }
 
 const IndexPage = ({ data }) => {
-  const { frontmatter } = data.markdownRemark
-
+  const { contentfulLandingPage } = data
+  
   return (
     <Layout>
       <IndexPageTemplate
-        image={frontmatter.image}
-        mainpitch={frontmatter.mainpitch}
-        intro={frontmatter.intro}
-        why={frontmatter.why}
-        pricing={frontmatter.pricing}
-        featuresTitle={frontmatter.featuresTitle}
-        features={frontmatter.features}
+        image={contentfulLandingPage.heroImage}
+        mainpitch={contentfulLandingPage.mainPitch}
+        introHeading={contentfulLandingPage.introHeading}
+        introSubheading={contentfulLandingPage.introSubheading}
+        introDescription={contentfulLandingPage.introDescription}
+        whyHeading={contentfulLandingPage.whyHeading}
+        whyDescription={contentfulLandingPage.whyDescription}
+        whyImage={contentfulLandingPage.whyImage}
+        featuresTitle={contentfulLandingPage.featuresTitle}
+        features={contentfulLandingPage.features}
       />
     </Layout>
   )
@@ -204,65 +201,46 @@ const IndexPage = ({ data }) => {
 
 IndexPage.propTypes = {
   data: PropTypes.shape({
-    markdownRemark: PropTypes.shape({
-      frontmatter: PropTypes.object,
-    }),
+    contentfulLandingPage: PropTypes.object,
   }),
 }
 
 export default IndexPage
 
 export const pageQuery = graphql`
-  query IndexPageTemplate {
-    markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
-      frontmatter {
-        mainpitch
+  query LandingPage {
+    contentfulLandingPage {
+      mainPitch
+      heroImage {
+        fluid(maxWidth: 2048, quality: 100) {
+          ...GatsbyContentfulFluid
+        }
+      }
+      introHeading
+      introSubheading
+      introDescription {
+        json
+      }
+      whyHeading
+      whyDescription {
+        json
+      }
+      whyImage {
+        fluid(maxWidth: 2048, quality: 100) {
+          ...GatsbyContentfulFluid
+        }
+      }
+      features {
+        heading
+        description {
+          json
+        }
         image {
-          childImageSharp {
-            fluid(maxWidth: 2048, quality: 100) {
-              ...GatsbyImageSharpFluid
-            }
+          fixed(width: 640, quality: 100) {
+            ...GatsbyContentfulFixed
           }
-        }
-        why {
-          heading
-          description
-          image {
-            childImageSharp {
-              fluid(maxWidth: 2048, quality: 100) {
-                ...GatsbyImageSharpFluid
-              }
-            }
-          }
-        }
-        intro {
-          heading
-          subheading
-          description
-        }
-        featuresTitle
-        features {
-          title
-          description
-          image {
-            childImageSharp {
-              fluid(maxWidth: 1024, quality: 100) {
-                ...GatsbyImageSharpFluid
-              }
-              fixed(width: 1024) {
-                ...GatsbyImageSharpFixed
-              }
-            }
-          }
-        }
-        pricing {
-          heading
-          image {
-            childImageSharp {
-              fluid(maxWidth: 2048, quality: 100) {
-                ...GatsbyImageSharpFluid
-              }
-            }
+          fluid(maxWidth: 840, quality: 100) {
+            ...GatsbyContentfulFluid
           }
         }
       }

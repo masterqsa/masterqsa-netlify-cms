@@ -13,7 +13,7 @@ links:
   - label: Contact
     path: "../contact"
 socialMedia:
-  - href: 'https://www.facebook.com/masterqsacom'
+  - href: 'https://www.facebook.com/turboqsacom'
     socialNetwork: facebook
     title: TurboQSA on Facebook
   - href: 'https://twitter.com/turboqsa'
