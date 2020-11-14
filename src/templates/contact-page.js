@@ -44,13 +44,10 @@ export const ContactPageTemplate = ({
           </div>
         </div>
       }
+      heroImageGradient="linear-gradient(rgba(40, 89, 226, .8), rgba(40, 89, 226, .8))"
       heroProps={{
         className: `contactPage__heroImage`,
-        style: {
-          backgroundImage: `linear-gradient(rgba(40, 89, 226, .8), rgba(40, 89, 226, .8))`,
-        },
       }}
-      isContentfulImage
     >
       <div className="contactForm">
         <ContactForm />

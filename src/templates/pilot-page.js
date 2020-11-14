@@ -28,13 +28,10 @@ export const PilotPageTemplate = ({
           </div>
         </div>
       }
+      heroImageGradient="linear-gradient(rgb(11, 103, 82, 0.9), rgba(11, 103, 82, 0.5))"
       heroProps={{
         className: `contactPage__heroImage`,
-        style: {
-          backgroundImage: `linear-gradient(rgb(11, 103, 82, 0.9), rgba(11, 103, 82, 0.5))`,
-        },
       }}
-      isContentfulImage
     >
       <div className="contactForm">
         <PilotForm />

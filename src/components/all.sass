@@ -334,11 +334,19 @@ $offer-card-padding: 3rem
   background-color: #fff
 
 .heroImage
-  position: fixed
+  position: absolute
+  z-index: -1
   top: 0
   left: 0
-  z-index: -1
-  object-fit: cover
+  width: 100%
+  height: 100%
+
+  &__scrim
+    position: absolute
+    left: 0
+    top: 0
+    width: 100%
+    height: 100%
 
 .mainPage
   &__pitch

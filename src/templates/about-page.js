@@ -42,13 +42,10 @@ export const AboutPageTemplate = ({
           </div>
         </div>
       }
+      heroImageGradient="linear-gradient(rgba(11, 103, 82, .9), rgba(11, 103, 82, .9))"
       heroProps={{
         className: `aboutPage__heroImage`,
-        style: {
-          backgroundImage: `linear-gradient(rgba(11, 103, 82, .9), rgba(11, 103, 82, .9))`,
-        },
       }}
-      isContentfulImage
     >
       <section className="section section--gradient">
         <div className="container has-text-centered">

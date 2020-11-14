@@ -43,7 +43,6 @@ export const IndexPageTemplate = ({
           <ContactForm className="quickForm--home is-hidden-mobile" />
         </div>
       }
-      isContentfulImage
     >
       <section className="section section--gradient">
         <div className="container">
