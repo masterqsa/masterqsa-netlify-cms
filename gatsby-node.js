@@ -44,40 +44,40 @@ exports.createPages = ({ actions, graphql }) => {
       path: `/`,
       component: path.resolve(`src/templates/index-page.js`),
       context: {
-        id: result.data.contentfulLandingPage.id
-      }
+        id: result.data.contentfulLandingPage.id,
+      },
     })
 
     createPage({
       path: `/about`,
       component: path.resolve(`src/templates/about-page.js`),
       context: {
-        id: result.data.contentfulAboutUsPage.id
-      }
+        id: result.data.contentfulAboutUsPage.id,
+      },
     })
 
     createPage({
       path: `/about`,
       component: path.resolve(`src/templates/about-page.js`),
       context: {
-        id: result.data.contentfulAboutUsPage.id
-      }
+        id: result.data.contentfulAboutUsPage.id,
+      },
     })
 
     createPage({
       path: `/contact`,
       component: path.resolve(`src/templates/contact-page.js`),
       context: {
-        id: result.data.contentfulContactPage.id
-      }
+        id: result.data.contentfulContactPage.id,
+      },
     })
 
     createPage({
       path: `/pilot`,
       component: path.resolve(`src/templates/pilot-page.js`),
       context: {
-        id: result.data.contentfulPilotPage.id
-      }
+        id: result.data.contentfulPilotPage.id,
+      },
     })
 
     const posts = result.data.allContentfulBlogPost.edges
@@ -87,9 +87,7 @@ exports.createPages = ({ actions, graphql }) => {
       createPage({
         path: `/blog/${edge.node.slug}`,
         tags: edge.node.tags,
-        component: path.resolve(
-          `src/templates/blog-post.js`
-        ),
+        component: path.resolve(`src/templates/blog-post.js`),
         // additional data can be passed via context
         context: {
           id,

@@ -7,11 +7,7 @@ import CallToAction from '../components/callToAction/CallToAction'
 import PilotForm from '../components/contact/PilotForm'
 import HeroPageLayout from '../components/HeroPageLayout'
 
-export const PilotPageTemplate = ({
-  title,
-  description,
-  image,
-}) => {
+export const PilotPageTemplate = ({ title, description, image }) => {
   return (
     <HeroPageLayout
       heroImage={image}
@@ -20,10 +16,10 @@ export const PilotPageTemplate = ({
           <SectionHeader className="contactPage__header has-text-centered">
             {title}
           </SectionHeader>
-            <div
-              className="is-size-4 is-size-5-mobile has-text-weight-semibold"
-              style={{ maxWidth: '640px', margin: '0 auto' }}
-            >
+          <div
+            className="is-size-4 is-size-5-mobile has-text-weight-semibold"
+            style={{ maxWidth: '640px', margin: '0 auto' }}
+          >
             {description}
           </div>
         </div>

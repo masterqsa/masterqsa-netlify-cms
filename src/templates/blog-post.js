@@ -45,7 +45,9 @@ export const BlogPostTemplate = ({
                 <ul className="taglist">
                   {tags.map(tag => (
                     <li key={tag.label + `tag`}>
-                      <Link to={`/tags/${kebabCase(tag.label)}/`}>{tag.label}</Link>
+                      <Link to={`/tags/${kebabCase(tag.label)}/`}>
+                        {tag.label}
+                      </Link>
                     </li>
                   ))}
                 </ul>
@@ -86,14 +88,8 @@ const BlogPost = ({ data, uri }) => {
               name="description"
               content={`${contentfulBlogPost.description.rawMarkdownBody}`}
             />
-            <meta
-              property="og:title"
-              content={`${contentfulBlogPost.title}`}
-            />
-            <meta
-              property="og:url"
-              content={`${uri}`}
-            />
+            <meta property="og:title" content={`${contentfulBlogPost.title}`} />
+            <meta property="og:url" content={`${uri}`} />
             {contentfulBlogPost.featuredimage && (
               <meta
                 property="og:image"

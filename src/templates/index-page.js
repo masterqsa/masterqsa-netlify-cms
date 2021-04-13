@@ -60,7 +60,10 @@ export const IndexPageTemplate = ({
                   >
                     {introSubheading}
                   </SectionHeader>
-                  <HTMLContent content={introDescription} className="intro__description" />
+                  <HTMLContent
+                    content={introDescription}
+                    className="intro__description"
+                  />
                 </div>
                 <div className="">
                   <div className="columns is-gapless mainPage__intro">
@@ -72,7 +75,10 @@ export const IndexPageTemplate = ({
                         >
                           {whyHeading}
                         </SectionHeader>
-                        <HTMLContent content={whyDescription} style={{ marginBottom: '26px' }} />
+                        <HTMLContent
+                          content={whyDescription}
+                          style={{ marginBottom: '26px' }}
+                        />
                         <Link className="btn" to="/contact">
                           Get Started
                           <span className="icon">
@@ -85,9 +91,7 @@ export const IndexPageTemplate = ({
                       className="column is-half-desktop is-one-third-tablet"
                       style={{
                         backgroundImage: `url(${
-                          !!whyImage
-                            ? whyImage.fluid.src
-                            : whyImage
+                          !!whyImage ? whyImage.fluid.src : whyImage
                         })`,
                         backgroundSize: 'cover',
                         backgroundPosition: 'center',
@@ -96,25 +100,39 @@ export const IndexPageTemplate = ({
                   </div>
                 </div>
                 <div style={{ marginTop: '4rem', marginBottom: '4rem' }}>
-                  <SectionHeader>
-                    {featuresTitle}
-                  </SectionHeader>
+                  <SectionHeader>{featuresTitle}</SectionHeader>
                   <ul style={{ marginTop: '2rem' }}>
                     {features.map((feature, idx) => {
                       return (
                         <li key={feature.heading}>
-                          <div className={`mainFeature ${idx % 2 === 0 ? `even` : `odd`}`}>
+                          <div
+                            className={`mainFeature ${
+                              idx % 2 === 0 ? `even` : `odd`
+                            }`}
+                          >
                             <section className="mainFeature__summary">
-                              <h3 className="has-text-left is-size-4" style={{ lineHeight: 1.5, marginBottom: '1.5rem' }}>{feature.heading}</h3>
+                              <h3
+                                className="has-text-left is-size-4"
+                                style={{
+                                  lineHeight: 1.5,
+                                  marginBottom: '1.5rem',
+                                }}
+                              >
+                                {feature.heading}
+                              </h3>
                               <HTMLContent content={feature.description} />
                             </section>
                             <div>
-                            <div className="mainFeature__imageContainer">
-                              <Img fluid={feature.image.fluid} alt="" className="mainFeature__image" />
+                              <div className="mainFeature__imageContainer">
+                                <Img
+                                  fluid={feature.image.fluid}
+                                  alt=""
+                                  className="mainFeature__image"
+                                />
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      </li>
+                        </li>
                       )
                     })}
                   </ul>
@@ -127,7 +145,7 @@ export const IndexPageTemplate = ({
                   >
                     Stories
                   </SectionHeader>
-                  <BlogRoll />
+                  <BlogRoll count={3} />
                   <div className="has-text-centered">
                     <Link className="button is-outlined is-primary" to="/blog">
                       Read more
@@ -170,16 +188,18 @@ IndexPageTemplate.propTypes = {
   whyDescription: PropTypes.object,
   whyImage: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   featuresTitle: PropTypes.string,
-  features: PropTypes.arrayOf(PropTypes.shape({
-    title: PropTypes.string,
-    description: PropTypes.object,
-    image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
-  })),
+  features: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string,
+      description: PropTypes.object,
+      image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+    })
+  ),
 }
 
 const IndexPage = ({ data }) => {
   const { contentfulLandingPage } = data
-  
+
   return (
     <Layout>
       <IndexPageTemplate

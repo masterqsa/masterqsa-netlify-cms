@@ -27,9 +27,7 @@ const CONTENT_QUERY = graphql`
 `
 
 export const CallToAction = () => {
-  const {
-    contentfulCallToAction,
-  } = useStaticQuery(CONTENT_QUERY)
+  const { contentfulCallToAction } = useStaticQuery(CONTENT_QUERY)
 
   return (
     <div className="qsaGetStarted">
@@ -39,9 +37,16 @@ export const CallToAction = () => {
             {contentfulCallToAction.title}
           </SectionHeader>
           <Text className="qsaGetStarted__description has-text-white">
-            <HTMLContent content={contentfulCallToAction.description.childMarkdownRemark.html} />
+            <HTMLContent
+              content={
+                contentfulCallToAction.description.childMarkdownRemark.html
+              }
+            />
           </Text>
-          <Link className="button is-primary" to={contentfulCallToAction.ctaButtonLink}>
+          <Link
+            className="button is-primary"
+            to={contentfulCallToAction.ctaButtonLink}
+          >
             {contentfulCallToAction.ctaButtonLabel}
           </Link>
         </div>
@@ -57,7 +62,6 @@ export const CallToAction = () => {
   )
 }
 
-CallToAction.propTypes = {
-}
+CallToAction.propTypes = {}
 
 export default CallToAction
