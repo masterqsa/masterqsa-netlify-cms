@@ -5,60 +5,80 @@ import Img from 'gatsby-image'
 import Text from './core/Text'
 import { OrganismHeader } from './core/Headers'
 
+const MAX_POSTS_IN_SNIPPET = 3
+
 class BlogRoll extends React.Component {
   render() {
-    const { data } = this.props
+    const { data, pageView } = this.props
     const { edges: posts } = data.allContentfulBlogPost
 
+    const postGroups = []
+    const maxPostsToShow = pageView ? posts.length : MAX_POSTS_IN_SNIPPET
+
+    for (let i = 0; i < maxPostsToShow; i++) {
+      if (i % 3 === 0) {
+        postGroups.push([])
+      }
+      postGroups[postGroups.length - 1].push(posts[i])
+    }
+
     return (
-      <div className="columns is-4 is-variable">
-        {posts &&
-          posts.map(({ node: post }) => {
-            const finalSlug = `/blog/${post.slug}`
-            return (
-              <div className="is-parent column is-4" key={post.id}>
-                <article
-                  className={`blog-list-item tile is-child box notification ${
-                    post.isFeaturedPost ? 'is-featured' : ''
-                  }`}
-                >
-                  <header>
-                    {post.featuredImage ? (
-                      <div className="featured-thumbnail">
-                        <Img {...post.featuredImage} alt={`featured image thumbnail for post ${post.title}`} />
-                      </div>
-                    ) : null}
-                    <OrganismHeader className="post-meta">
-                      <Link className="title" to={finalSlug}>
-                        {post.title}
-                      </Link>
-                      <time className="subtitle is-block">
-                        {post.publishedDate}
-                      </time>
-                    </OrganismHeader>
-                  </header>
-                  <Text>
-                    {post.body.childMarkdownRemark.excerpt}
-                    <br />
-                    <br />
-                    <Link
-                      className="button is-dark is-outlined is-hidden-mobile"
-                      to={finalSlug}
+      <React.Fragment>
+        {postGroups.map((postsInGroup, groupIdx) => {
+          return (
+            <div className="tile is-ancestor" key={groupIdx}>
+              {postsInGroup.map(({ node: post }) => {
+                const finalSlug = `/blog/${post.slug}`
+                return (
+                  <div className="tile is-parent is-4" key={post.slug}>
+                    <article
+                      className={`blog-list-item tile is-child box notification ${
+                        post.isFeaturedPost ? 'is-featured' : ''
+                      }`}
                     >
-                      Keep Reading →
-                    </Link>
-                    <Link
-                      className="is-dark is-outlined is-hidden-tablet"
-                      to={finalSlug}
-                    >
-                      Keep Reading →
-                    </Link>
-                  </Text>
-                </article>
-              </div>
-            )
-          })}
-      </div>
+                      <header>
+                        {post.featuredImage ? (
+                          <div className="featured-thumbnail">
+                            <Img
+                              {...post.featuredImage}
+                              alt={`featured image thumbnail for post ${post.title}`}
+                            />
+                          </div>
+                        ) : null}
+                        <OrganismHeader className="post-meta">
+                          <Link className="title" to={finalSlug}>
+                            {post.title}
+                          </Link>
+                          <time className="subtitle is-block">
+                            {post.publishedDate}
+                          </time>
+                        </OrganismHeader>
+                      </header>
+                      <Text>
+                        {post.body.childMarkdownRemark.excerpt}
+                        <br />
+                        <br />
+                        <Link
+                          className="button is-dark is-outlined is-hidden-mobile"
+                          to={finalSlug}
+                        >
+                          Keep Reading →
+                        </Link>
+                        <Link
+                          className="is-dark is-outlined is-hidden-tablet"
+                          to={finalSlug}
+                        >
+                          Keep Reading →
+                        </Link>
+                      </Text>
+                    </article>
+                  </div>
+                )
+              })}
+            </div>
+          )
+        })}
+      </React.Fragment>
     )
   }
 }
@@ -71,11 +91,11 @@ BlogRoll.propTypes = {
   }),
 }
 
-export default () => (
+export default ({ pageView = false }) => (
   <StaticQuery
     query={graphql`
       query BlogRollQuery {
-        allContentfulBlogPost(sort: {fields: publishedDate, order: DESC}) {
+        allContentfulBlogPost(sort: { fields: publishedDate, order: DESC }) {
           edges {
             node {
               title
@@ -97,6 +117,6 @@ export default () => (
         }
       }
     `}
-    render={(data, count) => <BlogRoll data={data} count={count} />}
+    render={data => <BlogRoll data={data} pageView={pageView} />}
   />
 )

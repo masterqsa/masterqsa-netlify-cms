@@ -7,7 +7,7 @@ import { HTMLContent } from '../components/Content'
 class TagRoute extends React.Component {
   render() {
     const posts = this.props.data.allContentfulBlogPost.edges
-    
+
     const postLinks = posts.map(post => (
       <li key={post.node.slug}>
         <Link to={`/blog/${post.node.slug}`}>
@@ -58,8 +58,8 @@ export const tagPageQuery = graphql`
     }
     allContentfulBlogPost(
       limit: 1000
-      sort: {fields: publishedDate, order: DESC}
-      filter: { tags: { elemMatch: { label: {eq: $tag} } } }
+      sort: { fields: publishedDate, order: DESC }
+      filter: { tags: { elemMatch: { label: { eq: $tag } } } }
     ) {
       totalCount
       edges {

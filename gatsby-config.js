@@ -3,7 +3,7 @@ var proxy = require('http-proxy-middleware')
 const contentfulConfig = {
   spaceId: process.env.CONTENTFUL_SPACE_ID,
   accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-  host: process.env.CONTENTFUL_HOST
+  host: process.env.CONTENTFUL_HOST,
 }
 
 const { spaceId, accessToken } = contentfulConfig
@@ -112,9 +112,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-gtag`,
       options: {
-        trackingIds: [
-          process.env.GTAG_ID,
-        ],
+        trackingIds: [process.env.GTAG_ID],
       },
     },
     'gatsby-plugin-netlify', // make sure to keep it last in the array

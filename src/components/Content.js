@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 
 export const HTMLContent = ({ content, className, style }) => {
   if (content && content.json) {
@@ -11,12 +11,18 @@ export const HTMLContent = ({ content, className, style }) => {
     )
   }
   return (
-    <div className={className} style={style} dangerouslySetInnerHTML={{ __html: content }} />
+    <div
+      className={className}
+      style={style}
+      dangerouslySetInnerHTML={{ __html: content }}
+    />
   )
 }
 
 const Content = ({ content, className, style }) => (
-  <div className={className} style={style}>{content}</div>
+  <div className={className} style={style}>
+    {content}
+  </div>
 )
 
 Content.propTypes = {
