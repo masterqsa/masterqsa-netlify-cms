@@ -14,7 +14,6 @@ class BlogRoll extends React.Component {
 
     const postGroups = []
     const maxPostsToShow = pageView ? posts.length : MAX_POSTS_IN_SNIPPET
-    console.log({ pageView, maxPostsToShow })
 
     for (let i = 0; i < maxPostsToShow; i++) {
       if (i % 3 === 0) {
