@@ -16,6 +16,7 @@ if (!spaceId || !accessToken) {
 
 module.exports = {
   siteMetadata: {
+    siteUrl: 'https://www.turboqsa.com',
     title: 'TurboQSA PCI Compliance',
     description:
       'TurboQSA improves the PCI compliance report creation process for both professional security assessors and the employees of the merchant being assessed',
@@ -23,6 +24,7 @@ module.exports = {
   plugins: [
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sass',
+    'gatsby-plugin-sitemap',
     {
       // keep as first gatsby-source-filesystem plugin for gatsby image support
       resolve: 'gatsby-source-filesystem',
