@@ -17,13 +17,30 @@ if (!spaceId || !accessToken) {
 module.exports = {
   siteMetadata: {
     siteUrl: 'https://www.turboqsa.com',
-    title: 'TurboQSA PCI Compliance',
+    title: 'TurboQSA PCI Compliance Software',
     description:
-      'TurboQSA improves the PCI compliance report creation process for both professional security assessors and the employees of the merchant being assessed',
+      'TurboQSA is a PCI DSS compliance assessment and report software for QSA and QSA Companies',
+    author: 'TurboQSA LLC',
+    keywords: [
+      'PCI Audit Software',
+      'PCI Assessment Software',
+      'PCI Compliance Software',
+      'QSA Software',
+      'QSA Productivity Software',
+      'QSA Productivity Tools',
+      'PCI ISA Productivity Software',
+      'eGRC Software',
+      'GRC Tools',
+    ],
   },
   plugins: [
     'gatsby-plugin-react-helmet',
-    'gatsby-plugin-sass',
+    {
+      resolve: 'gatsby-plugin-sass', 
+      options: {
+        indentedSyntax: true,
+      },
+    },
     'gatsby-plugin-sitemap',
     {
       // keep as first gatsby-source-filesystem plugin for gatsby image support
@@ -92,12 +109,6 @@ module.exports = {
       resolve: 'gatsby-transformer-remark-frontmatter',
       options: {
         whitelist: ['descriptionMd'],
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-netlify-cms',
-      options: {
-        modulePath: `${__dirname}/src/cms/cms.js`,
       },
     },
     {
