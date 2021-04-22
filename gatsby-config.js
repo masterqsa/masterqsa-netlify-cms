@@ -19,14 +19,16 @@ module.exports = {
     siteUrl: 'https://www.turboqsa.com',
     title: 'TurboQSA PCI Compliance',
     description:
-      'TurboQSA improves the PCI compliance report creation process for both professional security assessors and the employees of the merchant being assessed',
+      'TurboQSA is a PCI DSS compliance assessment and report software for QSA and QSA Companies',
     author: 'TurboQSA LLC',
     keywords: `PCI Assessment Software
 PCI Compliance Software
 QSA Software
 QSA Productivity Software
 QSA Productivity Tools
-PCI ISA Productivity Software`,
+PCI ISA Productivity Software
+eGRC Software
+GRC Tools`,
   },
   plugins: [
     'gatsby-plugin-react-helmet',
