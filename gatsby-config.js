@@ -20,6 +20,13 @@ module.exports = {
     title: 'TurboQSA PCI Compliance',
     description:
       'TurboQSA improves the PCI compliance report creation process for both professional security assessors and the employees of the merchant being assessed',
+    author: 'TurboQSA LLC',
+    keywords: `PCI Assessment Software
+PCI Compliance Software
+QSA Software
+QSA Productivity Software
+QSA Productivity Tools
+PCI ISA Productivity Software`,
   },
   plugins: [
     'gatsby-plugin-react-helmet',

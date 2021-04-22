@@ -4,6 +4,7 @@ import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
 import './all.sass'
 import useSiteMetadata from './SiteMetadata'
+import SEO from '../components/seo'
 import { withPrefix } from 'gatsby'
 
 const TemplateWrapper = ({ children }) => {
@@ -14,7 +15,7 @@ const TemplateWrapper = ({ children }) => {
         <html lang="en" />
         <title>{title}</title>
         <meta name="description" content={description} />
-
+        <SEO title={title} />
         <link
           rel="apple-touch-icon"
           sizes="180x180"
