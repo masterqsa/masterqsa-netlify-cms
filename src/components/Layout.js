@@ -4,18 +4,18 @@ import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
 import './all.sass'
 import useSiteMetadata from './SiteMetadata'
-import SEO from '../components/seo'
 import { withPrefix } from 'gatsby'
 
 const TemplateWrapper = ({ children }) => {
-  const { title, description } = useSiteMetadata()
+  const { title, description, keywords } = useSiteMetadata()
+
   return (
     <div>
       <Helmet>
         <html lang="en" />
         <title>{title}</title>
         <meta name="description" content={description} />
-        <SEO title={title} />
+        <meta name="keywords" content={keywords.join(", ")} />
         <link
           rel="apple-touch-icon"
           sizes="180x180"

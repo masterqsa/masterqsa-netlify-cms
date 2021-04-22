@@ -17,18 +17,21 @@ if (!spaceId || !accessToken) {
 module.exports = {
   siteMetadata: {
     siteUrl: 'https://www.turboqsa.com',
-    title: 'TurboQSA PCI Compliance',
+    title: 'TurboQSA PCI Compliance Software',
     description:
       'TurboQSA is a PCI DSS compliance assessment and report software for QSA and QSA Companies',
     author: 'TurboQSA LLC',
-    keywords: `PCI Assessment Software
-PCI Compliance Software
-QSA Software
-QSA Productivity Software
-QSA Productivity Tools
-PCI ISA Productivity Software
-eGRC Software
-GRC Tools`,
+    keywords: [
+      'PCI Audit Software',
+      'PCI Assessment Software',
+      'PCI Compliance Software',
+      'QSA Software',
+      'QSA Productivity Software',
+      'QSA Productivity Tools',
+      'PCI ISA Productivity Software',
+      'eGRC Software',
+      'GRC Tools',
+    ],
   },
   plugins: [
     'gatsby-plugin-react-helmet',
