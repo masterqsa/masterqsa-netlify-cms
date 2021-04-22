@@ -147,7 +147,7 @@ export const IndexPageTemplate = ({
                   </SectionHeader>
                   <BlogRoll count={3} />
                   <div className="has-text-centered">
-                    <Link className="button is-outlined is-primary" to="/blog">
+                    <Link className="button is-outlined is-primary" to="/blog" aria-label="View all blog entries">
                       Read more
                     </Link>
                   </div>
