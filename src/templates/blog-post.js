@@ -86,14 +86,14 @@ const BlogPost = ({ data, uri }) => {
             <title>{`${contentfulBlogPost.title}`}</title>
             <meta
               name="description"
-              content={`${contentfulBlogPost.description.rawMarkdownBody}`}
+              content={`${contentfulBlogPost.description.childMarkdownRemark.excerpt}`}
             />
             <meta property="og:title" content={`${contentfulBlogPost.title}`} />
             <meta property="og:url" content={`${uri}`} />
-            {contentfulBlogPost.featuredimage && (
+            {contentfulBlogPost.featuredImage?.fluid?.src && (
               <meta
                 property="og:image"
-                content={`${contentfulBlogPost.featuredimage.fluid.src}`}
+                content={`${contentfulBlogPost.featuredImage.fluid.src}`}
               />
             )}
           </Helmet>
@@ -119,7 +119,7 @@ export const pageQuery = graphql`
       description {
         childMarkdownRemark {
           html
-          rawMarkdownBody
+          excerpt(pruneLength: 500)
         }
       }
       body {
