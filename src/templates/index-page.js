@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link, graphql } from 'gatsby'
-import Img from 'gatsby-image'
 
 import Layout from '../components/Layout'
 import BlogRoll from '../components/BlogRoll'
@@ -12,8 +11,9 @@ import CallToAction from '../components/callToAction/CallToAction'
 import ContactForm from '../components/contact/ContactForm'
 import HeroPageLayout from '../components/HeroPageLayout'
 import { HTMLContent } from '../components/Content'
+import { GatsbyImage } from 'gatsby-plugin-image'
 
-export const IndexPageTemplate = ({
+const IndexPageTemplate = ({
   image,
   mainpitch,
   introHeading,
@@ -28,6 +28,7 @@ export const IndexPageTemplate = ({
   features,
   isPreview = false,
 }) => {
+  console.log(whyImage)
   return (
     <HeroPageLayout
       heroImage={image}
@@ -87,22 +88,14 @@ export const IndexPageTemplate = ({
                         </Link>
                       </div>
                     </div>
-                    <div
-                      className="column is-half-desktop is-one-third-tablet"
-                      style={{
-                        backgroundImage: `url(${
-                          !!whyImage ? whyImage.fluid.src : whyImage
-                        })`,
-                        backgroundSize: 'cover',
-                        backgroundPosition: 'center',
-                      }}
-                    ></div>
+                    <GatsbyImage image={whyImage?.gatsbyImageData} />
                   </div>
                 </div>
                 <div style={{ marginTop: '4rem', marginBottom: '4rem' }}>
                   <SectionHeader>{featuresTitle}</SectionHeader>
                   <ul style={{ marginTop: '2rem' }}>
                     {features.map((feature, idx) => {
+                      console.log(feature)
                       return (
                         <li key={feature.heading}>
                           <div
@@ -124,8 +117,8 @@ export const IndexPageTemplate = ({
                             </section>
                             <div>
                               <div className="mainFeature__imageContainer">
-                                <Img
-                                  fluid={feature.image.fluid}
+                                <GatsbyImage
+                                  image={feature.image.gatsbyImageData}
                                   alt=""
                                   className="mainFeature__image"
                                 />
@@ -147,7 +140,11 @@ export const IndexPageTemplate = ({
                   </SectionHeader>
                   <BlogRoll count={3} />
                   <div className="has-text-centered">
-                    <Link className="button is-outlined is-primary" to="/blog" aria-label="View all blog entries">
+                    <Link
+                      className="button is-outlined is-primary"
+                      to="/blog"
+                      aria-label="View all blog entries"
+                    >
                       Read more
                     </Link>
                   </div>
@@ -231,36 +228,39 @@ export const pageQuery = graphql`
     contentfulLandingPage {
       mainPitch
       heroImage {
-        fluid(maxWidth: 2048, quality: 100) {
-          ...GatsbyContentfulFluid
-        }
+        gatsbyImageData(
+          layout: FULL_WIDTH
+          placeholder: BLURRED
+          formats: [AUTO, WEBP]
+        )
       }
       introHeading
       introSubheading
       introDescription {
-        json
+        raw
       }
       whyHeading
       whyDescription {
-        json
+        raw
       }
       whyImage {
-        fluid(maxWidth: 2048, quality: 100) {
-          ...GatsbyContentfulFluid
-        }
+        gatsbyImageData(
+          height: 800
+          placeholder: BLURRED
+          formats: [AUTO, WEBP]
+        )
       }
       features {
         heading
         description {
-          json
+          raw
         }
         image {
-          fixed(width: 640, quality: 100) {
-            ...GatsbyContentfulFixed
-          }
-          fluid(maxWidth: 840, quality: 100) {
-            ...GatsbyContentfulFluid
-          }
+          gatsbyImageData(
+            width: 840
+            placeholder: BLURRED
+            formats: [AUTO, WEBP]
+          )
         }
       }
     }

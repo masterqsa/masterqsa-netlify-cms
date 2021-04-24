@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 import { kebabCase } from 'lodash'
 import Helmet from 'react-helmet'
 import { graphql, Link } from 'gatsby'
-import Img from 'gatsby-image'
 import Layout from '../components/Layout'
 import Content, { HTMLContent } from '../components/Content'
+import { GatsbyImage } from 'gatsby-plugin-image'
 
 export const BlogPostTemplate = ({
   content,
@@ -29,8 +29,8 @@ export const BlogPostTemplate = ({
             </h1>
             <HTMLContent content={description} className="is-size-4" />
             {featuredImage && (
-              <Img
-                {...featuredImage}
+              <GatsbyImage
+                image={featuredImage.gatsbyImageData}
                 alt={`featured image for post ${title}`}
                 style={{
                   marginTop: `1rem`,
@@ -128,7 +128,12 @@ export const pageQuery = graphql`
         }
       }
       featuredImage {
-        fluid(maxWidth: 2048, quality: 100) {
+        gatsbyImageData(
+          width: 1200
+          placeholder: BLURRED
+          formats: [AUTO, WEBP]
+        )
+        fluid(maxWidth: 1200, quality: 100) {
           ...GatsbyContentfulFluid
         }
       }

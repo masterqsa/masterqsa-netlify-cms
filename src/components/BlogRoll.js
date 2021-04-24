@@ -4,6 +4,7 @@ import { Link, graphql, StaticQuery } from 'gatsby'
 import Img from 'gatsby-image'
 import Text from './core/Text'
 import { OrganismHeader } from './core/Headers'
+import { GatsbyImage } from 'gatsby-plugin-image'
 
 const MAX_POSTS_IN_SNIPPET = 3
 
@@ -39,8 +40,8 @@ class BlogRoll extends React.Component {
                       <header>
                         {post.featuredImage ? (
                           <div className="featured-thumbnail">
-                            <Img
-                              {...post.featuredImage}
+                            <GatsbyImage
+                              image={post.featuredImage.gatsbyImageData}
                               alt={`featured image thumbnail for post ${post.title}`}
                             />
                           </div>
@@ -108,9 +109,12 @@ export default ({ pageView = false }) => (
                 }
               }
               featuredImage {
-                fluid(maxWidth: 120, quality: 100) {
-                  ...GatsbyContentfulFluid
-                }
+                gatsbyImageData(
+                  width: 480
+                  quality: 80
+                  placeholder: BLURRED
+                  formats: [AUTO, WEBP]
+                )
               }
             }
           }

@@ -2,11 +2,19 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 
+const ContentfulRawContent = ({ content }) => {
+  const parsed = React.useMemo(() => {
+    return documentToReactComponents(JSON.parse(content.raw))
+  }, [content.raw])
+
+  return <React.Fragment>{parsed}</React.Fragment>
+}
+
 export const HTMLContent = ({ content, className, style }) => {
-  if (content && content.json) {
+  if (content && content.raw) {
     return (
       <div className={className} style={style}>
-        {documentToReactComponents(content.json)}
+        <ContentfulRawContent content={content} />
       </div>
     )
   }
@@ -33,7 +41,7 @@ Content.propTypes = {
 HTMLContent.propTypes = {
   content: PropTypes.oneOfType([
     PropTypes.shape({
-      json: PropTypes.object,
+      raw: PropTypes.object,
     }),
     PropTypes.node,
   ]),

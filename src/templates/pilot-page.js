@@ -24,9 +24,12 @@ export const PilotPageTemplate = ({ title, description, image }) => {
           </div>
         </div>
       }
+      heroImageStyle={{
+        maxHeight: '584px',
+      }}
       heroImageGradient="linear-gradient(rgb(11, 103, 82, 0.9), rgba(11, 103, 82, 0.5))"
-      heroProps={{
-        className: `contactPage__heroImage`,
+      heroContentProps={{
+        className: `contactPage__heroContent`,
       }}
     >
       <div className="contactForm">
@@ -73,9 +76,11 @@ export const pilotPageQuery = graphql`
       title
       description
       heroImage {
-        fluid(maxWidth: 2048, quality: 100) {
-          ...GatsbyContentfulFluid
-        }
+        gatsbyImageData(
+          layout: FULL_WIDTH
+          placeholder: BLURRED
+          formats: [AUTO, WEBP]
+        )
       }
     }
   }
