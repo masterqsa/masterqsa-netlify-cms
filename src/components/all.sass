@@ -348,6 +348,12 @@ $offer-card-padding: 3rem
     width: 100%
     height: 100%
 
+.heroPageLayout
+  &__image
+    max-height: 541px
+    +mobile
+      max-height: #{"max(250px, 25vh)"}
+
 .mainPage
   &__pitch
     display: flex
@@ -632,10 +638,9 @@ $offer-card-padding: 3rem
       padding: 3rem 0 8rem
 
   &__heroImage
-    height: auto
-    padding: 7rem 0 8rem
-    +touch
-      padding: 3rem 0 8rem
+    max-height: 584px
+    +mobile
+      max-height: 334px
 
   &__header
     max-width: 326px
@@ -658,6 +663,7 @@ $offer-card-padding: 3rem
   +mobile
     margin-top: 0
     max-width: 90%
+    top: -1rem
 
 // helpers
 .has-text-accent

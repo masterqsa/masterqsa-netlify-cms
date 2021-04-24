@@ -44,9 +44,7 @@ export const ContactPageTemplate = ({
           </div>
         </div>
       }
-      heroImageStyle={{
-        maxHeight: '548px',
-      }}
+      heroImageClassName="contactPage__heroImage"
       heroImageGradient="linear-gradient(rgba(40, 89, 226, .8), rgba(40, 89, 226, .8))"
       heroProps={{
         className: `contactPage__heroContact`,

@@ -5,6 +5,7 @@ import { GatsbyImage } from 'gatsby-plugin-image'
 
 export const HeroPageLayout = ({
   heroImage,
+  heroImageClassName,
   heroImageGradient = null,
   heroImageStyle = {},
   heroContent,
@@ -26,9 +27,12 @@ export const HeroPageLayout = ({
             <GatsbyImage
               style={{
                 gridArea: '1/1',
-                maxHeight: '541px',
+                // maxHeight: '541px',
                 ...heroImageStyle,
               }}
+              className={["heroPageLayout__image", heroImageClassName]
+                .filter(Boolean)
+                .join(' ')}
               image={heroImage.gatsbyImageData}
               alt=""
             />

@@ -28,7 +28,6 @@ const IndexPageTemplate = ({
   features,
   isPreview = false,
 }) => {
-  console.log(whyImage)
   return (
     <HeroPageLayout
       heroImage={image}
@@ -44,6 +43,7 @@ const IndexPageTemplate = ({
           <ContactForm className="quickForm--home is-hidden-mobile" />
         </div>
       }
+      heroImageClassName="mainPage__heroImage"
     >
       <section className="section section--gradient">
         <div className="container">
@@ -95,7 +95,6 @@ const IndexPageTemplate = ({
                   <SectionHeader>{featuresTitle}</SectionHeader>
                   <ul style={{ marginTop: '2rem' }}>
                     {features.map((feature, idx) => {
-                      console.log(feature)
                       return (
                         <li key={feature.heading}>
                           <div

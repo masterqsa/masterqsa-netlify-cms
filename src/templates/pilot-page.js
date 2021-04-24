@@ -24,9 +24,7 @@ export const PilotPageTemplate = ({ title, description, image }) => {
           </div>
         </div>
       }
-      heroImageStyle={{
-        maxHeight: '584px',
-      }}
+      heroImageClassName="contactPage__heroImage"
       heroImageGradient="linear-gradient(rgb(11, 103, 82, 0.9), rgba(11, 103, 82, 0.5))"
       heroContentProps={{
         className: `contactPage__heroContent`,
