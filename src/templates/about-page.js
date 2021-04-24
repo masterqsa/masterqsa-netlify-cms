@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
-import Img from 'gatsby-image'
 import Layout from '../components/Layout'
 import { SectionHeader, OrganismHeader } from '../components/core/Headers'
 import Text from '../components/core/Text'
@@ -11,6 +10,7 @@ import ProductivityIcon from '../components/icons/ProductivityIcon'
 import FocusedIcon from '../components/icons/FocusedIcon'
 import HeroPageLayout from '../components/HeroPageLayout'
 import { HTMLContent } from '../components/Content'
+import { GatsbyImage } from 'gatsby-plugin-image'
 
 const pitchIcons = {
   DevelopedIcon,
@@ -18,7 +18,7 @@ const pitchIcons = {
   FocusedIcon,
 }
 
-export const AboutPageTemplate = ({
+const AboutPageTemplate = ({
   title,
   description,
   image,
@@ -31,7 +31,7 @@ export const AboutPageTemplate = ({
     <HeroPageLayout
       heroImage={image}
       heroContent={
-        <div className="container">
+        <div className="container" style={{ width: '100%' }}>
           <div className="has-text-white aboutPage__header">
             <SectionHeader style={{ marginBottom: '2rem' }}>
               {title}
@@ -43,6 +43,9 @@ export const AboutPageTemplate = ({
         </div>
       }
       heroImageGradient="linear-gradient(rgba(11, 103, 82, .9), rgba(11, 103, 82, .9))"
+      heroImageStyle={{
+        maxHeight: '354px',
+      }}
       heroProps={{
         className: `aboutPage__heroImage`,
       }}
@@ -54,7 +57,7 @@ export const AboutPageTemplate = ({
             <HTMLContent className="is-size-4" content={introDescription} />
           </Text>
           <div className="aboutPage__image">
-            <Img {...introImage} />
+            <GatsbyImage image={introImage.gatsbyImageData} />
           </div>
         </div>
         <div className="aboutPage__pitches">
@@ -147,23 +150,27 @@ export const aboutPageQuery = graphql`
         }
       }
       heroImage {
-        fluid(maxWidth: 2048, quality: 100) {
-          ...GatsbyContentfulFluid
-        }
+        gatsbyImageData(
+          layout: FULL_WIDTH
+          placeholder: BLURRED
+          formats: [AUTO, WEBP]
+        )
       }
       introHeading
       introDescription {
-        json
+        raw
       }
       introImage {
-        fluid(maxWidth: 2048, quality: 100) {
-          ...GatsbyContentfulFluid
-        }
+        gatsbyImageData(
+          width: 1344
+          placeholder: BLURRED
+          formats: [AUTO, WEBP]
+        )
       }
       pitches {
         title
         description {
-          json
+          raw
         }
         icon
       }

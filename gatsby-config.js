@@ -36,9 +36,9 @@ module.exports = {
   plugins: [
     'gatsby-plugin-react-helmet',
     {
-      resolve: 'gatsby-plugin-sass', 
+      resolve: 'gatsby-plugin-sass',
       options: {
-        indentedSyntax: true,
+        // indentedSyntax: true,
       },
     },
     'gatsby-plugin-sitemap',
@@ -75,6 +75,7 @@ module.exports = {
       resolve: 'gatsby-source-contentful',
       options: contentfulConfig,
     },
+    'gatsby-plugin-image',
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     {

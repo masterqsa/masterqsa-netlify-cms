@@ -1,10 +1,10 @@
 import React from 'react'
 import { Link, graphql, useStaticQuery } from 'gatsby'
-import Img from 'gatsby-image'
 
 import { SectionHeader } from '../core/Headers'
 import Text from '../core/Text'
 import { HTMLContent } from '../Content'
+import { GatsbyImage } from 'gatsby-plugin-image'
 
 const CONTENT_QUERY = graphql`
   query CallToActionQuery {
@@ -16,9 +16,12 @@ const CONTENT_QUERY = graphql`
         }
       }
       image {
-        fluid(maxWidth: 2048, quality: 100) {
-          ...GatsbyContentfulFluid
-        }
+        gatsbyImageData(
+          width: 280
+          quality: 100
+          placeholder: BLURRED
+          formats: [AUTO, WEBP]
+        )
       }
       ctaButtonLabel
       ctaButtonLink
@@ -53,7 +56,7 @@ export const CallToAction = () => {
         <div style={{ flexGrow: 1 }}></div>
         <div className="qsaGetStarted__imageContainer">
           <div className="qsaGetStarted__image">
-            <Img {...contentfulCallToAction.image} />
+            <GatsbyImage image={contentfulCallToAction.image.gatsbyImageData} />
           </div>
         </div>
         <div style={{ flexGrow: 1 }}></div>

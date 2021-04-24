@@ -1,7 +1,6 @@
 const _ = require('lodash')
 const path = require('path')
 const { createFilePath } = require('gatsby-source-filesystem')
-const { fmImagesToRelative } = require('gatsby-remark-relative-images')
 const remark = require('remark')
 const remarkHTML = require('remark-html')
 
@@ -162,6 +161,5 @@ function fnParseFrontmatterMarkdownFields(node, whitelist = [`description`]) {
 }
 
 exports.onCreateNode = ({ node }) => {
-  fmImagesToRelative(node) // convert image paths for gatsby images
   fnParseFrontmatterMarkdownFields(node) // convert Markdown frontmatter fields to HTML
 }

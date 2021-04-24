@@ -44,9 +44,10 @@ export const ContactPageTemplate = ({
           </div>
         </div>
       }
+      heroImageClassName="contactPage__heroImage"
       heroImageGradient="linear-gradient(rgba(40, 89, 226, .8), rgba(40, 89, 226, .8))"
       heroProps={{
-        className: `contactPage__heroImage`,
+        className: `contactPage__heroContact`,
       }}
     >
       <div className="contactForm">
@@ -99,9 +100,11 @@ export const contactPageQuery = graphql`
       title
       formTitle
       heroImage {
-        fluid(maxWidth: 2048, quality: 100) {
-          ...GatsbyContentfulFluid
-        }
+        gatsbyImageData(
+          layout: FULL_WIDTH
+          placeholder: BLURRED
+          formats: [AUTO, WEBP]
+        )
       }
     }
 
