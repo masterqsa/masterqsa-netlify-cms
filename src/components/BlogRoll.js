@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link, graphql, StaticQuery } from 'gatsby'
+import { Link, graphql, StaticQuery, navigate } from 'gatsby'
 import Img from 'gatsby-image'
 import Text from './core/Text'
 import { OrganismHeader } from './core/Headers'
@@ -39,11 +39,19 @@ class BlogRoll extends React.Component {
                     >
                       <header>
                         {post.featuredImage ? (
-                          <div className="featured-thumbnail">
-                            <GatsbyImage
-                              image={post.featuredImage.gatsbyImageData}
-                              alt={`featured image thumbnail for post ${post.title}`}
-                            />
+                          <div
+                            className="featured-thumbnail"
+                            style={{ cursor: 'pointer' }}
+                          >
+                            <Link
+                              to={finalSlug}
+                              aria-label={`Go to full post "${post.title}"`}
+                            >
+                              <GatsbyImage
+                                image={post.featuredImage.gatsbyImageData}
+                                alt={`featured image thumbnail for post ${post.title}`}
+                              />
+                            </Link>
                           </div>
                         ) : null}
                         <OrganismHeader className="post-meta">

@@ -30,7 +30,7 @@ export const HeroPageLayout = ({
                 // maxHeight: '541px',
                 ...heroImageStyle,
               }}
-              className={["heroPageLayout__image", heroImageClassName]
+              className={['heroPageLayout__image', heroImageClassName]
                 .filter(Boolean)
                 .join(' ')}
               image={heroImage.gatsbyImageData}
