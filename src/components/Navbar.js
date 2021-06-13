@@ -66,9 +66,13 @@ const Navbar = class extends React.Component {
               >
                 Pilot
               </Link>
-              {/* <Link activeClassName="is-active" className="navbar-item" to="/pricing">
-                Pricing
-              </Link> */}
+              <Link
+                activeClassName="is-active"
+                className="navbar-item"
+                to="/products"
+              >
+                Products
+              </Link>
               <Link
                 activeClassName="is-active"
                 className="navbar-item"

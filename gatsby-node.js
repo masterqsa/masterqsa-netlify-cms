@@ -21,6 +21,9 @@ exports.createPages = ({ actions, graphql }) => {
       contentfulPilotPage {
         id
       }
+      contentfulProductsPage {
+        id
+      }
       allContentfulBlogPost(limit: 1000) {
         edges {
           node {
@@ -76,6 +79,14 @@ exports.createPages = ({ actions, graphql }) => {
       component: path.resolve(`src/templates/pilot-page.js`),
       context: {
         id: result.data.contentfulPilotPage.id,
+      },
+    })
+
+    createPage({
+      path: `/products`,
+      component: path.resolve(`src/templates/products-page.js`),
+      context: {
+        id: result.data.contentfulProductsPage.id,
       },
     })
 

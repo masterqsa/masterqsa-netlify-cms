@@ -132,7 +132,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-facebook-pixel`,
       options: {
-        pixelId: "861464557766884",
+        pixelId: '861464557766884',
       },
     },
     'gatsby-plugin-netlify', // make sure to keep it last in the array
