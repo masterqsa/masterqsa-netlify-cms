@@ -62,13 +62,6 @@ const Navbar = class extends React.Component {
               <Link
                 activeClassName="is-active"
                 className="navbar-item"
-                to="/pilot"
-              >
-                Pilot
-              </Link>
-              <Link
-                activeClassName="is-active"
-                className="navbar-item"
                 to="/products"
               >
                 Products
