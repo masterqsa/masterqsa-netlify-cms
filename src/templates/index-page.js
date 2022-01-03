@@ -12,6 +12,7 @@ import ContactForm from '../components/contact/ContactForm'
 import HeroPageLayout from '../components/HeroPageLayout'
 import { HTMLContent } from '../components/Content'
 import { GatsbyImage } from 'gatsby-plugin-image'
+import FAQ from '../components/FAQ'
 
 const IndexPageTemplate = ({
   image,
@@ -148,6 +149,16 @@ const IndexPageTemplate = ({
                     </Link>
                   </div>
                 </div>
+                <div style={{ marginTop: '4rem', marginBottom: '4rem' }}>
+                  <SectionHeader
+                    className="has-text-left"
+                    style={{ marginBottom: '1rem' }}
+                  >
+                    FAQ
+                  </SectionHeader>
+                  <FAQ />
+                </div>
+
                 {/* <div className="pricing-section">
                   <div
                     className="background"

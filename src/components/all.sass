@@ -768,3 +768,53 @@ $offer-card-padding: 3rem
     filter: drop-shadow(2px 7px 5px rgba(10,10,10,.1))
     border-radius: 6px
     overflow: hidden
+
+.faqAccordion
+  text-align: start
+  $faqInnerPaddingH: 1rem
+  $faqInnerPaddingV: 1.5rem
+  
+  &__item
+    &
+      border: 1px solid #ccc
+      border-radius: 3px
+
+    & + &
+      margin-block-start: 0.5rem
+
+    h3
+      text-align: inherit
+
+    button
+      background: none
+      margin: 0
+      padding: 0
+      border: none
+      font-size: inherit
+      display: block
+      width: 100%
+      height: 100%
+      padding-inline-start: $faqInnerPaddingH
+      padding-inline-end: $faqInnerPaddingH
+      padding-block-start: $faqInnerPaddingV
+      padding-block-end: $faqInnerPaddingV
+      text-align: inherit
+      cursor: pointer
+
+      .icon
+        float: right
+        color: $grey-darker
+
+  &__panel
+    padding-inline-start: $faqInnerPaddingH
+    padding-inline-end: $faqInnerPaddingH
+    padding-block-start: $faqInnerPaddingV
+    padding-block-end: $faqInnerPaddingV
+    border-top: 1px solid #ddd
+
+    p
+      margin-block-end: 1em
+
+    ul
+      list-style-type: disc
+      margin-inline-start: 2em
