@@ -11,7 +11,7 @@ import { HTMLContent } from './Content'
 
 const CONTENT_QUERY = graphql`
   query FAQQuery {
-    allContentfulFaqEntry {
+    allContentfulFaqEntry(sort: {fields: createdAt, order: ASC}) {
       edges {
         node {
           id
