@@ -119,10 +119,6 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-exclude',
-      options: { paths: ['/pricing'] },
-    },
-    {
       resolve: 'gatsby-plugin-purgecss', // purges all unused/unreferenced css rules
       options: {
         develop: true, // Activates purging in npm run develop
