@@ -133,10 +133,9 @@ const IndexPageTemplate = ({
                 <div style={{ marginTop: '4rem', marginBottom: '4rem' }}>
                   <SectionHeader
                     className="has-text-left"
-                    intro="Latest stories"
                     style={{ marginBottom: '1rem' }}
                   >
-                    Stories
+                    Latest Stories
                   </SectionHeader>
                   <BlogRoll count={3} />
                   <div className="has-text-centered">
