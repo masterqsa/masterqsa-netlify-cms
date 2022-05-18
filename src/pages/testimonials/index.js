@@ -1,11 +1,11 @@
-import React from 'react'
-import { graphql } from 'gatsby'
-import { GatsbyImage } from 'gatsby-plugin-image'
+import React from "react";
+import { graphql } from "gatsby";
+import { GatsbyImage } from "gatsby-plugin-image";
 
-import Layout from '../../components/Layout'
-import { SectionHeader } from '../../components/core/Headers'
-import FAQ from '../../components/FAQ'
-import { HTMLContent } from '../../components/Content'
+import Layout from "../../components/Layout";
+import { SectionHeader } from "../../components/core/Headers";
+import FAQ from "../../components/FAQ";
+import { HTMLContent } from "../../components/Content";
 
 export const query = graphql`
   {
@@ -31,7 +31,7 @@ export const query = graphql`
       }
     }
   }
-`
+`;
 
 export default function TestimonialsIndexPage({ data }) {
   return (
@@ -46,7 +46,7 @@ export default function TestimonialsIndexPage({ data }) {
           <ul className="testimonialList">
             {data.allContentfulTestimonial.edges.map(
               ({ node: testimonial }) => {
-                console.log(testimonial)
+                console.log(testimonial);
                 return (
                   <li key={testimonial.id} className="testimonial">
                     <div className="testimonial__heading">
@@ -68,16 +68,16 @@ export default function TestimonialsIndexPage({ data }) {
                         </p>
                       </div>
                     </div>
-                    <div className="testimonial__testimony">
+                    <article className="testimonial__testimony">
                       <HTMLContent content={testimonial.testimony} />
-                    </div>
+                    </article>
                   </li>
-                )
+                );
               }
             )}
           </ul>
         </div>
       </section>
     </Layout>
-  )
+  );
 }
