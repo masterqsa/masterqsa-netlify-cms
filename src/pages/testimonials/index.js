@@ -21,7 +21,7 @@ export const query = graphql`
           url
           image {
             gatsbyImageData(
-              width: 160
+              height: 96
               placeholder: BLURRED
               formats: [AUTO, WEBP]
             )
@@ -42,39 +42,40 @@ export default function TestimonialsIndexPage({ data }) {
       </div>
       <section className="section">
         <div className="container">
-          <ul className="testimonialList">
-            {data.allContentfulTestimonial.edges.map(
-              ({ node: testimonial }) => {
-                console.log(testimonial);
-                return (
-                  <li key={testimonial.id} className="testimonial">
-                    <div className="testimonial__heading">
-                      <GatsbyImage
-                        image={testimonial.image.gatsbyImageData}
-                        className="testimonial__image"
-                      />
-                      <div>
-                        <h3 className="testimonial__name is-size-4">
-                          {testimonial.name}
-                        </h3>
-                        <p className="testimonial__info is-size-5">
-                          {testimonial.info}
-                        </p>
-                        <p className="testimonial__url is-size-5">
-                          <a href={testimonial.url} target="_blank">
-                            {testimonial.url}
-                          </a>
-                        </p>
+          <div className="columns">
+            <ul className="testimonialList column is-10 is-offset-1">
+              {data.allContentfulTestimonial.edges.map(
+                ({ node: testimonial }) => {
+                  return (
+                    <li key={testimonial.id} className="testimonial">
+                      <div className="testimonial__heading">
+                        <GatsbyImage
+                          image={testimonial.image.gatsbyImageData}
+                          className="testimonial__image"
+                        />
+                        <div>
+                          <h3 className="testimonial__name is-size-4">
+                            {testimonial.name}
+                          </h3>
+                          <p className="testimonial__info is-size-5">
+                            {testimonial.info}
+                          </p>
+                          <p className="testimonial__url is-size-5">
+                            <a href={testimonial.url} target="_blank">
+                              {testimonial.url}
+                            </a>
+                          </p>
+                        </div>
                       </div>
-                    </div>
-                    <article className="testimonial__testimony">
-                      <HTMLContent content={testimonial.testimony} />
-                    </article>
-                  </li>
-                );
-              }
-            )}
-          </ul>
+                      <article className="testimonial__testimony">
+                        <HTMLContent content={testimonial.testimony} />
+                      </article>
+                    </li>
+                  );
+                }
+              )}
+            </ul>
+          </div>
         </div>
       </section>
     </Layout>
