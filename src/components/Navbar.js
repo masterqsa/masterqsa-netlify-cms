@@ -1,14 +1,14 @@
-import React from 'react'
-import { Link } from 'gatsby'
-import logo from '../img/logo.svg'
+import React from "react";
+import { Link } from "gatsby";
+import logo from "../img/logo.svg";
 
 const Navbar = class extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       active: false,
-      navBarActiveClass: '',
-    }
+      navBarActiveClass: "",
+    };
   }
 
   toggleHamburger = () => {
@@ -22,14 +22,14 @@ const Navbar = class extends React.Component {
         // set the class in state for the navbar accordingly
         this.state.active
           ? this.setState({
-              navBarActiveClass: 'is-active',
+              navBarActiveClass: "is-active",
             })
           : this.setState({
-              navBarActiveClass: '',
-            })
+              navBarActiveClass: "",
+            });
       }
-    )
-  }
+    );
+  };
 
   render() {
     return (
@@ -65,6 +65,13 @@ const Navbar = class extends React.Component {
                 to="/products"
               >
                 Products
+              </Link>
+              <Link
+                activeClassName="is-active"
+                className="navbar-item"
+                to="/pricing"
+              >
+                Pricing
               </Link>
               <Link
                 activeClassName="is-active"
@@ -112,8 +119,8 @@ const Navbar = class extends React.Component {
           </div>
         </div>
       </nav>
-    )
+    );
   }
-}
+};
 
-export default Navbar
+export default Navbar;
