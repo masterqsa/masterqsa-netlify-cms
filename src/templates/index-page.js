@@ -57,8 +57,8 @@ const IndexPageTemplate = ({
                 >
                   <SectionHeader
                     intro={introHeading}
-                    className="has-text-centered"
-                    style={{ maxWidth: "755px", margin: "0 auto" }}
+                    className="has-text-left"
+                    style={{ maxWidth: "755px" }}
                   >
                     {introSubheading}
                   </SectionHeader>
@@ -66,8 +66,20 @@ const IndexPageTemplate = ({
                     content={introDescription}
                     className="intro__description"
                   />
+                  <Link className="btn" to="/contact">
+                    Get Started
+                    <span className="icon">
+                      <i className="fas fa-arrow-right" />
+                    </span>
+                  </Link>
                 </div>
-                <div className="">
+                <SectionHeader
+                  className="has-text-left"
+                  style={{ marginBottom: "28px" }}
+                >
+                  {whyHeading}
+                </SectionHeader>
+                <div className="" hidden>
                   <div className="columns is-gapless mainPage__intro">
                     <div className="column is-half-desktop is-two-thirds-tablet">
                       <div className="mainPage__introText">

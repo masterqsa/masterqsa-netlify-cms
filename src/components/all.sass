@@ -606,9 +606,11 @@ $offer-card-padding: 3rem
       padding-bottom: 20%
 
 .intro__description
-  text-align: center
+  text-align: start
   max-width: 676px
-  margin: 38px auto 0
+  margin: 38px 0 0
+  p
+    margin-block: 1em
 
 
 .footer
@@ -731,16 +733,20 @@ $offer-card-padding: 3rem
   align-items: center
   padding: 1rem 2rem
   position: relative
-  margin-bottom: 4rem
+  margin-top: -32px
   grid-template-areas: "summary" "image"
 
+  p
+    margin-block: 1em
+
   +tablet
-    padding: 2rem 5rem
+    padding: 1rem 5rem
 
   &::before
     content: ""
     position: absolute
     background: $grey-lighter
+    box-shadow: 1px 0px 3px 1px rgba(128, 128, 128, 0.5)
     top: 0
     height: 80%
     width: 100%
@@ -784,7 +790,7 @@ $offer-card-padding: 3rem
     padding: 2rem 0
 
     +widescreen
-      padding: 4rem 2rem 4rem 0
+      padding: 3rem 2rem 3rem 0
   
   &__imageContainer
     grid-area: image
