@@ -79,50 +79,10 @@ const IndexPageTemplate = ({
                 >
                   {whyHeading}
                 </SectionHeader>
-                <div className="" hidden>
-                  <div className="columns is-gapless mainPage__intro">
-                    <div className="column is-half-desktop is-two-thirds-tablet">
-                      <div className="mainPage__introText">
-                        <SectionHeader
-                          className="has-text-left"
-                          style={{ marginBottom: "28px" }}
-                        >
-                          {whyHeading}
-                        </SectionHeader>
-                        <HTMLContent
-                          content={whyDescription}
-                          style={{ marginBottom: "26px" }}
-                        />
-                        <Link className="btn" to="/contact">
-                          Get Started
-                          <span className="icon">
-                            <i className="fas fa-arrow-right" />
-                          </span>
-                        </Link>
-                      </div>
-                    </div>
-                    <GatsbyImage image={whyImage?.gatsbyImageData} />
-                  </div>
-                </div>
-                <div
-                  style={{
-                    marginTop: "4rem",
-                    marginBottom: "4rem",
-                    position: "relative",
-                  }}
-                >
+                <div className="mainFeaturesSection">
                   <SectionHeader>{featuresTitle}</SectionHeader>
-                  <div
-                    style={{
-                      position: "absolute",
-                      height: "100%",
-                      borderRightStyle: "dashed",
-                      borderRightWidth: 2,
-                      borderRightColor: "lightgray",
-                      right: "50%",
-                    }}
-                  />
-                  <ul style={{ marginTop: "2rem" }}>
+                  <div className="mainFeaturesConnector" />
+                  <ul className="mainFeatures">
                     {features.map((feature, idx) => {
                       return (
                         <li key={feature.heading}>

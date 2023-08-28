@@ -728,32 +728,43 @@ $offer-card-padding: 3rem
     & + &
       border-top: 1px solid #dedede
 
+.mainFeaturesSection
+  +widescreen
+    margin-block: 4rem
+    position: relative
+
+.mainFeatures
+  +widescreen
+    margin-top: 2rem
+
 .mainFeature
   display: grid
   align-items: center
-  padding: 1rem 2rem
+  padding: 1rem 2rem 2em
+  margin-bottom: 4rem
   position: relative
-  margin-top: -32px
   grid-template-areas: "summary" "image"
 
   p
     margin-block: 1em
 
-  +tablet
+  +widescreen
     padding: 1rem 5rem
+    margin-bottom: 0
+    margin-top: -32px
 
   &::before
     content: ""
     position: absolute
     background: $grey-lighter
-    box-shadow: 1px 0px 3px 1px rgba(128, 128, 128, 0.5)
+    box-shadow: 1px 0px 3px 1px rgba(192, 192, 192, 0.5)
     border-radius: 4px
     top: 0
-    height: 80%
+    height: 100%
     width: 100%
 
     +tablet
-      height: 60%
+      height: 100%
 
     +widescreen
       height: 100%
@@ -796,12 +807,22 @@ $offer-card-padding: 3rem
   &__imageContainer
     grid-area: image
     position: relative
+    padding-block: 2rem
 
   &__image
     margin: 0
     filter: drop-shadow(2px 7px 5px rgba(10,10,10,.1))
     border-radius: 6px
     overflow: hidden
+
+.mainFeaturesConnector
+  position: absolute
+  height: 100%
+  border-right: 2px dashed lightgray
+  right: 50%
+
+  +widescreen
+    display: none
 
 .faqAccordion
   text-align: start
@@ -827,7 +848,8 @@ $offer-card-padding: 3rem
       padding: 0
       border: none
       font-size: inherit
-      display: block
+      display: flex
+      align-items: center
       width: 100%
       height: 100%
       padding-inline-start: $faqInnerPaddingH
@@ -838,7 +860,7 @@ $offer-card-padding: 3rem
       cursor: pointer
 
       .icon
-        float: right
+        margin-inline-start: 16px
         color: $grey-darker
 
   &__panel
