@@ -606,9 +606,11 @@ $offer-card-padding: 3rem
       padding-bottom: 20%
 
 .intro__description
-  text-align: center
+  text-align: start
   max-width: 676px
-  margin: 38px auto 0
+  margin: 38px 0 0
+  p
+    margin-block: 1em
 
 
 .footer
@@ -726,27 +728,44 @@ $offer-card-padding: 3rem
     & + &
       border-top: 1px solid #dedede
 
+.mainFeaturesSection
+  position: relative
+
+  +widescreen
+    margin-block: 4rem
+
+.mainFeatures
+  +widescreen
+    margin-top: 2rem
+
 .mainFeature
   display: grid
   align-items: center
-  padding: 2rem 2rem
-  position: relative
+  padding: 1rem 2rem 2em
   margin-bottom: 4rem
+  position: relative
   grid-template-areas: "summary" "image"
 
-  +tablet
-    padding: 2rem 5rem
+  p
+    margin-block: 1em
+
+  +widescreen
+    padding: 1rem 5rem
+    margin-bottom: 0
+    margin-top: -32px
 
   &::before
     content: ""
     position: absolute
     background: $grey-lighter
+    box-shadow: 1px 0px 3px 1px rgba(192, 192, 192, 0.5)
+    border-radius: 4px
     top: 0
-    height: 80%
+    height: 100%
     width: 100%
 
     +tablet
-      height: 60%
+      height: 100%
 
     +widescreen
       height: 100%
@@ -784,17 +803,27 @@ $offer-card-padding: 3rem
     padding: 2rem 0
 
     +widescreen
-      padding: 8rem 2rem 8rem 0
+      padding: 3rem 2rem 3rem 0
   
   &__imageContainer
     grid-area: image
     position: relative
+    padding-block: 2rem
 
   &__image
     margin: 0
     filter: drop-shadow(2px 7px 5px rgba(10,10,10,.1))
     border-radius: 6px
     overflow: hidden
+
+.mainFeaturesConnector
+  position: absolute
+  height: 100%
+  border-right: 2px dashed lightgray
+  right: 50%
+
+  +widescreen
+    display: none
 
 .faqAccordion
   text-align: start
@@ -820,7 +849,8 @@ $offer-card-padding: 3rem
       padding: 0
       border: none
       font-size: inherit
-      display: block
+      display: flex
+      align-items: center
       width: 100%
       height: 100%
       padding-inline-start: $faqInnerPaddingH
@@ -831,7 +861,7 @@ $offer-card-padding: 3rem
       cursor: pointer
 
       .icon
-        float: right
+        margin-inline-start: 16px
         color: $grey-darker
 
   &__panel

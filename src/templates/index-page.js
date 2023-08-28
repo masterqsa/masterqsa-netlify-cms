@@ -1,18 +1,18 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { Link, graphql } from 'gatsby'
+import React from "react";
+import PropTypes from "prop-types";
+import { Link, graphql } from "gatsby";
 
-import Layout from '../components/Layout'
-import BlogRoll from '../components/BlogRoll'
-import { SectionHeader, PageHeader } from '../components/core/Headers'
+import Layout from "../components/Layout";
+import BlogRoll from "../components/BlogRoll";
+import { SectionHeader, PageHeader } from "../components/core/Headers";
 // import Text from '../components/core/Text'
-import CallToAction from '../components/callToAction/CallToAction'
+import CallToAction from "../components/callToAction/CallToAction";
 // import PlansOverview from '../components/PlansOverview'
-import ContactForm from '../components/contact/ContactForm'
-import HeroPageLayout from '../components/HeroPageLayout'
-import { HTMLContent } from '../components/Content'
-import { GatsbyImage } from 'gatsby-plugin-image'
-import FAQ from '../components/FAQ'
+import ContactForm from "../components/contact/ContactForm";
+import HeroPageLayout from "../components/HeroPageLayout";
+import { HTMLContent } from "../components/Content";
+import { GatsbyImage } from "gatsby-plugin-image";
+import FAQ from "../components/FAQ";
 
 const IndexPageTemplate = ({
   image,
@@ -34,7 +34,7 @@ const IndexPageTemplate = ({
       heroImage={image}
       heroContent={
         <div className="mainPage__pitch">
-          <div style={{ maxWidth: '500px' }}>
+          <div style={{ maxWidth: "500px" }}>
             <PageHeader className="mainPage__title">
               <span style={{ backgroundColor: `rgba(0, 0, 0, 0.5)` }}>
                 {mainpitch}
@@ -53,12 +53,12 @@ const IndexPageTemplate = ({
               <div className="">
                 <div
                   className=""
-                  style={{ marginTop: '2rem', marginBottom: '80px' }}
+                  style={{ marginTop: "2rem", marginBottom: "80px" }}
                 >
                   <SectionHeader
                     intro={introHeading}
-                    className="has-text-centered"
-                    style={{ maxWidth: '755px', margin: '0 auto' }}
+                    className="has-text-left"
+                    style={{ maxWidth: "755px" }}
                   >
                     {introSubheading}
                   </SectionHeader>
@@ -66,35 +66,23 @@ const IndexPageTemplate = ({
                     content={introDescription}
                     className="intro__description"
                   />
+                  <Link className="btn" to="/contact">
+                    Get Started
+                    <span className="icon">
+                      <i className="fas fa-arrow-right" />
+                    </span>
+                  </Link>
                 </div>
-                <div className="">
-                  <div className="columns is-gapless mainPage__intro">
-                    <div className="column is-half-desktop is-two-thirds-tablet">
-                      <div className="mainPage__introText">
-                        <SectionHeader
-                          className="has-text-left"
-                          style={{ marginBottom: '28px' }}
-                        >
-                          {whyHeading}
-                        </SectionHeader>
-                        <HTMLContent
-                          content={whyDescription}
-                          style={{ marginBottom: '26px' }}
-                        />
-                        <Link className="btn" to="/contact">
-                          Get Started
-                          <span className="icon">
-                            <i className="fas fa-arrow-right" />
-                          </span>
-                        </Link>
-                      </div>
-                    </div>
-                    <GatsbyImage image={whyImage?.gatsbyImageData} />
-                  </div>
-                </div>
-                <div style={{ marginTop: '4rem', marginBottom: '4rem' }}>
+                <SectionHeader
+                  className="has-text-left"
+                  style={{ marginBottom: "28px" }}
+                >
+                  {whyHeading}
+                </SectionHeader>
+                <div className="mainFeaturesSection">
                   <SectionHeader>{featuresTitle}</SectionHeader>
-                  <ul style={{ marginTop: '2rem' }}>
+                  <div className="mainFeaturesConnector" />
+                  <ul className="mainFeatures">
                     {features.map((feature, idx) => {
                       return (
                         <li key={feature.heading}>
@@ -108,7 +96,7 @@ const IndexPageTemplate = ({
                                 className="has-text-left is-size-4"
                                 style={{
                                   lineHeight: 1.5,
-                                  marginBottom: '1.5rem',
+                                  marginBottom: "1.5rem",
                                 }}
                               >
                                 {feature.heading}
@@ -126,14 +114,14 @@ const IndexPageTemplate = ({
                             </div>
                           </div>
                         </li>
-                      )
+                      );
                     })}
                   </ul>
                 </div>
-                <div style={{ marginTop: '4rem', marginBottom: '4rem' }}>
+                <div style={{ marginTop: "4rem", marginBottom: "4rem" }}>
                   <SectionHeader
                     className="has-text-left"
-                    style={{ marginBottom: '1rem' }}
+                    style={{ marginBottom: "1rem" }}
                   >
                     Latest Stories
                   </SectionHeader>
@@ -148,10 +136,10 @@ const IndexPageTemplate = ({
                     </Link>
                   </div>
                 </div>
-                <div style={{ marginTop: '4rem', marginBottom: '4rem' }}>
+                <div style={{ marginTop: "4rem", marginBottom: "4rem" }}>
                   <SectionHeader
                     className="has-text-left"
-                    style={{ marginBottom: '1rem' }}
+                    style={{ marginBottom: "1rem" }}
                   >
                     FAQ
                   </SectionHeader>
@@ -181,8 +169,8 @@ const IndexPageTemplate = ({
         </div>
       </section>
     </HeroPageLayout>
-  )
-}
+  );
+};
 
 IndexPageTemplate.propTypes = {
   image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
@@ -201,10 +189,10 @@ IndexPageTemplate.propTypes = {
       image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
     })
   ),
-}
+};
 
 const IndexPage = ({ data }) => {
-  const { contentfulLandingPage } = data
+  const { contentfulLandingPage } = data;
 
   return (
     <Layout>
@@ -221,16 +209,16 @@ const IndexPage = ({ data }) => {
         features={contentfulLandingPage.features}
       />
     </Layout>
-  )
-}
+  );
+};
 
 IndexPage.propTypes = {
   data: PropTypes.shape({
     contentfulLandingPage: PropTypes.object,
   }),
-}
+};
 
-export default IndexPage
+export default IndexPage;
 
 export const pageQuery = graphql`
   query LandingPage {
@@ -274,4 +262,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;
