@@ -13,6 +13,8 @@ import HeroPageLayout from "../components/HeroPageLayout";
 import { HTMLContent } from "../components/Content";
 import { GatsbyImage } from "gatsby-plugin-image";
 import FAQ from "../components/FAQ";
+import PCISSCLogo from "../components/PCISSCLogo";
+import PCISSCLogoNoGlobe from "../components/PCISSCLogoNoGlobe";
 
 const IndexPageTemplate = ({
   image,
@@ -52,26 +54,41 @@ const IndexPageTemplate = ({
             <div className="">
               <div className="">
                 <div
-                  className=""
+                  className="intro__container"
                   style={{ marginTop: "2rem", marginBottom: "80px" }}
                 >
-                  <SectionHeader
-                    intro={introHeading}
-                    className="has-text-left"
-                    style={{ maxWidth: "755px" }}
-                  >
-                    {introSubheading}
-                  </SectionHeader>
-                  <HTMLContent
-                    content={introDescription}
-                    className="intro__description"
-                  />
-                  <Link className="btn" to="/contact">
-                    Get Started
-                    <span className="icon">
-                      <i className="fas fa-arrow-right" />
-                    </span>
-                  </Link>
+                  <div>
+                    <SectionHeader
+                      intro={introHeading}
+                      className="has-text-left"
+                      style={{ maxWidth: "755px" }}
+                    >
+                      {introSubheading}
+                    </SectionHeader>
+                    <HTMLContent
+                      content={introDescription}
+                      className="intro__description"
+                    />
+                    <Link className="btn" to="/contact">
+                      Get Started
+                      <span className="icon">
+                        <i className="fas fa-arrow-right" />
+                      </span>
+                    </Link>
+                  </div>
+                  <div className="intro__pciLogo" style={{ flexGrow: 1 }}>
+                    <div style={{ textAlign: "center" }}>
+                      <PCISSCLogoNoGlobe
+                        style={{ height: "80px", marginBottom: "12px" }}
+                      />
+                      <h4
+                        className="has-text-brand is-size-6"
+                        style={{ maxWidth: "224px", margin: "0 auto" }}
+                      >
+                        Associate participating organization
+                      </h4>
+                    </div>
+                  </div>
                 </div>
                 <SectionHeader
                   className="has-text-left"
