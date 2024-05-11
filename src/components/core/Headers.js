@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 export function PageHeader({ children, className, ...rest }) {
   return (
@@ -10,12 +10,12 @@ export function PageHeader({ children, className, ...rest }) {
         `is-size-3-mobile`,
         `is-size-2-tablet`,
         `has-text-weight-semibold`,
-        className || '',
-      ].join(' ')}
+        className || "",
+      ].join(" ")}
     >
       {children}
     </h1>
-  )
+  );
 }
 
 export function SectionHeader({ intro, children, className, ...rest }) {
@@ -27,15 +27,15 @@ export function SectionHeader({ intro, children, className, ...rest }) {
         `is-size-2`,
         `is-size-4-mobile`,
         `has-text-weight-semibold`,
-        className || '',
-      ].join(' ')}
+        className || "",
+      ].join(" ")}
     >
-      {intro && (
+      {intro != null && intro.trim() !== "" && (
         <span className="qsaHeader__intro is-size-5 is-block">{intro}</span>
       )}
       {children}
     </h2>
-  )
+  );
 }
 
 export function OrganismHeader({ children, className, ...rest }) {
@@ -46,10 +46,10 @@ export function OrganismHeader({ children, className, ...rest }) {
         `qsaHeader--organism`,
         `is-size-4`,
         `has-text-weight-semibold`,
-        className || '',
-      ].join(' ')}
+        className || "",
+      ].join(" ")}
     >
       {children}
     </h4>
-  )
+  );
 }
