@@ -1,25 +1,25 @@
-import React from 'react'
-import { Link } from 'gatsby'
+import React from "react";
+import { Link } from "gatsby";
 
-import Layout from '../../components/Layout'
-import { SectionHeader } from '../../components/core/Headers'
+import Layout from "../../components/Layout";
+import { SectionHeader } from "../../components/core/Headers";
 
 export default function PricingIndexPage() {
-  const [numOfQSAUsers, setNumOfQSAUsers] = React.useState(3)
-  const [numOfUsers, setNumOfUsers] = React.useState(2)
+  const [numOfQSAUsers, setNumOfQSAUsers] = React.useState(3);
+  const [numOfUsers, setNumOfUsers] = React.useState(2);
 
-  let calculatedPrice = 0
-  let isIndividualPlan = false
-  let pricingDescription = ''
+  let calculatedPrice = 0;
+  let isIndividualPlan = false;
+  let pricingDescription = "";
 
-  const PRICE_PER_OTHER_USER = 200000
-  const PRICE_TIER_1 = 500000
-  const MAX_NUM_QSA_USERS_TIER_1 = 10
-  const PRICE_TIER_2 = 400000
-  const MAX_NUM_QSA_USERS_TIER_2 = 20
+  const PRICE_PER_OTHER_USER = 200000;
+  const PRICE_TIER_1 = 580000;
+  const MAX_NUM_QSA_USERS_TIER_1 = 10;
+  const PRICE_TIER_2 = 480000;
+  const MAX_NUM_QSA_USERS_TIER_2 = 20;
 
   function formatPrice(priceInCents) {
-    return `$${(priceInCents / 100).toLocaleString('en-US')}`
+    return `$${(priceInCents / 100).toLocaleString("en-US")}`;
   }
 
   const planTiles = [
@@ -36,33 +36,33 @@ export default function PricingIndexPage() {
       pricePerQSAUser: null,
       rangeDescription: `Next ${MAX_NUM_QSA_USERS_TIER_2 + 1}+ QSA users`,
     },
-  ]
+  ];
 
   if (numOfQSAUsers > 20) {
-    isIndividualPlan = true
+    isIndividualPlan = true;
     pricingDescription = `Contact us for an individual pricing per QSA user.\nFlat rate of ${formatPrice(
       PRICE_PER_OTHER_USER
-    )} for each non-QSA user.`
+    )} for each non-QSA user.`;
   } else if (numOfQSAUsers > 10) {
-    calculatedPrice += (numOfQSAUsers - 10) * PRICE_TIER_2
-    calculatedPrice += 10 * PRICE_TIER_1
+    calculatedPrice += (numOfQSAUsers - 10) * PRICE_TIER_2;
+    calculatedPrice += 10 * PRICE_TIER_1;
     pricingDescription = `Pay ${formatPrice(
       PRICE_TIER_1
     )} per user for the first 10 QSA users, and ${formatPrice(
       PRICE_TIER_2
     )} per user up to 20 QSA users.\nFlat rate of ${formatPrice(
       PRICE_PER_OTHER_USER
-    )} for each non-QSA user.`
+    )} for each non-QSA user.`;
   } else {
-    calculatedPrice += numOfQSAUsers * PRICE_TIER_1
+    calculatedPrice += numOfQSAUsers * PRICE_TIER_1;
     pricingDescription = `Pay ${formatPrice(
       PRICE_TIER_1
     )} per user up to 10 QSA users, with a tiered discount for more than 10 QSA users.\nFlat rate of ${formatPrice(
       PRICE_PER_OTHER_USER
-    )} for each non-QSA user.`
+    )} for each non-QSA user.`;
   }
 
-  calculatedPrice += numOfUsers * PRICE_PER_OTHER_USER
+  calculatedPrice += numOfUsers * PRICE_PER_OTHER_USER;
 
   return (
     <Layout>
@@ -75,13 +75,13 @@ export default function PricingIndexPage() {
             <div
               class="box"
               style={{
-                display: 'flex',
-                gap: '3rem',
+                display: "flex",
+                gap: "3rem",
                 maxWidth: 1024,
                 margin: `0 auto`,
               }}
             >
-              <div style={{ flexShrink: 0, flexBasis: '260px' }}>
+              <div style={{ flexShrink: 0, flexBasis: "260px" }}>
                 <h4 class="is-size-5">Pricing calculator</h4>
                 <div className="field">
                   <div className="field-label is-normal">
@@ -99,7 +99,7 @@ export default function PricingIndexPage() {
                           max="100"
                           placeholder="num of users"
                           value={numOfQSAUsers}
-                          onChange={e =>
+                          onChange={(e) =>
                             setNumOfQSAUsers(Number(e.target.value))
                           }
                           className="input pricingCalculator__input"
@@ -124,7 +124,9 @@ export default function PricingIndexPage() {
                           max="100"
                           placeholder="num of users"
                           value={numOfUsers}
-                          onChange={e => setNumOfUsers(Number(e.target.value))}
+                          onChange={(e) =>
+                            setNumOfUsers(Number(e.target.value))
+                          }
                           className="input pricingCalculator__input"
                         />
                       </p>
@@ -152,7 +154,7 @@ export default function PricingIndexPage() {
                     <p style={{ margin: 0 }}>
                       <span className="is-size-3 has-text-brand">
                         {formatPrice(calculatedPrice)}
-                      </span>{' '}
+                      </span>{" "}
                       / year
                     </p>
                     <p>
@@ -161,18 +163,18 @@ export default function PricingIndexPage() {
                     </p>
                   </>
                 )}
-                <p style={{ whiteSpace: 'pre-wrap' }}>{pricingDescription}</p>
+                <p style={{ whiteSpace: "pre-wrap" }}>{pricingDescription}</p>
               </div>
             </div>
-            <h3 style={{ margin: '2.5rem 0 2rem' }}>Progressive price</h3>
+            <h3 style={{ margin: "2.5rem 0 2rem" }}>Progressive price</h3>
             <div
               style={{
-                display: 'grid',
-                gap: '3rem',
-                gridAutoColumns: '1fr',
-                gridAutoFlow: 'column',
-                alignItems: 'stretch',
-                textAlign: 'center',
+                display: "grid",
+                gap: "3rem",
+                gridAutoColumns: "1fr",
+                gridAutoFlow: "column",
+                alignItems: "stretch",
+                textAlign: "center",
                 maxWidth: 1024,
                 margin: `0 auto`,
               }}
@@ -182,26 +184,26 @@ export default function PricingIndexPage() {
                   <div
                     class="box is-flex"
                     key={idx}
-                    style={{ margin: 0, flexDirection: 'column' }}
+                    style={{ margin: 0, flexDirection: "column" }}
                   >
                     <div
                       style={{
                         flexGrow: 1,
-                        display: 'flex',
-                        flexDirection: 'column',
-                        justifyContent: 'center',
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "center",
                       }}
                     >
                       <div
                         class="is-flex is-align-items-center"
                         style={{
-                          alignItems: 'center',
-                          justifyContent: 'center',
+                          alignItems: "center",
+                          justifyContent: "center",
                           flexGrow: 1,
                         }}
                       >
                         {pricePerQSAUser != null ? (
-                          <h4 class="is-size-4" style={{ margin: '1rem 0' }}>
+                          <h4 class="is-size-4" style={{ margin: "1rem 0" }}>
                             {pricePerQSAUser} <br />
                             <small class="is-size-6 has-text-grey">
                               per QSA user
@@ -216,11 +218,11 @@ export default function PricingIndexPage() {
                           </Link>
                         )}
                       </div>
-                      <p style={{ margin: '0.5rem 0 1rem' }}>
+                      <p style={{ margin: "0.5rem 0 1rem" }}>
                         {rangeDescription}
                       </p>
                     </div>
-                    <hr style={{ height: '1px' }} />
+                    <hr style={{ height: "1px" }} />
                     <h4 class="is-size-4">
                       {formatPrice(PRICE_PER_OTHER_USER)} <br />
                       <small class="is-size-6 has-text-grey">
@@ -228,7 +230,7 @@ export default function PricingIndexPage() {
                       </small>
                     </h4>
                   </div>
-                )
+                );
               })}
             </div>
             <div
@@ -237,7 +239,7 @@ export default function PricingIndexPage() {
                 margin: `0 auto`,
               }}
             >
-              <hr style={{ height: '1px' }} />
+              <hr style={{ height: "1px" }} />
               <p className="is-size-7">
                 * Including Associate QSA. Client Users are free of charge.
               </p>
@@ -246,5 +248,5 @@ export default function PricingIndexPage() {
         </div>
       </section>
     </Layout>
-  )
+  );
 }
