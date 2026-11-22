@@ -3,9 +3,12 @@ import PropTypes from 'prop-types'
 import { kebabCase } from 'lodash'
 import Helmet from 'react-helmet'
 import { graphql, Link } from 'gatsby'
-import Layout from '../components/Layout'
-import Content, { HTMLContent } from '../components/Content'
 import { GatsbyImage } from 'gatsby-plugin-image'
+
+import Layout from '../components/Layout'
+import CallToAction from '../components/callToAction/CallToAction'
+import Content, { HTMLContent } from '../components/Content'
+import turboSpiral from '../img/turbo-spiral.svg'
 
 export const BlogPostTemplate = ({
   content,
@@ -19,33 +22,75 @@ export const BlogPostTemplate = ({
   const PostContent = contentComponent || Content
 
   return (
-    <section className="section">
+    <React.Fragment>
       {helmet || ''}
-      <div className="container content">
-        <div className="columns">
-          <div className="column is-10 is-offset-1">
-            <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
-              {title}
-            </h1>
-            <HTMLContent content={description} className="is-size-4" />
-            {featuredImage && (
+      <section className="tq-page-hero tq-page-hero--compact">
+        <img
+          src={turboSpiral}
+          alt=""
+          aria-hidden="true"
+          className="tq-page-hero__watermark"
+        />
+        <div className="tq-wrap tq-page-hero__inner">
+          <div className="tq-eyebrow tq-eyebrow--light">
+            <span className="tq-eyebrow__dot" aria-hidden="true" />
+            <span>TURBOQSA BLOG</span>
+          </div>
+          <h1 className="tq-page-hero__title">{title}</h1>
+          {description && (
+            <div className="tq-page-hero__lead">
+              <HTMLContent content={description} />
+            </div>
+          )}
+        </div>
+      </section>
+
+      <section className="tq-section tq-section--white">
+        <div className="tq-wrap">
+          <article
+            className="tq-card content"
+            style={{
+              maxWidth: '880px',
+              margin: '0 auto 56px',
+              padding: '36px',
+            }}
+          >
+            {featuredImage && featuredImage.gatsbyImageData && (
               <GatsbyImage
                 image={featuredImage.gatsbyImageData}
-                alt={`featured image for post ${title}`}
+                alt={`Featured image for post ${title}`}
                 style={{
-                  marginTop: `1rem`,
-                  marginBottom: `2rem`,
+                  marginBottom: '28px',
+                  borderRadius: '10px',
                 }}
               />
             )}
             <PostContent content={content} />
             {tags && tags.length ? (
-              <div style={{ marginTop: `4rem` }}>
-                <h4>Tags</h4>
-                <ul className="taglist">
+              <div
+                style={{
+                  marginTop: '36px',
+                  paddingTop: '20px',
+                  borderTop: '1px solid var(--tq-line)',
+                }}
+              >
+                <h2 style={{ fontSize: '15px', marginBottom: '10px' }}>Tags</h2>
+                <ul
+                  style={{
+                    listStyle: 'none',
+                    margin: 0,
+                    padding: 0,
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    gap: '10px',
+                  }}
+                >
                   {tags.map(tag => (
-                    <li key={tag.label + `tag`}>
-                      <Link to={`/tags/${kebabCase(tag.label)}/`}>
+                    <li key={tag.label + 'tag'}>
+                      <Link
+                        className="tq-nav__sister"
+                        to={`/tags/${kebabCase(tag.label)}/`}
+                      >
                         {tag.label}
                       </Link>
                     </li>
@@ -53,10 +98,12 @@ export const BlogPostTemplate = ({
                 </ul>
               </div>
             ) : null}
-          </div>
+          </article>
+
+          <CallToAction />
         </div>
-      </div>
-    </section>
+      </section>
+    </React.Fragment>
   )
 }
 
@@ -64,13 +111,19 @@ BlogPostTemplate.propTypes = {
   content: PropTypes.node.isRequired,
   contentComponent: PropTypes.func,
   description: PropTypes.string,
+  tags: PropTypes.array,
   title: PropTypes.string,
-  featuredimage: PropTypes.object,
+  featuredImage: PropTypes.object,
   helmet: PropTypes.object,
 }
 
 const BlogPost = ({ data, uri }) => {
   const { contentfulBlogPost } = data
+  const ogImageSrc =
+    contentfulBlogPost &&
+    contentfulBlogPost.featuredImage &&
+    contentfulBlogPost.featuredImage.fluid &&
+    contentfulBlogPost.featuredImage.fluid.src
 
   return (
     <Layout>
@@ -90,12 +143,7 @@ const BlogPost = ({ data, uri }) => {
             />
             <meta property="og:title" content={`${contentfulBlogPost.title}`} />
             <meta property="og:url" content={`${uri}`} />
-            {contentfulBlogPost.featuredImage?.fluid?.src && (
-              <meta
-                property="og:image"
-                content={`${contentfulBlogPost.featuredImage.fluid.src}`}
-              />
-            )}
+            {ogImageSrc && <meta property="og:image" content={ogImageSrc} />}
           </Helmet>
         }
       />
@@ -107,6 +155,7 @@ BlogPost.propTypes = {
   data: PropTypes.shape({
     contentfulBlogPost: PropTypes.object,
   }),
+  uri: PropTypes.string,
 }
 
 export default BlogPost

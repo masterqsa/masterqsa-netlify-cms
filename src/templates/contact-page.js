@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
+
 import Layout from '../components/Layout'
-import { SectionHeader } from '../components/core/Headers'
 import CallToAction from '../components/callToAction/CallToAction'
 import ContactForm from '../components/contact/ContactForm'
-import HeroPageLayout from '../components/HeroPageLayout'
+import turboSpiral from '../img/turbo-spiral.svg'
 
 export const ContactPageTemplate = ({
   title,
@@ -13,52 +13,88 @@ export const ContactPageTemplate = ({
   phone,
   email,
   formTitle,
-  image,
 }) => {
   return (
-    <HeroPageLayout
-      heroImage={image}
-      heroContent={
-        <div className="container has-text-white has-text-centered">
-          <SectionHeader className="contactPage__header has-text-centered">
-            {title}
-          </SectionHeader>
-          <div>
-            <address className="contactPage__address is-size-5">
-              {address}
-              <br />
-              <a href={`tel:${phone}`} className="has-text-white">
-                {phone}
-              </a>
-              <br />
-              <a href={`mailto:${email}`} className="has-text-white">
-                {email}
-              </a>
-            </address>
-            <div
-              className="is-size-4 is-size-5-mobile has-text-weight-semibold"
-              style={{ maxWidth: '374px', margin: '0 auto' }}
-            >
-              {formTitle}
-            </div>
+    <React.Fragment>
+      <section className="tq-page-hero tq-page-hero--compact">
+        <img
+          src={turboSpiral}
+          alt=""
+          aria-hidden="true"
+          className="tq-page-hero__watermark"
+        />
+        <div className="tq-wrap tq-page-hero__inner">
+          <div className="tq-eyebrow tq-eyebrow--light">
+            <span className="tq-eyebrow__dot" aria-hidden="true" />
+            <span>SALES &amp; DEMO INQUIRIES</span>
           </div>
+          <h1 className="tq-page-hero__title">{title}</h1>
+          <p className="tq-page-hero__lead">{formTitle}</p>
         </div>
-      }
-      heroImageClassName="contactPage__heroImage"
-      heroImageGradient="linear-gradient(rgba(40, 89, 226, .8), rgba(40, 89, 226, .8))"
-      heroProps={{
-        className: `contactPage__heroContact`,
-      }}
-    >
-      <div className="contactForm">
-        <ContactForm />
-      </div>
-      <div className="section">
-        <div className="container">
+      </section>
+
+      <section className="tq-section tq-section--paper">
+        <div className="tq-wrap">
+          <div className="tq-contact-layout" style={{ marginBottom: '56px' }}>
+            <div>
+              <div className="tq-eyebrow">
+                <span className="tq-eyebrow__dot" aria-hidden="true" />
+                <span>HOW WE CAN HELP</span>
+              </div>
+              <h2 className="tq-section__title" style={{ fontSize: '28px' }}>
+                Connect With the TurboQSA Team
+              </h2>
+              <p style={{ color: 'var(--tq-muted)' }}>
+                Reach out to schedule a live walkthrough of PCI DSS v4.0.1 ROCs
+                and Standalone SAQs, discuss Pay-as-you-go pricing details and
+                custom package deals, or ask about 13-standard expansion on
+                Turbo Assessment.
+              </p>
+
+              <div className="tq-contact-info-list">
+                <div className="tq-contact-info-item">
+                  <strong>Phone</strong>
+                  <a href={`tel:${phone}`}>{phone}</a>
+                </div>
+                <div className="tq-contact-info-item">
+                  <strong>Email</strong>
+                  <a href={`mailto:${email}`}>{email}</a>
+                </div>
+                <div className="tq-contact-info-item">
+                  <strong>Office</strong>
+                  <span>{address}</span>
+                </div>
+              </div>
+
+              <div
+                style={{
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  gap: '14px',
+                  alignItems: 'center',
+                }}
+              >
+                <Link className="tq-text-link" to="/pricing">
+                  Review Pay-As-You-Go Billing Model →
+                </Link>
+                <a
+                  className="tq-text-link"
+                  href="https://www.turboassessment.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Turbo Assessment Multi-Standard Suite ↗
+                </a>
+              </div>
+            </div>
+
+            <ContactForm />
+          </div>
+
           <CallToAction />
         </div>
-      </div>
-    </HeroPageLayout>
+      </section>
+    </React.Fragment>
   )
 }
 

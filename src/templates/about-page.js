@@ -1,16 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
+
 import Layout from '../components/Layout'
-import { SectionHeader, OrganismHeader } from '../components/core/Headers'
-import Text from '../components/core/Text'
 import CallToAction from '../components/callToAction/CallToAction'
 import DevelopedIcon from '../components/icons/DevelopedIcon'
 import ProductivityIcon from '../components/icons/ProductivityIcon'
 import FocusedIcon from '../components/icons/FocusedIcon'
-import HeroPageLayout from '../components/HeroPageLayout'
+import PCISSCLogoNoGlobe from '../components/PCISSCLogoNoGlobe'
 import { HTMLContent } from '../components/Content'
-import { GatsbyImage } from 'gatsby-plugin-image'
+
+import turboSpiral from '../img/turbo-spiral.svg'
+import aboutEditorial from '../img/refresh/about-editorial.jpg'
 
 const pitchIcons = {
   DevelopedIcon,
@@ -18,85 +19,155 @@ const pitchIcons = {
   FocusedIcon,
 }
 
+const PITCH_CARD_MODIFIERS = ['', 'tq-pitch-card--mid', 'tq-pitch-card--bright']
+
 const AboutPageTemplate = ({
   title,
   description,
-  image,
   introHeading,
   introDescription,
-  introImage,
-  pitches,
+  pitches = [],
 }) => {
-  return (
-    <HeroPageLayout
-      heroImage={image}
-      heroContent={
-        <div className="container" style={{ width: '100%' }}>
-          <div className="has-text-white aboutPage__header">
-            <SectionHeader style={{ marginBottom: '2rem' }}>
-              {title}
-            </SectionHeader>
-            <Text>
-              <HTMLContent content={description.childMarkdownRemark.html} />
-            </Text>
-          </div>
-        </div>
-      }
-      heroImageGradient="linear-gradient(rgba(11, 103, 82, .9), rgba(11, 103, 82, .9))"
-      heroImageStyle={{
-        maxHeight: '354px',
-      }}
-      heroProps={{
-        className: `aboutPage__heroImage`,
-      }}
-    >
-      <section className="section section--gradient">
-        <div className="container has-text-centered">
-          <SectionHeader intro={introHeading} style={{ marginTop: '2rem' }} />
-          <Text style={{ maxWidth: '951px', margin: '0 auto' }}>
-            <HTMLContent className="is-size-4" content={introDescription} />
-          </Text>
-          <div className="aboutPage__image">
-            <GatsbyImage image={introImage.gatsbyImageData} />
-          </div>
-        </div>
-        <div className="aboutPage__pitches">
-          {pitches.map(({ title, description, icon }, idx, list) => {
-            const Icon = pitchIcons[icon]
+  const ledeHtml =
+    description &&
+    description.childMarkdownRemark &&
+    description.childMarkdownRemark.html
 
-            return (
-              <div
-                key={title}
-                className="has-text-white aboutPage__pitch"
-                style={{
-                  backgroundImage: `linear-gradient(rgba(0, 0, 0, ${idx *
-                    0.2}), rgba(0, 0, 0, ${idx *
-                    0.2})), linear-gradient(#2047b5, #2047b5)`,
-                }}
-              >
-                {Icon && (
-                  <Icon
-                    style={{
-                      width: '3rem',
-                      height: '3rem',
-                      marginLeft: '-0.5rem',
-                    }}
-                  />
-                )}
-                <OrganismHeader>{title}</OrganismHeader>
-                <HTMLContent
-                  content={description}
-                  style={{ marginTop: '1rem' }}
-                />
-              </div>
-            )
-          })}
+  return (
+    <React.Fragment>
+      <section className="tq-page-hero">
+        <img
+          src={turboSpiral}
+          alt=""
+          aria-hidden="true"
+          className="tq-page-hero__watermark"
+        />
+        <div className="tq-wrap tq-page-hero__inner">
+          <div className="tq-eyebrow tq-eyebrow--light">
+            <span className="tq-eyebrow__dot" aria-hidden="true" />
+            <span>ABOUT TURBOQSA</span>
+          </div>
+          <h1 className="tq-page-hero__title">{title}</h1>
+          {ledeHtml && (
+            <div className="tq-page-hero__lead">
+              <HTMLContent content={ledeHtml} />
+            </div>
+          )}
         </div>
-        <div className="container">
+      </section>
+
+      <section className="tq-section tq-section--white">
+        <div className="tq-wrap">
+          <div
+            className="tq-section__header tq-section__header--center"
+            style={{ maxWidth: '880px' }}
+          >
+            {introHeading && (
+              <div className="tq-eyebrow">
+                <span className="tq-eyebrow__dot" aria-hidden="true" />
+                <span>{introHeading}</span>
+              </div>
+            )}
+            {introDescription && (
+              <div className="tq-richtext" style={{ fontSize: '18px' }}>
+                <HTMLContent content={introDescription} />
+              </div>
+            )}
+          </div>
+
+          <div className="tq-editorial-frame">
+            <img
+              src={aboutEditorial}
+              alt="Architectural glass illustration representing structured security assessment engineering"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section className="tq-section tq-section--paper">
+        <div className="tq-wrap">
+          <div className="tq-about-pitches" style={{ marginBottom: '48px' }}>
+            {pitches.map(({ title: pitchTitle, description: pitchDesc, icon }, idx) => {
+              const Icon = pitchIcons[icon]
+              const cardModifier =
+                PITCH_CARD_MODIFIERS[idx % PITCH_CARD_MODIFIERS.length]
+
+              return (
+                <div
+                  key={pitchTitle}
+                  className={`tq-pitch-card ${cardModifier}`}
+                >
+                  {Icon && (
+                    <Icon
+                      style={{
+                        width: '44px',
+                        height: '44px',
+                      }}
+                    />
+                  )}
+                  <h3>{pitchTitle}</h3>
+                  <HTMLContent content={pitchDesc} />
+                </div>
+              )
+            })}
+          </div>
+
+          <div
+            className="tq-card"
+            style={{
+              marginBottom: '48px',
+              display: 'flex',
+              flexWrap: 'wrap',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              gap: '24px',
+            }}
+          >
+            <div style={{ maxWidth: '640px' }}>
+              <div className="tq-eyebrow" style={{ marginBottom: '8px' }}>
+                <span className="tq-eyebrow__dot" aria-hidden="true" />
+                <span>ECOSYSTEM &amp; PARTICIPATION</span>
+              </div>
+              <h2 style={{ fontSize: '24px', marginBottom: '8px' }}>
+                Dedicated PCI Specialist Within the Turbo Assessment Portfolio
+              </h2>
+              <p style={{ margin: 0, color: 'var(--tq-muted)' }}>
+                TurboQSA LLC builds purpose-built assessment software for
+                Qualified Security Assessors, ISAs, and compliance practices —
+                spanning specialized PCI DSS v4.0.1 ROC &amp; Standalone SAQ
+                delivery alongside multi-standard reporting at{' '}
+                <a
+                  href="https://www.turboassessment.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    color: 'var(--tq-green)',
+                    fontWeight: 700,
+                    textDecoration: 'underline',
+                  }}
+                >
+                  www.turboassessment.com ↗
+                </a>
+                .
+              </p>
+            </div>
+            <div className="tq-pci-trust">
+              <PCISSCLogoNoGlobe />
+              <div>
+                <div className="tq-pci-trust__label">
+                  PCI Security Standards Council
+                </div>
+                <div className="tq-pci-trust__sub">
+                  Associate Participating Organization
+                </div>
+              </div>
+            </div>
+          </div>
+
           <CallToAction />
         </div>
       </section>
-    </HeroPageLayout>
+    </React.Fragment>
   )
 }
 

@@ -1,44 +1,41 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
+
 import Layout from '../components/Layout'
-import { SectionHeader } from '../components/core/Headers'
 import CallToAction from '../components/callToAction/CallToAction'
 import PilotForm from '../components/contact/PilotForm'
-import HeroPageLayout from '../components/HeroPageLayout'
+import turboSpiral from '../img/turbo-spiral.svg'
 
-export const PilotPageTemplate = ({ title, description, image }) => {
+export const PilotPageTemplate = ({ title, description }) => {
   return (
-    <HeroPageLayout
-      heroImage={image}
-      heroContent={
-        <div className="container has-text-white has-text-centered">
-          <SectionHeader className="contactPage__header has-text-centered">
-            {title}
-          </SectionHeader>
-          <div
-            className="is-size-4 is-size-5-mobile has-text-weight-semibold"
-            style={{ maxWidth: '640px', margin: '0 auto' }}
-          >
-            {description}
+    <React.Fragment>
+      <section className="tq-page-hero tq-page-hero--compact">
+        <img
+          src={turboSpiral}
+          alt=""
+          aria-hidden="true"
+          className="tq-page-hero__watermark"
+        />
+        <div className="tq-wrap tq-page-hero__inner">
+          <div className="tq-eyebrow tq-eyebrow--light">
+            <span className="tq-eyebrow__dot" aria-hidden="true" />
+            <span>PILOT PROGRAM</span>
           </div>
+          <h1 className="tq-page-hero__title">{title}</h1>
+          <p className="tq-page-hero__lead">{description}</p>
         </div>
-      }
-      heroImageClassName="contactPage__heroImage"
-      heroImageGradient="linear-gradient(rgb(11, 103, 82, 0.9), rgba(11, 103, 82, 0.5))"
-      heroContentProps={{
-        className: `contactPage__heroContent`,
-      }}
-    >
-      <div className="contactForm">
-        <PilotForm />
-      </div>
-      <div className="section">
-        <div className="container">
+      </section>
+
+      <section className="tq-section tq-section--paper">
+        <div className="tq-wrap">
+          <div style={{ maxWidth: '720px', margin: '0 auto 56px' }}>
+            <PilotForm />
+          </div>
           <CallToAction />
         </div>
-      </div>
-    </HeroPageLayout>
+      </section>
+    </React.Fragment>
   )
 }
 
