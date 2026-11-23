@@ -33,13 +33,13 @@ const FEATURE_VISUAL_OVERRIDES = {
   },
   paymentChannels: {
     src: uiPaymentChannels,
-    caption: 'Per-Channel Responses & RFT Overrides',
-    alt: 'TurboQSA payment channel selection and Retail POS Terminals RFT Override controls',
+    caption: 'Per-Channel Responses & All Channels Selection',
+    alt: 'TurboQSA PCI DSS v4.0.1 r3 Requirement 2.2.2 showing separate E-Commerce and Retail POS Terminals channel responses alongside a unified All Channels response',
   },
   customerRoles: {
     src: uiCustomerRoles,
-    caption: 'Customer Roles, ECR & Responsibility Areas',
-    alt: 'TurboQSA stakeholders and roles showing Executive Client Representative, QSA, Associate QSA, Client, and Responsibility indicators',
+    caption: 'Executive Client Representative & Responsibility Areas',
+    alt: 'TurboQSA Responsibility Areas workspace signed in as Executive Client Representative (ECR), showing assigned client stakeholders and evidence, interview, and response request actions',
   },
   interviews: {
     src: uiInterviewScheduler,
@@ -510,12 +510,12 @@ export const IndexPageTemplate = ({
                     <span />
                   </div>
                   <span className="tq-screen-frame__caption">
-                    Templates &amp; Custom RFT Manager
+                    Custom RFT Builder &amp; Requirement Applicability
                   </span>
                 </div>
                 <img
                   src={uiCustomRft}
-                  alt="TurboQSA Custom RFT manager showing PCI DSS filter, existing RFT selector, and Clone action"
+                  alt="TurboQSA Custom RFT Builder showing RFT Details, bulk applicability selection toolbar, and per-requirement N/A, Applicable, Not tested, and In place controls"
                   loading="lazy"
                 />
               </div>
