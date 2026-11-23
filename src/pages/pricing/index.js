@@ -154,6 +154,9 @@ export default function PricingIndexPage() {
                 <Link className="tq-btn tq-btn--secondary" to="/contact">
                   Discuss Package Deals with Sales
                 </Link>
+                <Link className="tq-text-link" to="/pricing/calculator">
+                  Annual Seat Price Calculator →
+                </Link>
               </div>
             </article>
           </div>
