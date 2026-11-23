@@ -8,6 +8,9 @@ import PilotForm from '../components/contact/PilotForm'
 import turboSpiral from '../img/turbo-spiral.svg'
 
 export const PilotPageTemplate = ({ title, description }) => {
+  const cleanDescription =
+    typeof description === 'string' ? description.trim() : ''
+
   return (
     <React.Fragment>
       <section className="tq-page-hero tq-page-hero--compact">
@@ -23,7 +26,9 @@ export const PilotPageTemplate = ({ title, description }) => {
             <span>PILOT PROGRAM</span>
           </div>
           <h1 className="tq-page-hero__title">{title}</h1>
-          <p className="tq-page-hero__lead">{description}</p>
+          {cleanDescription && (
+            <p className="tq-page-hero__lead">{cleanDescription}</p>
+          )}
         </div>
       </section>
 

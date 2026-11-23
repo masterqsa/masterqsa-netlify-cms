@@ -28,6 +28,8 @@ const AboutPageTemplate = ({
   introDescription,
   pitches = [],
 }) => {
+  const cleanIntroHeading =
+    typeof introHeading === 'string' ? introHeading.trim() : ''
   const ledeHtml =
     description &&
     description.childMarkdownRemark &&
@@ -62,10 +64,10 @@ const AboutPageTemplate = ({
             className="tq-section__header tq-section__header--center"
             style={{ maxWidth: '880px' }}
           >
-            {introHeading && (
+            {cleanIntroHeading && (
               <div className="tq-eyebrow">
                 <span className="tq-eyebrow__dot" aria-hidden="true" />
-                <span>{introHeading}</span>
+                <span>{cleanIntroHeading}</span>
               </div>
             )}
             {introDescription && (

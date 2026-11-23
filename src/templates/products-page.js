@@ -26,6 +26,10 @@ export const ProductsPageTemplate = ({
   productName,
   productDescription,
 }) => {
+  const cleanTitle = typeof title === 'string' ? title.trim() : ''
+  const cleanProductName =
+    typeof productName === 'string' ? productName.trim() : ''
+
   return (
     <React.Fragment>
       <section className="tq-page-hero tq-page-hero--compact">
@@ -38,10 +42,10 @@ export const ProductsPageTemplate = ({
         <div className="tq-wrap tq-page-hero__inner">
           <div className="tq-eyebrow tq-eyebrow--light">
             <span className="tq-eyebrow__dot" aria-hidden="true" />
-            <span>{title || 'TURBOQSA PLATFORM'}</span>
+            <span>{cleanTitle || 'TURBOQSA PLATFORM'}</span>
           </div>
           <h1 className="tq-page-hero__title">
-            {productName || 'TurboQSA PCI DSS & Standalone SAQ Platform'}
+            {cleanProductName || 'TurboQSA PCI DSS & Standalone SAQ Platform'}
           </h1>
           <p className="tq-page-hero__lead">
             Purpose-built workspace for PCI DSS v4.0.1 Reports on Compliance,

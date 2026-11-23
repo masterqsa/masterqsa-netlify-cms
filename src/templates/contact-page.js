@@ -14,6 +14,9 @@ export const ContactPageTemplate = ({
   email,
   formTitle,
 }) => {
+  const cleanFormTitle =
+    typeof formTitle === 'string' ? formTitle.trim() : ''
+
   return (
     <React.Fragment>
       <section className="tq-page-hero tq-page-hero--compact">
@@ -29,7 +32,9 @@ export const ContactPageTemplate = ({
             <span>SALES &amp; DEMO INQUIRIES</span>
           </div>
           <h1 className="tq-page-hero__title">{title}</h1>
-          <p className="tq-page-hero__lead">{formTitle}</p>
+          {cleanFormTitle && (
+            <p className="tq-page-hero__lead">{cleanFormTitle}</p>
+          )}
         </div>
       </section>
 

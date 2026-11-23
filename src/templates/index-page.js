@@ -152,6 +152,17 @@ export const IndexPageTemplate = ({
   features = [],
   isPreview = false,
 }) => {
+  const cleanMainpitch =
+    typeof mainpitch === 'string' ? mainpitch.trim() : ''
+  const cleanIntroHeading =
+    typeof introHeading === 'string' ? introHeading.trim() : ''
+  const cleanIntroSubheading =
+    typeof introSubheading === 'string' ? introSubheading.trim() : ''
+  const cleanWhyHeading =
+    typeof whyHeading === 'string' ? whyHeading.trim() : ''
+  const cleanFeaturesTitle =
+    typeof featuresTitle === 'string' ? featuresTitle.trim() : ''
+
   return (
     <React.Fragment>
       {/* Hero Section */}
@@ -163,7 +174,8 @@ export const IndexPageTemplate = ({
               <span>PCI DSS v4.0.1 · STANDALONE SAQS · PCI PIN</span>
             </div>
             <h1 className="tq-hero__title">
-              {mainpitch || 'The Modern Workspace for PCI DSS Assessments & Reporting'}
+              {cleanMainpitch ||
+                'The Modern Workspace for PCI DSS Assessments & Reporting'}
             </h1>
             <p className="tq-hero__lead">
               Deliver audit-ready PCI DSS v4.0.1 ROCs, Standalone SAQs and AOCs,
@@ -210,14 +222,14 @@ export const IndexPageTemplate = ({
         <div className="tq-wrap">
           <div className="tq-mission-grid">
             <div>
-              {introHeading && (
+              {cleanIntroHeading && (
                 <div className="tq-eyebrow">
                   <span className="tq-eyebrow__dot" aria-hidden="true" />
-                  <span>{introHeading}</span>
+                  <span>{cleanIntroHeading}</span>
                 </div>
               )}
               <h2 className="tq-section__title">
-                {introSubheading ||
+                {cleanIntroSubheading ||
                   'One-stop PCI DSS assessment workspace for QSAs, ISAs, and assessed entities.'}
               </h2>
               {introDescription && (
@@ -241,7 +253,7 @@ export const IndexPageTemplate = ({
                 className="tq-section__title"
                 style={{ fontSize: '26px', marginBottom: '12px' }}
               >
-                {whyHeading || 'Why TurboQSA?'}
+                {cleanWhyHeading || 'Why TurboQSA?'}
               </h3>
               {whyDescription ? (
                 <div className="tq-richtext">
@@ -362,7 +374,7 @@ export const IndexPageTemplate = ({
               <span>INSIDE TURBOQSA</span>
             </div>
             <h2 className="tq-section__title">
-              {featuresTitle || 'Modern PCI DSS v4.0.1 Assessment Workspace'}
+              {cleanFeaturesTitle || 'Modern PCI DSS v4.0.1 Assessment Workspace'}
             </h2>
             <p className="tq-section__lead">
               Every control, finding, interview, RFT filter, and Word export
