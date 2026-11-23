@@ -12,6 +12,7 @@
   --tq-green: #0c6752;
   --tq-green-dark: #084d3d;
   --tq-evergreen: #0d2b24;
+  --tq-evergreen-deep: #091f1a;
   --tq-evergreen-card: #13382f;
   --tq-evergreen-border: #255045;
   --tq-evergreen-ink: #f2faf6;
@@ -1977,7 +1978,7 @@ body {
    ========================================================================== */
 
 .tq-footer {
-  background: var(--tq-evergreen-deep);
+  background: var(--tq-evergreen-deep, #091f1a);
   color: var(--tq-evergreen-muted);
   padding: 58px 0 32px;
   border-top: 1px solid #163a31;
@@ -1998,7 +1999,7 @@ body {
   display: block;
 }
 
-.tq-footer__heading {
+.tq-footer .tq-footer__heading {
   font-family: 'DM Sans', sans-serif;
   font-size: 12px;
   font-weight: 800;
