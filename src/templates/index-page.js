@@ -13,34 +13,40 @@ import PciWorkspacePreview from '../components/PciWorkspacePreview'
 
 import turboSpiral from '../img/turbo-spiral.svg'
 import uiRocWorkspace from '../img/refresh/ui-roc-workspace.png'
-import uiFindingsCollaboration from '../img/refresh/ui-findings-collaboration.png'
-import uiRequirementsTracking from '../img/refresh/ui-requirements-tracking.png'
+import uiAutomatedQualityCheck from '../img/refresh/ui-automated-quality-check.png'
+import uiPaymentChannels from '../img/refresh/ui-payment-channels.png'
+import uiCustomerRoles from '../img/refresh/ui-customer-roles.png'
 import uiInterviewScheduler from '../img/refresh/ui-interview-scheduler.png'
 import uiTurboAiSuggestions from '../img/refresh/ui-turboai-suggestions.png'
 import uiCustomRft from '../img/refresh/ui-custom-rft.png'
 
-const DEFAULT_FEATURE_SCREENS = [
-  {
+const FEATURE_VISUAL_OVERRIDES = {
+  aqc: {
+    src: uiAutomatedQualityCheck,
+    caption: 'Automated Quality Check · PCI DSS v4.0.1 ROC QA',
+    alt: 'TurboQSA Automated Quality Check ROC QA screen highlighting incomplete items and peer review requirements on PCI DSS v4.0.1',
+  },
+  rocCompletion: {
     src: uiRocWorkspace,
-    caption: 'PCI DSS v4.0.1 ROC Tree & Part II Assessment Workspace',
-    alt: 'TurboQSA PCI DSS v4.0.1 Report on Compliance workspace showing Part II Sampling, Evidence, and Requirements tree',
+    caption: 'PCI DSS v4.0.1 ROC & AOC Workspace',
+    alt: 'TurboQSA PCI DSS v4.0.1 Report on Compliance workspace with Part II Sampling, Evidence, and Requirements tree',
   },
-  {
-    src: uiFindingsCollaboration,
-    caption: 'Requirements Findings, Collaboration Drawer & Peer Review',
-    alt: 'TurboQSA Requirement 12.2 control assessment with Collaborate drawer, Delegation, and Peer Review status',
+  paymentChannels: {
+    src: uiPaymentChannels,
+    caption: 'Per-Channel Responses & RFT Overrides',
+    alt: 'TurboQSA payment channel selection and Retail POS Terminals RFT Override controls',
   },
-  {
-    src: uiRequirementsTracking,
-    caption: 'Live Requirements Tracking Matrix (R-1 to R-12, A-1 & A-2)',
-    alt: 'TurboQSA Requirements Tracking dashboard summarizing status across PCI DSS Requirements 1 through 12 and Appendices',
+  customerRoles: {
+    src: uiCustomerRoles,
+    caption: 'Customer Roles, ECR & Responsibility Areas',
+    alt: 'TurboQSA stakeholders and roles showing Executive Client Representative, QSA, Associate QSA, Client, and Responsibility indicators',
   },
-  {
+  interviews: {
     src: uiInterviewScheduler,
-    caption: 'Audit Interview Scheduling & Project Calendar',
-    alt: 'TurboQSA Interviews calendar view for scheduling and tracking client assessment interviews',
+    caption: 'Scheduled Audit Interviews & Calendar',
+    alt: 'TurboQSA Interviews screen showing scheduled PCI DSS v4.0.1 stakeholder interviews, ICalendar import, and calendar view',
   },
-]
+}
 
 const STANDALONE_SAQ_CARDS = [
   {
@@ -91,41 +97,23 @@ const TURBO_ASSESSMENT_STANDARDS = [
   'EU AI Act',
 ]
 
-function resolveModernFeatureVisual(feature, idx) {
+function resolveModernFeatureVisual(feature) {
   const heading = (feature && feature.heading ? feature.heading : '').toLowerCase()
 
-  if (
-    heading.includes('one-click') ||
-    heading.includes('word') ||
-    heading.includes('export')
-  ) {
-    return DEFAULT_FEATURE_SCREENS[0]
+  if (heading.includes('quality check') || heading.includes('aqc')) {
+    return FEATURE_VISUAL_OVERRIDES.aqc
   }
-  if (
-    heading.includes('channel') ||
-    heading.includes('collaborat') ||
-    heading.includes('finding')
-  ) {
-    return DEFAULT_FEATURE_SCREENS[1]
+  if (heading.includes('one-click') || heading.includes('roc completion')) {
+    return FEATURE_VISUAL_OVERRIDES.rocCompletion
   }
-  if (
-    heading.includes('role') ||
-    heading.includes('responsib') ||
-    heading.includes('track') ||
-    heading.includes('progress')
-  ) {
-    return DEFAULT_FEATURE_SCREENS[2]
+  if (heading.includes('payment channel')) {
+    return FEATURE_VISUAL_OVERRIDES.paymentChannels
   }
-  if (
-    heading.includes('interview') ||
-    heading.includes('schedul') ||
-    heading.includes('calendar')
-  ) {
-    return DEFAULT_FEATURE_SCREENS[3]
+  if (heading.includes('customer role') || heading.includes('responsibility')) {
+    return FEATURE_VISUAL_OVERRIDES.customerRoles
   }
-
-  if (idx < DEFAULT_FEATURE_SCREENS.length) {
-    return DEFAULT_FEATURE_SCREENS[idx]
+  if (heading.includes('interview')) {
+    return FEATURE_VISUAL_OVERRIDES.interviews
   }
 
   return null
@@ -385,7 +373,7 @@ export const IndexPageTemplate = ({
 
           <div className="tq-features-stack">
             {features.map((feature, idx) => {
-              const modernVisual = resolveModernFeatureVisual(feature, idx)
+              const modernVisual = resolveModernFeatureVisual(feature)
               const isReverse = idx % 2 === 1
 
               return (
@@ -397,7 +385,7 @@ export const IndexPageTemplate = ({
                 >
                   <div className="tq-feature-card__copy">
                     <span className="tq-feature-card__num">
-                      Capability 0{idx + 1}
+                      Capability {String(idx + 1).padStart(2, '0')}
                     </span>
                     <h3 className="tq-feature-card__title">
                       {feature.heading}
@@ -430,10 +418,12 @@ export const IndexPageTemplate = ({
                       ) : (
                         feature.image &&
                         feature.image.gatsbyImageData && (
-                          <GatsbyImage
-                            image={feature.image.gatsbyImageData}
-                            alt={feature.heading || 'TurboQSA workspace view'}
-                          />
+                          <div className="tq-screen-frame__cms">
+                            <GatsbyImage
+                              image={feature.image.gatsbyImageData}
+                              alt={feature.heading || 'TurboQSA workspace view'}
+                            />
+                          </div>
                         )
                       )}
                     </div>

@@ -1133,6 +1133,11 @@ body {
   height: auto;
 }
 
+.tq-screen-frame__cms {
+  padding: 20px;
+  background: #ffffff;
+}
+
 /* Additional Capability & Platform Pillar Grids */
 .tq-dual-showcase {
   display: grid;
