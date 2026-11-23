@@ -84,8 +84,8 @@ export const CallToAction = () => {
             <em>Flexible Scale</em>
           </li>
           <li>
-            <span>Single-Tenant AWS VPC &amp; TurboAI</span>
-            <em>Isolated</em>
+            <span>Your Own AWS or Azure Cloud &amp; TurboAI</span>
+            <em>No Exfiltration</em>
           </li>
           <li>
             <span>13 Standards on Turbo Assessment</span>

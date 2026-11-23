@@ -49,8 +49,9 @@ export const ProductsPageTemplate = ({
           </h1>
           <p className="tq-page-hero__lead">
             Purpose-built workspace for PCI DSS v4.0.1 Reports on Compliance,
-            Standalone SAQs and AOCs, PCI PIN reporting, and private in-VPC
-            TurboAI evidence automation.
+            Standalone SAQs and AOCs, PCI PIN reporting, and private TurboAI —
+            installed in your own AWS or Azure cloud for complete data
+            sovereignty.
           </p>
         </div>
       </section>
@@ -197,14 +198,16 @@ export const ProductsPageTemplate = ({
             <div className="tq-card">
               <div className="tq-eyebrow">
                 <span className="tq-eyebrow__dot" aria-hidden="true" />
-                <span>PRIVATE IN-VPC TURBOAI</span>
+                <span>PRIVATE TURBOAI · YOUR OWN CLOUD</span>
               </div>
               <h3 style={{ fontSize: '22px', marginBottom: '10px' }}>
                 Traceable Evidence &amp; Rationale Suggestions
               </h3>
               <p style={{ color: 'var(--tq-muted)', marginBottom: '18px' }}>
-                Surface ranked evidence excerpts and cited locations directly
-                inside each requirement while preserving QSA sign-off control.
+                Runs inside your own AWS or Azure cloud — not ours — surfacing
+                ranked evidence excerpts and cited locations directly inside each
+                requirement with zero data exfiltration and full QSA sign-off
+                control.
               </p>
               <div className="tq-screen-frame">
                 <div className="tq-screen-frame__bar" aria-hidden="true">
@@ -248,7 +251,8 @@ export const ProductsPageTemplate = ({
               </h2>
               <p style={{ margin: 0, color: 'var(--tq-muted)' }}>
                 Explore <strong>Turbo Assessment Pro</strong> — our 13-standard
-                platform built on the same single-tenant architecture as TurboQSA.
+                platform hosted in your own AWS or Azure cloud with the same
+                data-sovereign architecture as TurboQSA.
               </p>
             </div>
             <a

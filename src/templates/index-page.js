@@ -167,8 +167,9 @@ export const IndexPageTemplate = ({
             </h1>
             <p className="tq-hero__lead">
               Deliver audit-ready PCI DSS v4.0.1 ROCs, Standalone SAQs and AOCs,
-              and PCI PIN reports faster — with private in-VPC TurboAI, reusable
-              Client Scope intelligence, and flexible Pay-as-you-go billing.
+              and PCI PIN reports faster — installed in your own AWS or Azure
+              cloud with private TurboAI, full data sovereignty, and flexible
+              Pay-as-you-go billing.
             </p>
             <div className="tq-hero__actions">
               <Link className="tq-btn tq-btn--primary" to="/contact">
@@ -266,8 +267,8 @@ export const IndexPageTemplate = ({
                     </svg>
                   </span>
                   <span>
-                    Isolated single-tenant AWS deployment &amp; unlimited free
-                    client seats
+                    Hosted in your own AWS or Azure cloud (not ours) for full data
+                    sovereignty &amp; zero data exfiltration
                   </span>
                 </li>
                 <li>
@@ -277,7 +278,8 @@ export const IndexPageTemplate = ({
                     </svg>
                   </span>
                   <span>
-                    Pay-as-you-go billing aligned to real assessment volume
+                    Pay-as-you-go billing aligned to real assessment volume — with
+                    unlimited free client seats
                   </span>
                 </li>
               </ul>
@@ -438,7 +440,7 @@ export const IndexPageTemplate = ({
             <div className="tq-card">
               <div className="tq-eyebrow">
                 <span className="tq-eyebrow__dot" aria-hidden="true" />
-                <span>PRIVATE IN-VPC TURBOAI</span>
+                <span>PRIVATE TURBOAI · YOUR OWN CLOUD</span>
               </div>
               <h3
                 className="tq-feature-card__title"
@@ -453,10 +455,11 @@ export const IndexPageTemplate = ({
                   marginBottom: '18px',
                 }}
               >
-                TurboAI indexes client evidence inside your single-tenant AWS
-                VPC, scores requirement relevance, highlights exact document
-                locations, and drafts justifications for QSA review — never
-                training on your data.
+                Installed inside your own AWS or Azure cloud infrastructure —
+                not ours — TurboAI indexes client evidence, scores requirement
+                relevance, highlights exact document locations, and drafts
+                justifications for QSA review with full data sovereignty and no
+                data exfiltration by design.
               </p>
               <div className="tq-screen-frame">
                 <div className="tq-screen-frame__bar" aria-hidden="true">

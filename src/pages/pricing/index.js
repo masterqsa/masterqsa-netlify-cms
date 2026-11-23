@@ -7,9 +7,9 @@ import turboSpiral from '../../img/turbo-spiral.svg'
 
 const INCLUDED_ITEMS = [
   {
-    title: 'Single-Tenant Cloud Isolation',
+    title: 'Installed in Your Own Cloud (AWS or Azure)',
     description:
-      'Dedicated AWS VPC hosting, KMS-encrypted storage, and optional private in-VPC TurboAI inference.',
+      'Host your own dedicated instance in your AWS or Azure infrastructure — not ours. Full control over data, keys, and access with no data exfiltration by design, including optional private TurboAI.',
   },
   {
     title: 'Unlimited Client Collaborators',
@@ -127,8 +127,8 @@ export default function PricingIndexPage() {
                   your annual pipeline
                 </CheckItem>
                 <CheckItem>
-                  Optional private in-VPC TurboAI inference and dedicated
-                  onboarding assistance
+                  Optional private TurboAI deployed inside your own AWS or Azure
+                  cloud, plus dedicated onboarding assistance
                 </CheckItem>
                 <CheckItem>
                   Seamless expansion to 13 compliance standards via{' '}

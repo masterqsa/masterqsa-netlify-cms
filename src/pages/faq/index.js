@@ -23,9 +23,9 @@ export default class FAQIndexPage extends React.Component {
             </div>
             <h1 className="tq-page-hero__title">Frequently Asked Questions</h1>
             <p className="tq-page-hero__lead">
-              Answers on security architecture, single-tenant deployment,
-              PCI DSS v4.0.1 workflows, Standalone SAQs, and Pay-as-you-go
-              billing.
+              Answers on customer-hosted AWS and Azure deployment, data
+              sovereignty, PCI DSS v4.0.1 workflows, Standalone SAQs, and
+              Pay-as-you-go billing.
             </p>
           </div>
         </section>

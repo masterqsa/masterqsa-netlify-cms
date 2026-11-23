@@ -237,10 +237,10 @@ export default function PciWorkspacePreview() {
             >
               <div className="tq-ws-header">
                 <div>
-                  <small>SINGLE-TENANT AWS VPC · HUMAN-IN-THE-LOOP</small>
+                  <small>HOSTED IN YOUR OWN AWS OR AZURE CLOUD · NO EXFILTRATION</small>
                   <h3>TurboAI, Scope KB &amp; API Sync</h3>
                 </div>
-                <span className="tq-ws-pill">Private VPC</span>
+                <span className="tq-ws-pill">Your Cloud</span>
               </div>
 
               <div className="tq-ws-rows">
@@ -252,7 +252,7 @@ export default function PciWorkspacePreview() {
                   <span className="tq-status-chip tq-status-chip--green">
                     QSA Approval
                   </span>
-                  <span className="tq-ws-channel">In-VPC AI</span>
+                  <span className="tq-ws-channel">Private AI</span>
                 </div>
                 <div className="tq-ws-row">
                   <div>
