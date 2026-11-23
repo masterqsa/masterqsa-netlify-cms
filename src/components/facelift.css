@@ -1433,6 +1433,10 @@ body {
 .tq-price-card__cta {
   margin-top: auto;
   padding-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px 20px;
 }
 
 .tq-included-grid {
@@ -1459,6 +1463,216 @@ body {
   font-size: 13.5px;
   color: var(--tq-muted);
   margin: 0;
+}
+
+/* Annual Seat Pricing Calculator (/pricing/calculator) */
+.tq-calc-shell {
+  background: var(--tq-surface);
+  border: 1px solid var(--tq-line);
+  border-radius: 16px;
+  padding: 34px;
+  box-shadow: var(--tq-shadow-soft);
+  display: grid;
+  grid-template-columns: minmax(0, 320px) minmax(0, 1fr);
+  gap: 36px;
+  align-items: start;
+  margin-bottom: 48px;
+}
+
+.tq-calc-panel {
+  background: var(--tq-paper);
+  border: 1px solid var(--tq-line);
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.tq-calc-panel__title,
+.tq-calc-summary__title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--tq-ink);
+  margin-bottom: 16px;
+}
+
+.tq-calc-field {
+  margin-bottom: 18px;
+}
+
+.tq-calc-field:last-child {
+  margin-bottom: 0;
+}
+
+.tq-calc-field label {
+  display: block;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--tq-ink);
+  margin-bottom: 6px;
+}
+
+.tq-site .tq-calc-input {
+  width: 100%;
+  height: auto;
+  min-height: 46px;
+  line-height: 1.45;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #c9dbd3;
+  background: #ffffff;
+  color: var(--tq-ink);
+  font-size: 16px;
+  font-weight: 700;
+  font-family: 'Manrope', sans-serif;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.tq-site .tq-calc-input:focus {
+  border-color: var(--tq-green);
+  box-shadow: 0 0 0 3px rgba(12, 103, 82, 0.14);
+  outline: none;
+}
+
+.tq-calc-help {
+  margin: 8px 0 0;
+  font-size: 12.5px;
+  color: var(--tq-muted);
+  line-height: 1.5;
+}
+
+.tq-calc-summary__title {
+  margin-bottom: 12px;
+}
+
+.tq-calc-total {
+  margin: 0 0 6px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.tq-calc-total__amount {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(32px, 3.6vw, 44px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--tq-green);
+  line-height: 1.1;
+}
+
+.tq-calc-total__period {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--tq-muted);
+}
+
+.tq-calc-breakdown {
+  font-size: 15.5px;
+  font-weight: 700;
+  color: var(--tq-ink);
+  margin: 0 0 12px;
+}
+
+.tq-calc-description {
+  white-space: pre-wrap;
+  font-size: 14.5px;
+  color: var(--tq-muted);
+  line-height: 1.65;
+  margin: 0 0 22px;
+}
+
+.tq-calc-summary__cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.tq-calc-tiers {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  margin-bottom: 18px;
+}
+
+.tq-calc-tier {
+  background: var(--tq-surface);
+  border: 1px solid var(--tq-line);
+  border-radius: 14px;
+  padding: 28px 24px;
+  text-align: center;
+  box-shadow: var(--tq-shadow-card);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.tq-calc-tier--active {
+  border: 2px solid var(--tq-green);
+  background: #ffffff;
+  box-shadow: var(--tq-shadow-soft);
+}
+
+.tq-calc-tier__top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 112px;
+}
+
+.tq-calc-tier__price strong {
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--tq-ink);
+  line-height: 1.15;
+}
+
+.tq-calc-tier__price span {
+  display: block;
+  font-size: 13.5px;
+  color: var(--tq-muted);
+  margin-top: 2px;
+}
+
+.tq-calc-tier__range {
+  margin: 14px 0 0;
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--tq-green);
+}
+
+.tq-calc-tier__divider {
+  border: 0;
+  border-top: 1px solid var(--tq-line);
+  margin: 20px 0;
+  height: 1px;
+  background: transparent;
+}
+
+.tq-calc-tier__other strong {
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--tq-ink);
+  line-height: 1.2;
+}
+
+.tq-calc-tier__other span {
+  display: block;
+  font-size: 13.5px;
+  color: var(--tq-muted);
+  margin-top: 2px;
+}
+
+.tq-calc-footnote {
+  font-size: 13px;
+  color: var(--tq-muted);
+  margin: 0 0 48px;
 }
 
 /* ==========================================================================
@@ -1867,6 +2081,7 @@ body {
   .tq-split-banner,
   .tq-sister-panel,
   .tq-cta-banner,
+  .tq-calc-shell,
   .tq-contact-layout {
     grid-template-columns: 1fr;
   }
@@ -1945,6 +2160,7 @@ body {
   .tq-saq-cards,
   .tq-dual-showcase,
   .tq-pricing-grid,
+  .tq-calc-tiers,
   .tq-included-grid,
   .tq-pillars-grid,
   .tq-about-pitches,
