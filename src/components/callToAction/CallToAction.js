@@ -1,10 +1,6 @@
 import React from 'react'
 import { Link, graphql, useStaticQuery } from 'gatsby'
-
-import { SectionHeader } from '../core/Headers'
-import Text from '../core/Text'
 import { HTMLContent } from '../Content'
-import { GatsbyImage } from 'gatsby-plugin-image'
 
 const CONTENT_QUERY = graphql`
   query CallToActionQuery {
@@ -31,35 +27,80 @@ const CONTENT_QUERY = graphql`
 
 export const CallToAction = () => {
   const { contentfulCallToAction } = useStaticQuery(CONTENT_QUERY)
+  const descriptionHtml =
+    contentfulCallToAction &&
+    contentfulCallToAction.description &&
+    contentfulCallToAction.description.childMarkdownRemark &&
+    contentfulCallToAction.description.childMarkdownRemark.html
 
   return (
-    <div className="qsaGetStarted">
-      <div className="qsaGetStarted__inner">
-        <div className="qsaGetStarted__content">
-          <SectionHeader className="qsaGetStarted__header has-text-white">
-            {contentfulCallToAction.title}
-          </SectionHeader>
-          <Text className="qsaGetStarted__description has-text-white">
-            <HTMLContent
-              content={
-                contentfulCallToAction.description.childMarkdownRemark.html
-              }
-            />
-          </Text>
+    <div className="tq-cta-banner">
+      <div>
+        <div className="tq-eyebrow tq-eyebrow--light">
+          <span className="tq-eyebrow__dot" aria-hidden="true" />
+          <span>FLEXIBLE PAY-AS-YOU-GO &amp; PACKAGE DEALS</span>
+        </div>
+        <h2 className="tq-cta-banner__title">
+          {contentfulCallToAction.title}
+        </h2>
+        {descriptionHtml && (
+          <div className="tq-cta-banner__copy">
+            <HTMLContent content={descriptionHtml} />
+          </div>
+        )}
+        <p className="tq-cta-banner__copy" style={{ marginBottom: '22px' }}>
+          Reach out to our sales team for Pay-as-you-go pricing details, volume
+          tiers, and bundled package deals across ROCs and Standalone SAQs.
+        </p>
+        <div className="tq-cta-banner__actions">
           <Link
-            className="button is-primary"
-            to={contentfulCallToAction.ctaButtonLink}
+            className="tq-btn tq-btn--light"
+            to={contentfulCallToAction.ctaButtonLink || '/contact'}
           >
-            {contentfulCallToAction.ctaButtonLabel}
+            {contentfulCallToAction.ctaButtonLabel || 'Get Started'}
+          </Link>
+          <Link className="tq-btn tq-btn--outline-light" to="/pricing">
+            Pay-As-You-Go Pricing →
           </Link>
         </div>
-        <div style={{ flexGrow: 1 }}></div>
-        <div className="qsaGetStarted__imageContainer">
-          <div className="qsaGetStarted__image">
-            <GatsbyImage image={contentfulCallToAction.image.gatsbyImageData} />
-          </div>
+      </div>
+
+      <div className="tq-delivery-card">
+        <div className="tq-delivery-card__header">
+          <strong>TurboQSA Delivery Scope</strong>
+          <span>PCI + Suite</span>
         </div>
-        <div style={{ flexGrow: 1 }}></div>
+        <ul className="tq-delivery-card__list">
+          <li>
+            <span>PCI DSS v4.0.1 ROC &amp; AOC</span>
+            <em>One-Click Word</em>
+          </li>
+          <li>
+            <span>Standalone SAQs (A, B-IP, C-VT, P2PE, D)</span>
+            <em>SAQ + AOC</em>
+          </li>
+          <li>
+            <span>Pay-As-You-Go Assessment Billing</span>
+            <em>Flexible Scale</em>
+          </li>
+          <li>
+            <span>Your Own AWS or Azure Cloud &amp; TurboAI</span>
+            <em>No Exfiltration</em>
+          </li>
+          <li>
+            <span>13 Standards on Turbo Assessment</span>
+            <em>
+              <a
+                href="https://www.turboassessment.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: 'inherit', textDecoration: 'none' }}
+              >
+                Explore ↗
+              </a>
+            </em>
+          </li>
+        </ul>
       </div>
     </div>
   )

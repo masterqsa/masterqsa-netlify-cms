@@ -10,53 +10,85 @@ function encode(data) {
 export default class PilotForm extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { isValidated: false, submitted: false }
-    this.formRef = React.createRef()
+    this.state = {
+      name: '',
+      phone: '',
+      email: '',
+      companyName: '',
+      staffQSA: '',
+      numQSA: '',
+      'bot-field': '',
+      submitted: false,
+      submitting: false,
+      errorMessage: '',
+    }
   }
 
   handleChange = e => {
-    this.setState({ [e.target.name]: e.target.value })
+    this.setState({ [e.target.name]: e.target.value, errorMessage: '' })
   }
 
   handleSubmit = e => {
     e.preventDefault()
     const form = e.target
+    this.setState({ submitting: true, errorMessage: '' })
+
     fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({
-        'form-name': form.getAttribute('name'),
-        ...this.state,
+        'form-name': form.getAttribute('name') || 'pilot',
+        name: this.state.name,
+        phone: this.state.phone,
+        email: this.state.email,
+        companyName: this.state.companyName,
+        staffQSA: this.state.staffQSA,
+        numQSA: this.state.numQSA,
+        'bot-field': this.state['bot-field'],
       }),
     })
-      .then(() => this.setState({ submitted: true }))
-      .catch(error => alert(error))
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Submission could not be confirmed.')
+        }
+        this.setState({ submitted: true, submitting: false })
+      })
+      .catch(() => {
+        this.setState({
+          submitting: false,
+          errorMessage:
+            'We could not submit your pilot request right now. Please try again.',
+        })
+      })
   }
 
   render() {
     const { className } = this.props
-
-    const baseClassName = `quickForm${className ? ` ${className}` : ``}`
+    const cardClass = `tq-form-card${className ? ` ${className}` : ''}`
 
     if (this.state.submitted) {
       return (
-        <div
-          className={`${baseClassName} quickForm--submitted`}
-          style={{
-            height: this.formRef.current
-              ? this.formRef.current.clientHeight
-              : undefined,
-          }}
-        >
-          <p className="has-text-centered">
-            <span className="icon is-large has-text-brand">
-              <i className="fas fa-check-circle fa-3x" />
-            </span>
-          </p>
-          <br />
-          <p className="has-text-centered is-size-4">
-            Thank you! We'll get in touch with you soon!
-          </p>
+        <div className={cardClass} role="status" aria-live="polite">
+          <div className="tq-form-success">
+            <div className="tq-form-success__icon" aria-hidden="true">
+              <svg
+                width="26"
+                height="26"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+              >
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+            </div>
+            <h3 className="tq-form-card__title" style={{ textAlign: 'center' }}>
+              Pilot Request Received
+            </h3>
+            <p style={{ color: 'var(--tq-muted)', marginBottom: 0 }}>
+              Thank you! We will get in touch with your team soon.
+            </p>
+          </div>
         </div>
       )
     }
@@ -69,99 +101,119 @@ export default class PilotForm extends React.Component {
         data-netlify="true"
         data-netlify-honeypot="bot-field"
         onSubmit={this.handleSubmit}
-        className={baseClassName}
-        ref={this.formRef}
+        className={cardClass}
       >
-        {/* The `form-name` hidden field is required to support form submissions without JavaScript */}
         <input type="hidden" name="form-name" value="pilot" />
         <div hidden>
           <label>
             Don’t fill this out:{' '}
-            <input name="bot-field" onChange={this.handleChange} />
+            <input
+              name="bot-field"
+              value={this.state['bot-field']}
+              onChange={this.handleChange}
+            />
           </label>
         </div>
-        <div
-          role="group"
-          aria-labelledby="quickForm__label--client"
-          className="field"
-        >
-          <span id="quickForm__label--client" className="label">
-            How can we contact you?
-          </span>
+
+        <h3 className="tq-form-card__title">How can we contact you?</h3>
+        <p className="tq-form-card__sub">
+          Share your practice details to start an evaluation workspace.
+        </p>
+
+        {this.state.errorMessage && (
+          <div className="tq-form-alert" role="alert">
+            {this.state.errorMessage}
+          </div>
+        )}
+
+        <div className="tq-form-field">
+          <label htmlFor="pilot-name">Your Name</label>
           <input
-            type={'text'}
-            name={'name'}
+            type="text"
+            name="name"
+            id="pilot-name"
+            value={this.state.name}
             onChange={this.handleChange}
-            id={'name'}
-            required={true}
+            required
             placeholder="Your name"
-            aria-label="Your name"
-            className="field"
           />
+        </div>
+
+        <div className="tq-form-field">
+          <label htmlFor="pilot-phone">Your Phone</label>
           <input
-            type={'tel'}
-            name={'phone'}
+            type="tel"
+            name="phone"
+            id="pilot-phone"
+            value={this.state.phone}
             onChange={this.handleChange}
-            id={'phone'}
-            required={true}
+            required
             placeholder="Your phone"
-            aria-label="Your phone"
-            className="field"
           />
+        </div>
+
+        <div className="tq-form-field">
+          <label htmlFor="pilot-email">Your Email</label>
           <input
-            type={'email'}
-            name={'email'}
+            type="email"
+            name="email"
+            id="pilot-email"
+            value={this.state.email}
             onChange={this.handleChange}
-            id={'email'}
-            required={true}
+            required
             placeholder="Your email"
-            aria-label="Your email"
-            className="field"
           />
         </div>
-        <div className="field">
-          <div className="label" htmlFor={'companyName'}>
-            About your company
-          </div>
-          <div className="control">
-            <input
-              type={'text'}
-              name={'companyName'}
-              onChange={this.handleChange}
-              id={'companyName'}
-              placeholder="Enter your company name"
-              aria-label="Your company name"
-              required={true}
-              className="field"
-            />
-            <input
-              type={'text'}
-              name={'staffQSA'}
-              onChange={this.handleChange}
-              id={'staffQSA'}
-              required={true}
-              placeholder="Number of QSA on your staff"
-              aria-label="Number of QSA on your staff"
-              className="field"
-            />
-            <input
-              type={'text'}
-              name={'numQSA'}
-              onChange={this.handleChange}
-              id={'numQSA'}
-              required={true}
-              placeholder="Approximate number of ROC reports you plan to write in 2021"
-              aria-label="Approximate number of ROC reports you plan to write in 2021"
-              className="field"
-            />
-          </div>
+
+        <div className="tq-form-field">
+          <label htmlFor="pilot-company">Company Name</label>
+          <input
+            type="text"
+            name="companyName"
+            id="pilot-company"
+            value={this.state.companyName}
+            onChange={this.handleChange}
+            required
+            placeholder="Enter your company name"
+          />
         </div>
-        <br />
-        <div className="field">
-          <button className="button is-primary" type="submit">
-            Request Demo
-          </button>
+
+        <div className="tq-form-field">
+          <label htmlFor="pilot-staff">Number of QSAs on Your Staff</label>
+          <input
+            type="text"
+            name="staffQSA"
+            id="pilot-staff"
+            value={this.state.staffQSA}
+            onChange={this.handleChange}
+            required
+            placeholder="Number of QSAs on your staff"
+          />
         </div>
+
+        <div className="tq-form-field">
+          <label htmlFor="pilot-num">
+            Approximate Annual ROC &amp; Standalone SAQ Volume
+          </label>
+          <input
+            type="text"
+            name="numQSA"
+            id="pilot-num"
+            value={this.state.numQSA}
+            onChange={this.handleChange}
+            required
+            placeholder="Approximate number of ROC and SAQ reports per year"
+          />
+        </div>
+
+        <button
+          className="tq-btn tq-btn--primary"
+          style={{ width: '100%' }}
+          type="submit"
+          disabled={this.state.submitting}
+        >
+          {this.state.submitting ? 'Sending Request...' : 'Request Demo'}
+        </button>
       </form>
     )
   }

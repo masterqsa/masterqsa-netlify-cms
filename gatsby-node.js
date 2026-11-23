@@ -59,14 +59,6 @@ exports.createPages = ({ actions, graphql }) => {
     })
 
     createPage({
-      path: `/about`,
-      component: path.resolve(`src/templates/about-page.js`),
-      context: {
-        id: result.data.contentfulAboutUsPage.id,
-      },
-    })
-
-    createPage({
       path: `/contact`,
       component: path.resolve(`src/templates/contact-page.js`),
       context: {

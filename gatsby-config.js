@@ -17,18 +17,24 @@ if (!spaceId || !accessToken) {
 module.exports = {
   siteMetadata: {
     siteUrl: 'https://www.turboqsa.com',
-    title: 'TurboQSA PCI Compliance Software',
+    title: 'TurboQSA | PCI DSS v4.0.1 ROC, Standalone SAQ & PCI PIN Software',
     description:
-      'TurboQSA is a PCI DSS compliance assessment and report software for QSA and QSA Companies',
+      'TurboQSA is the dedicated PCI DSS v4.0.1 ROC, Standalone SAQ & AOC, and PCI PIN assessment software for QSA companies and ISA teams — part of the Turbo Assessment suite.',
     author: 'TurboQSA LLC',
     keywords: [
       'PCI Audit Software',
       'PCI Assessment Software',
       'PCI Compliance Software',
+      'PCI DSS v4.0.1 Software',
+      'Standalone SAQ Software',
+      'PCI SAQ AOC Software',
+      'PCI PIN Assessment Software',
+      'Pay As You Go PCI Software',
       'QSA Software',
       'QSA Productivity Software',
       'QSA Productivity Tools',
       'PCI ISA Productivity Software',
+      'Turbo Assessment',
       'eGRC Software',
       'GRC Tools',
     ],
