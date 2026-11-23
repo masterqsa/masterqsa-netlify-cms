@@ -71,6 +71,35 @@ body {
   line-height: 1.7;
 }
 
+.tq-site strong,
+.tq-site b {
+  color: inherit;
+  font-weight: 700;
+}
+
+.tq-section--dark strong,
+.tq-section--dark b,
+.tq-sister-panel strong,
+.tq-sister-panel b,
+.tq-cta-banner strong,
+.tq-cta-banner b,
+.tq-page-hero strong,
+.tq-page-hero b,
+.tq-pitch-card strong,
+.tq-pitch-card b,
+.tq-footer strong,
+.tq-footer b {
+  color: #ffffff;
+}
+
+.tq-section--dark a:not(.tq-btn),
+.tq-sister-panel a:not(.tq-btn),
+.tq-cta-banner a:not(.tq-btn),
+.tq-page-hero a:not(.tq-btn),
+.tq-pitch-card a:not(.tq-btn) {
+  color: var(--tq-emerald-bright);
+}
+
 .tq-site a:focus-visible,
 .tq-site button:focus-visible,
 .tq-site input:focus-visible,
